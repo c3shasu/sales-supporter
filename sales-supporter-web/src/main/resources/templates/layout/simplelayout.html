@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title layout:title-pattern="$CONTENT_TITLE"></title>
+	<link href="/css/base.css" th:href="@{/css/base.css}" rel="stylesheet" />
+	<link href="/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+	<link href="/css/handsontable.full.css" th:href="@{/css/handsontable.full.css}" rel="stylesheet" />
+	<script type="text/javascript" th:src="@{/javascript/handsontable.full.js}"></script>
+	<script type="text/javascript" th:src="@{/javascript/handsontableutils.js}"></script>
+	<script type="text/javascript" th:src="@{/javascript/message.js}"></script>
+	<script type="text/javascript" th:src="@{/javascript/jquery-2.2.3.js}"></script>
+</head>
+<body>
+	<div class="main_div">
+		<div class="main_contents">
+			<div layout:fragment="content"></div>
+		</div>
+	</div>
+</body>
+</html>

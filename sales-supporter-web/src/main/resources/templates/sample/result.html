@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/baselayout">
+<head>
+<title>Hello</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div layout:fragment="content">
+		<form method="post" th:action="@{/test}">
+			<p th:text="'Hello, ' + ${result} + '!'" />
+			<br />
+			<input type="submit" name="back" value="戻る" />
+		</form>
+	</div>
+</body>
+</html>

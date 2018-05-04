@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/baselayout">
+<head>
+	<title>User List</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript" th:src="@{/javascript/usermanagement/list.js}"></script>
+</head>
+<body>
+	<div layout:fragment="content">
+
+		<h3>■ユーザ情報一覧</h3>
+		<div style="margin-left:20px;">
+			<div id="messageArea" class="isa_info" style="visibility:hidden;">
+			    <i class="fa fa-info-circle"></i>
+			     <div id="message" style="vertical-align:middle; display:inline;">aaa</div>
+			</div>
+			<input type="button" id="load" value="load"/>
+			<input type="button" id="save" value="save"/>
+			<input type="checkbox" id="autosave" name="autosave" value="auto save"></input>
+			<label for="autosave">auto save</label>
+		</div>
+		<div id="userList" style="margin:20px 10px 0px 20px;"></div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="C:\Users\c3s\.m2\repository\postgresql\postgresql\8.4-702.jdbc4\postgresql-8.4-702.jdbc4.jar" />
+	<context id="context">
+		<!-- plugin -->
+		<plugin type="jp.co.ccube.ss.plugin.MybatisGeneratorPlugin">
+			<property name="targetPackage" value="jp.co.ccube.ss.dao" />
+			<property name="targetProject" value="sales-supporter-common" />
+		</plugin>
+
+		<!-- connect -->
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost/sales_supporter"
+			userId="postgres"
+			password="admin" />
+
+		<!-- entity and example -->
+		<javaModelGenerator targetPackage="jp.co.ccube.ss.entity"
+			targetProject="sales-supporter-common" />
+
+		<!-- mapper xml -->
+		<sqlMapGenerator targetPackage="mappers"
+			targetProject="sales-supporter-common\src\main\resources" />
+
+		<!-- dao -->
+		<javaClientGenerator targetPackage="jp.co.ccube.ss.dao"
+			targetProject="sales-supporter-common" type="XMLMAPPER" />
+
+		<!-- Tables -->
+		<table schema="sales_supporter" tableName="users" />
+		<table schema="sales_supporter" tableName="session" />
+
+	</context>
+</generatorConfiguration>
