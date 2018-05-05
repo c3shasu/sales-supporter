@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<div th:fragment="header">
-		<div class="logout">
+		<ul>
+			<li class="logo">
+				<a th:href="@{/top}">
+					<img th:src="@{/images/logo.png}" width="280" height="45" />
+				</a>
+			</li>
+			<li class="logout">
 				<form method="post" th:action="@{/logout}">
-						<input type="submit" name="logout" value="ログアウト" />
+					<input type="submit" name="logout" class="button" value="ログアウト" />
 				</form>
-		</div>
+			</li>
+		</ul>
 	</div>
+
+
 </body>
 </html>

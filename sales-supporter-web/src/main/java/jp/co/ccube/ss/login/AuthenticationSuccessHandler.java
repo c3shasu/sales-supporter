@@ -42,6 +42,6 @@ public class AuthenticationSuccessHandler
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath() + "/input");
+		response.sendRedirect(request.getContextPath() + "/top");
 	}
 }

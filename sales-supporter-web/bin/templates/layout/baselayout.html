@@ -8,22 +8,22 @@
 	<link href="/css/base.css" th:href="@{/css/base.css}" rel="stylesheet" />
 	<link href="/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
 	<link href="/css/handsontable.full.css" th:href="@{/css/handsontable.full.css}" rel="stylesheet" />
-	<script type="text/javascript" th:src="@{/javascript/handsontable.full.js}"></script>
-	<script type="text/javascript" th:src="@{/javascript/handsontableutils.js}"></script>
-	<script type="text/javascript" th:src="@{/javascript/message.js}"></script>
 	<script type="text/javascript" th:src="@{/javascript/jquery-2.2.3.js}"></script>
+	<script type="text/javascript" th:src="@{/javascript/message.js}"></script>
+	<script type="text/javascript" th:src="@{/javascript/menu.js}"></script>
 </head>
 <body>
+	<input type="hidden" id="base_url" th:value="@{/}" />
 	<div class="main_div">
 		<div class="header">
 			<div th:replace="layout/header :: header"></div>
 		</div>
+		<div class="menu">
+			<div th:replace="layout/menu :: menu"></div>
+		</div>
 		<div class="column">
-			<div class="menu">
-				<div th:replace="layout/menu :: menu"></div>
-			</div>
 			<div class="main_contents">
-				<div layout:fragment="content"></div>
+				<div layout:fragment="contents"></div>
 			</div>
 		</div>
 		<div class="footer">

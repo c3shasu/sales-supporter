@@ -1,35 +1,38 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/simplelayout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/contentsOnlyLayout">
 <head>
 <title>ログイン画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
 </head>
 <body>
-<div layout:fragment="header">
-</div>
-<div layout:fragment="content">
-	<form method="post" th:action="@{/login}">
-
-		<p class="system_title">Sales Supporter</p>
-
-		<div th:if="${param != null &amp;&amp; param.error != null &amp;&amp; param.error[0] == '1'}" class="error_message">ログインに失敗しました。</div>
-		<table>
-			<tr>
-				<td>ログインID</td>
-				<td><input type="text" id="loginId" name="loginId" /></td>
-			</tr>
-			<tr>
-				<td>パスワード</td>
-				<td><input type="password" id="password" name="password" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="align_right">
-					<input id="login" type="submit" value="ログイン" />
-				</td>
-			</tr>
-		</table>
-	</form>
-</div>
+	<div layout:fragment="header"></div>
+	<div layout:fragment="contents" class="contents">
+		<div class="login_logo">
+			<img th:src="@{/images/logo.png}" />
+		</div>
+		<form method="post" th:action="@{/login}">
+			<div>
+				&nbsp;
+				<p th:if="${param != null &amp;&amp; param.error != null &amp;&amp; param.error[0] == '1'}" class="error_message">ログインに失敗しました。</p>
+				<p th:if="${message != null}" th:text="${message}" class="error_message" />
+			</div>
+			<div class="login_form">
+				<table>
+					<tr>
+						<td>ログインID</td>
+						<td><input type="text" id="loginId" name="loginId" /></td>
+					</tr>
+					<tr>
+						<td>パスワード</td>
+						<td><input type="password" id="password" name="password" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="align_right"><input id="login" type="submit" value="ログイン" /></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

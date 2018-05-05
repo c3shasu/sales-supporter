@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/simplelayout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/contentsOnlyLayout">
 <head>
 <title>Http error 403</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,9 +7,12 @@
 <body>
 <div layout:fragment="header">
 </div>
-<div layout:fragment="content">
+<div layout:fragment="contents">
 
 		<p>Http error 403</p>
+		<div>
+			<a th:href="@{/top}">Topへ戻る</a>
+		</div>
 
 </div>
 </body>

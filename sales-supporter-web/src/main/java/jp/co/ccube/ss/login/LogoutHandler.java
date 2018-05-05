@@ -21,13 +21,15 @@ public class LogoutHandler implements org.springframework.security.web.authentic
 
 	@Override
 	public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-		logger.info("ログアウトしました。ログインID[" + authentication.getName() + "]");
+		logger.info("ログアウトしました。ログインID[" + authentication.getName() == null ? "" : authentication.getName() + "]");
 
 		// セッション情報 削除
-		try {
-			service.removeSessionByAccountId(authentication.getName());
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (authentication != null) {
+			try {
+				service.removeSessionByAccountId(authentication.getName());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

@@ -8,6 +8,14 @@
 	color: #FF2800
 }
 
+table, th, td {
+	border:none;
+}
+
+.contents{
+	text-align:center;
+}
+
 .system_title{
 	font-size:36pt;
 	color: #3121a5;
@@ -17,6 +25,11 @@
 		0px 34px 30px rgba(0,0,0,0.1);
 }
 
-table, th, td {
-	border:none;
+.login_logo{
 }
+
+.login_form{
+	display:flex;
+	justify-content: center;
+}
+

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.ccube.ss.controller.AbstractController;
+import jp.co.ccube.ss.login.NonSessionCheck;
 
 @Controller
 public class LoginController extends AbstractController {
@@ -13,6 +14,7 @@ public class LoginController extends AbstractController {
 	 *
 	 * @return テンプレートパス
 	 */
+	@NonSessionCheck
 	@RequestMapping("/login")
 	public String login() {
 		return "login/login";

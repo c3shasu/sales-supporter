@@ -9,12 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.handler.MappedInterceptor;
 
+import jp.co.ccube.ss.login.SessionCheckInterceptor;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
-/**
- * thymeleaf-layout-dialectを利用する設定クラス
- */
 @Configuration
 public class MvcConfig extends WebMvcAutoConfigurationAdapter {
 	@Bean
@@ -28,6 +27,25 @@ public class MvcConfig extends WebMvcAutoConfigurationAdapter {
 				.dateFormat(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"));
 		converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
 	}
+
+	/**
+	 * セッションチェックインターセプターをBean登録
+	 */
+	@Bean
+	public SessionCheckInterceptor sessionCheckInterceptor() {
+		return new SessionCheckInterceptor();
+	}
+
+	/**
+	 * セッションチェックインターセプターの適用
+	 *
+	 * @return
+	 */
+	@Bean
+	public MappedInterceptor interceptor() {
+		return new MappedInterceptor(new String[] { "/**" }, sessionCheckInterceptor());
+	}
+
 	//
 	// @Override
 	// public void addViewControllers(ViewControllerRegistry registry) {

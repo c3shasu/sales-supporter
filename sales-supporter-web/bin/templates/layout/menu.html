@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<div th:fragment="menu">
-		menu（今どきは上か？）
-		<ul>
-			<li><a th:href="@{hello}">はろー</a></li>
-			<li><a th:href="@{input}">サンプル入力</a></li>
-			<li><a th:href="@{userlist}">サンプルユーザ一覧</a></li>
+		<ul class="nav">
+			<li id="menu_top">トップ</li>
+			<li>プロジェクト
+				<ul class="child">
+					<li><a href="#">プロジェクト一覧</a></li>
+					<li><a href="#">プロジェクト登録</a></li>
+				</ul>
+			</li>
+			<li>案件
+				<ul class="child">
+					<li><a href="#">案件一覧</a></li>
+					<li><a href="#">案件登録</a></li>
+				</ul>
+			</li>
+			<li>顧客
+				<ul class="child">
+					<li><a href="#">顧客一覧</a></li>
+					<li><a href="#">顧客登録</a></li>
+				</ul>
+			</li>
+			<li>人材
+				<ul class="child">
+					<li><a href="#">社員一覧</a></li>
+					<li><a href="#">社員登録</a></li>
+					<li><a href="#">BP一覧</a></li>
+					<li><a href="#">BP登録</a></li>
+				</ul>
+			</li>
+			<li>管理
+				<ul class="child">
+					<li><a href="hello">ユーザ一覧</a></li>
+					<li><a href="hello">ユーザ登録</a></li>
+				</ul>
+			</li>
+			<li>サンプル
+				<ul class="child">
+					<li><a href="hello">Hello</a></li>
+					<li><a href="input">入力</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </body>
