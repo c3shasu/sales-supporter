@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>ユーザ登録画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/userConfirm}" th:object="${form}">
+			<div>
+				<table>
+					<tr>
+						<td>アカウントID</td>
+						<td><input type="text" th:field="*{accountId}" th:errorclass="fieldError" maxlength="10" /></td>
+						<td th:if="${#fields.hasErrors('accountId')}" th:errors="*{accountId}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>パスワード</td>
+						<td><input type="password" th:field="*{password}" th:errorclass="fieldError" maxlength="128" /></td>
+						<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>氏名</td>
+						<td><input type="text" th:field="*{name}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>部署</td>
+						<td><input type="text" th:field="*{department}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('department')}" th:errors="*{department}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>役職</td>
+						<td><input type="text" th:field="*{position}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('position')}" th:errors="*{position}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><input type="text" th:field="*{tel}" th:errorclass="fieldError" maxlength="20" /></td>
+						<td th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><input type="text" th:field="*{mail}" th:errorclass="fieldError" maxlength="128" /></td>
+						<td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>権限</td>
+						<td><input type="text" th:field="*{permission}" th:errorclass="fieldError" /></td>
+						<td th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="align_right"><input id="confirm" type="submit" value="登録" /></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

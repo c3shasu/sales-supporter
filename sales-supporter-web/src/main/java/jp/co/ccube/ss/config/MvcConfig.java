@@ -4,11 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.handler.MappedInterceptor;
 
 import jp.co.ccube.ss.login.SessionCheckInterceptor;
@@ -51,5 +55,28 @@ public class MvcConfig extends WebMvcAutoConfigurationAdapter {
 	// public void addViewControllers(ViewControllerRegistry registry) {
 	// registry.setOrder(Ordered.LOWEST_PRECEDENCE);
 	// registry.addViewController("/**").setViewName("forward:/login/login.html");
+
+
+	 @Override
+	    public Validator getValidator() {
+	        return validator();
+	    }
+
+	    @Bean
+	    public LocalValidatorFactoryBean validator() {
+	        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+	        validator.setValidationMessageSource(messageSource());
+	        return validator;
+	    }
+
+	    private MessageSource messageSource() {
+	        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+	        //プロパティファイルの名前やディレクトリも変更可能
+	        messageSource.setBasename("classpath:/ValidationMessages");
+	        //UTF-8に設定
+	        messageSource.setDefaultEncoding("UTF-8");
+	        return messageSource;
+	    }
+
 	// }
 }

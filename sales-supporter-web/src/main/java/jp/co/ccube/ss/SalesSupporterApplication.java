@@ -8,13 +8,14 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomi
 import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * アプリケーション実行クラス
  */
 @MapperScan("jp.co.ccube.ss.dao")
 @SpringBootApplication
-public class SalesSupporterApplication {
+public class SalesSupporterApplication extends WebMvcConfigurerAdapter {
 
 	/**
 	 * メインメソッド
