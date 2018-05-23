@@ -46,8 +46,8 @@
 						<td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color: red"></td>
 					</tr>
 					<tr>
-						<td>権限</td>
-						<td><input type="text" th:field="*{permission}" th:errorclass="fieldError" /></td>
+					<td>権限</td>
+						<td><div th:each="item : ${checkItems}"><input type="checkbox" th:name="permission" th:value="${item.value}" th:text="${item.key}" th:field="*{permission}" /></div></td>
 						<td th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}" style="color: red"></td>
 					</tr>
 					<tr>
