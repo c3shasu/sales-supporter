@@ -4,9 +4,12 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import jp.co.ccube.ss.validation.MyValid;
+
 public class RegistForm {
 	@NotEmpty
 	@Pattern(regexp = "^[a-zA-Z0-9]+$")
+	@MyValid
 	private String accountId;
 
 	@NotEmpty
@@ -26,7 +29,8 @@ public class RegistForm {
 	@Pattern(regexp = "^([\\w])+([\\w\\._-])*\\@([\\w])+([\\w\\._-])*\\.([a-zA-Z])+$")
 	private String mail;
 
-	private Integer permission;
+	@NotEmpty
+	private Integer[] permission;
 
 	public String getAccountId() {
 		return accountId;
@@ -78,11 +82,11 @@ public class RegistForm {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public Integer getPermission() {
+	public Integer[] getPermission() {
 		return permission;
 	}
 
-	public void setPermission(Integer permission) {
+	public void setPermission(Integer[] permission) {
 		this.permission = permission;
 	}
 

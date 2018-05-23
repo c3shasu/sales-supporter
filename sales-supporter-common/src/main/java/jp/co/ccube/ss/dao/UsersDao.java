@@ -78,4 +78,6 @@ public interface UsersDao {
 	int updateByPrimaryKey(Users record);
 
 	Users selectByAccountId(@Param("accountId") String accountId);
+
+	int countByPrimaryKey(String accountId);
 }
