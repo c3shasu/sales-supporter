@@ -375,9 +375,7 @@
 
   <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
     select count(*)
-    <include refid="Base_Column_List" />
     from users
     where account_id = #{accountId,jdbcType=VARCHAR}
-    group by account_id
   </select>
 </mapper>
