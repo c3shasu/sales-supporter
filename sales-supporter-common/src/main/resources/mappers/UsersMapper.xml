@@ -15,7 +15,7 @@
     <result column="mail_address" jdbcType="VARCHAR" property="mailAddress" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="password_limit" jdbcType="DATE" property="passwordLimit" />
-    <result column="permission" jdbcType="INTEGER" property="permission" />
+    <result column="permission" jdbcType="BIT" property="permission" />
     <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -157,7 +157,7 @@
       deleted_at)
     values (#{accountId,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR},
       #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{mailAddress,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{passwordLimit,jdbcType=DATE}, #{permission,jdbcType=INTEGER},
+      #{password,jdbcType=VARCHAR}, #{passwordLimit,jdbcType=DATE}, #{permission,jdbcType=BIT},
       #{deletedAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="jp.co.ccube.ss.entity.Users">
@@ -225,7 +225,7 @@
         #{passwordLimit,jdbcType=DATE},
       </if>
       <if test="permission != null">
-        #{permission,jdbcType=INTEGER},
+        #{permission,jdbcType=BIT}::integer::bit(8),
       </if>
       <if test="deletedAt != null">
         #{deletedAt,jdbcType=TIMESTAMP},
@@ -276,7 +276,7 @@
         password_limit = #{record.passwordLimit,jdbcType=DATE},
       </if>
       <if test="record.permission != null">
-        permission = #{record.permission,jdbcType=INTEGER},
+        permission = #{record.permission,jdbcType=BIT},
       </if>
       <if test="record.deletedAt != null">
         deleted_at = #{record.deletedAt,jdbcType=TIMESTAMP},
@@ -301,7 +301,7 @@
       mail_address = #{record.mailAddress,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       password_limit = #{record.passwordLimit,jdbcType=DATE},
-      permission = #{record.permission,jdbcType=INTEGER},
+      permission = #{record.permission,jdbcType=BIT},
       deleted_at = #{record.deletedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -337,7 +337,7 @@
         password_limit = #{passwordLimit,jdbcType=DATE},
       </if>
       <if test="permission != null">
-        permission = #{permission,jdbcType=INTEGER},
+        permission = #{permission,jdbcType=BIT},
       </if>
       <if test="deletedAt != null">
         deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
@@ -359,7 +359,7 @@
       mail_address = #{mailAddress,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       password_limit = #{passwordLimit,jdbcType=DATE},
-      permission = #{permission,jdbcType=INTEGER},
+      permission = #{permission,jdbcType=BIT},
       deleted_at = #{deletedAt,jdbcType=TIMESTAMP}
     where account_id = #{accountId,jdbcType=VARCHAR}
   </update>
@@ -377,5 +377,24 @@
     select count(*)
     from users
     where account_id = #{accountId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByUsers" parameterType="jp.co.ccube.ss.entity.Users" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from users
+    <where>
+    	<trim prefixOverrides="and">
+    	<if test="accountId != null">
+    		account_id like '%' || #{accountId,jdbcType=VARCHAR} || '%'
+    	</if>
+    	<if test="name != null">
+    		and name like '%' || #{name,jdbcType=VARCHAR} || '%'
+    	</if>
+    	<if test="department != null">
+    		and department like '%' || #{department,jdbcType=VARCHAR} || '%'
+    	</if>
+    	    </trim>
+    	</where>
   </select>
 </mapper>

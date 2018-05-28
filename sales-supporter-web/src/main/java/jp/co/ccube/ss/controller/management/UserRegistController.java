@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.ccube.ss.controller.AbstractController;
-import jp.co.ccube.ss.form.RegistForm;
+import jp.co.ccube.ss.form.ManagementForm;
 import jp.co.ccube.ss.service.UserRegistService;
 
 @Controller
@@ -46,13 +46,13 @@ UserRegistService userRegistService;
 	 * @return テンプレートパス
 	 */
 	@RequestMapping(value = "/userRegist", method = RequestMethod.GET)
-	public String dispCheck(@ModelAttribute("form") RegistForm registForm, Model model){
+	public String dispCheck(@ModelAttribute("form") ManagementForm form, Model model){
 		model.addAttribute("checkItems", CHECK_ITEMS);
 		return "management/userRegist";
 	}
 
 	@RequestMapping(value = "/userConfirm", method = RequestMethod.POST)
-	public String postCheck(@ModelAttribute("form") @Valid RegistForm registForm, BindingResult result, Model model) {
+	public String postCheck(@ModelAttribute("form") @Valid ManagementForm form, BindingResult result, Model model) {
 		//エラー表示判定
 		if(result.hasErrors()){
 			for(FieldError err: result.getFieldErrors()) {
@@ -61,8 +61,8 @@ UserRegistService userRegistService;
 			model.addAttribute("checkItems", CHECK_ITEMS);
 			return  "management/userRegist";
 		}
-		userRegistService.addUser(registForm);
-		model.addAttribute("accountId", registForm.getAccountId());
+		userRegistService.addUser(form);
+		model.addAttribute("accountId", form.getAccountId());
 		return "management/userConfirm";
 	}
 }

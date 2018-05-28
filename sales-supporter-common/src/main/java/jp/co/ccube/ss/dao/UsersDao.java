@@ -80,4 +80,6 @@ public interface UsersDao {
 	Users selectByAccountId(@Param("accountId") String accountId);
 
 	Integer countByPrimaryKey(String accountId);
+
+	List<Users> selectByUsers(Users recprd);
 }

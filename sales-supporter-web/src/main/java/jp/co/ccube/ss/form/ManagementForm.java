@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import jp.co.ccube.ss.validation.MyValid;
 
-public class RegistForm {
+public class ManagementForm {
 	@NotEmpty
 	@Pattern(regexp = "^[a-zA-Z0-9]+$")
 	@MyValid
