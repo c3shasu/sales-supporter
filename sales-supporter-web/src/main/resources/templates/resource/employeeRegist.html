@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>社員登録画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/employeeConfirm}" th:object="${form}">
+			<div>
+				<table>
+					<tr>
+						<td>社員No.</td>
+						<td><input type="text" th:field="*{employeeNo}" th:errorclass="fieldError" /></td>
+						<td th:if="${#fields.hasErrors('employeeNo')}" th:errors="*{employeeNo}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>部署</td>
+						<td><input type="text" th:field="*{department}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('department')}" th:errors="*{department}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>役職</td>
+						<td><input type="text" th:field="*{position}"  maxlength="30" /></td>
+					</tr>
+					<tr>
+						<td>氏名</td>
+						<td><input type="text" th:field="*{name}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><input type="text" th:field="*{tel}" th:errorclass="fieldError" maxlength="20" /></td>
+						<td th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><input type="text" th:field="*{mail}" th:errorclass="fieldError" maxlength="128" /></td>
+						<td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>原価</td>
+						<td><input type="text" th:field="*{cost}" th:errorclass="fieldError" /></td>
+						<td th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>役割</td>
+						<td><input type="text" th:field="*{role}" th:errorclass="fieldError" /></td>
+						<td th:if="${#fields.hasErrors('role')}" th:errors="*{role}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="align_right"><input id="confirm" type="submit" value="登録" /></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
