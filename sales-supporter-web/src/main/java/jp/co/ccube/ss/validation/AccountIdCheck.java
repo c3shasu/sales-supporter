@@ -12,9 +12,9 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy={AccountIdValidator.class})
-public @interface MyValid {
+public @interface AccountIdCheck {
 
-	String message() default "ユーザIDが既に登録されています。";
+	String message() default "{jp.co.ccube.ss.validator.constraints.AccountId.message}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 

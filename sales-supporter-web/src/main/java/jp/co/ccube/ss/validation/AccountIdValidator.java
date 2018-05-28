@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import jp.co.ccube.ss.dao.UsersDao;
 
-public class AccountIdValidator implements ConstraintValidator<MyValid, String> {
+public class AccountIdValidator implements ConstraintValidator<AccountIdCheck, String> {
 
-	private MyValid my;
+	private AccountIdCheck my;
 	@Autowired
 	private UsersDao usersDao;
 	@Override
-	public void initialize(MyValid annotation) {
+	public void initialize(AccountIdCheck annotation) {
 		// TODO 自動生成されたメソッド・スタブ
 		this.my = annotation;
 	}

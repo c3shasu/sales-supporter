@@ -1,9 +1,5 @@
 package jp.co.ccube.ss.controller.management;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -17,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.ccube.ss.config.CheckBoxItemConfig;
 import jp.co.ccube.ss.controller.AbstractController;
 import jp.co.ccube.ss.form.ManagementForm;
 import jp.co.ccube.ss.service.UserRegistService;
@@ -24,21 +21,10 @@ import jp.co.ccube.ss.service.UserRegistService;
 @Controller
 public class UserRegistController extends AbstractController {
 
-@Autowired
-UserRegistService userRegistService;
+	@Autowired
+	UserRegistService userRegistService;
 
 	private static final Logger log = LoggerFactory.getLogger(UserRegistController.class);
-
-	//チェックボックスの設定
-	final static Map<String, Integer> CHECK_ITEMS =
-		    Collections.unmodifiableMap(new LinkedHashMap<String, Integer>() {
-		    {
-		      put("管理職", 8);
-		      put("企画開発部", 4);
-		      put("営業部", 2);
-		      put("総務部", 1);
-		    }
-		  });
 
 	/**
 	 * ユーザ登録画面初期表示
@@ -47,7 +33,7 @@ UserRegistService userRegistService;
 	 */
 	@RequestMapping(value = "/userRegist", method = RequestMethod.GET)
 	public String dispCheck(@ModelAttribute("form") ManagementForm form, Model model){
-		model.addAttribute("checkItems", CHECK_ITEMS);
+		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "management/userRegist";
 	}
 
@@ -58,7 +44,7 @@ UserRegistService userRegistService;
 			for(FieldError err: result.getFieldErrors()) {
                 log.debug("error code = [" + err.getCode() + "]");
             }
-			model.addAttribute("checkItems", CHECK_ITEMS);
+			model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 			return  "management/userRegist";
 		}
 		userRegistService.addUser(form);
