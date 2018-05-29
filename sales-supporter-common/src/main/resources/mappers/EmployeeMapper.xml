@@ -354,4 +354,24 @@
     from employee
     where employee_no = #{employee_no,jdbcType=INTEGER}
   </select>
+
+    <select id="selectByEmployee" parameterType="jp.co.ccube.ss.entity.Employee" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    <where>
+    	<trim prefixOverrides="and">
+    	<if test="employeeNo != null">
+    		employee_no = #{employeeNo,jdbcType=INTEGER}
+    	</if>
+    	<if test="name != null">
+    		and name like '%' || #{name,jdbcType=VARCHAR} || '%'
+    	</if>
+    	<if test="department != null">
+    		and department like '%' || #{department,jdbcType=VARCHAR} || '%'
+    	</if>
+    	    </trim>
+    	</where>
+  </select>
+
 </mapper>

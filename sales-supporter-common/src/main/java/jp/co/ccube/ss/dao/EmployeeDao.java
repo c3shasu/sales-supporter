@@ -97,4 +97,6 @@ public interface EmployeeDao {
     int updateByPrimaryKey(Employee record);
 
 	Integer countByPrimaryKey(Integer employeeNo);
+
+	List<Employee> selectByEmployee(Employee recprd);
 }
