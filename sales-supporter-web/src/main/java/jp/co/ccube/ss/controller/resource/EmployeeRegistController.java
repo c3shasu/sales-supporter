@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.ccube.ss.controller.AbstractController;
-import jp.co.ccube.ss.form.EmployeeRegistForm;
+import jp.co.ccube.ss.form.EmployeeForm;
 import jp.co.ccube.ss.service.EmployeeRegistService;
 
 @Controller
@@ -31,13 +31,13 @@ EmployeeRegistService employeeregistservice;
 	 */
 
 	@RequestMapping(value = "/employeeRegist", method = RequestMethod.GET)
-	public String dispCheck(@ModelAttribute("form") EmployeeRegistForm registForm, Model model){
+	public String dispCheck(@ModelAttribute("form") EmployeeForm registForm, Model model){
 		return "resource/employeeRegist";
 
 	}
 
 	@RequestMapping(value = "/employeeConfirm", method = RequestMethod.POST)
-	public String postCheck(@ModelAttribute("form") @Valid EmployeeRegistForm registForm, BindingResult result, Model model) {
+	public String postCheck(@ModelAttribute("form") @Valid EmployeeForm registForm, BindingResult result, Model model) {
 
 		//エラー表示判定
 		if(result.hasErrors()){

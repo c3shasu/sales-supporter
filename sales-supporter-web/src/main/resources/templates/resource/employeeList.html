@@ -12,16 +12,16 @@
 				<table>
 					<tr>
 						<td>社員番号</td>
-						<td><input type="text" th:name="employeeNo" maxlength="10" /></td>
+						<td><input type="text" th:value="*{employeeNo}" th:name="employeeNo" maxlength="10" /></td>
 						<td>氏名</td>
-						<td><input type="text" th:name="name" maxlength="30" /></td>
+						<td><input type="text" th:value="*{name}" th:name="name" maxlength="30" /></td>
 						<td>部署</td>
-						<td><input type="text" th:name="department" maxlength="30" /></td>
+						<td><input type="text" th:value="*{department}" th:name="department" maxlength="30" /></td>
+						<td colspan="2" class="align_right"><input id="employeeSearch" type="submit" value="検索" /></td>
 					</tr>
 					<tr>
-<!--						<td>権限</td>
-						<td th:each="item : ${checkItems}"><input type="checkbox" th:name="permission" th:value="${item.value}" th:text="${item.key}" th:field="*{permission}" /></td>-->
-						<td colspan="2" class="align_right"><input id="employeeSearch" type="submit" value="検索" /></td>
+						<td>検索結果：</td>
+    					<td th:text="${serachEmployeeResult}"></td>
 					</tr>
 				</table>
 				</div>

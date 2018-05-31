@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 
 import jp.co.ccube.ss.dao.EmployeeDao;
 import jp.co.ccube.ss.entity.Employee;
-import jp.co.ccube.ss.form.EmployeeRegistForm;
+import jp.co.ccube.ss.form.EmployeeForm;
 
 @Service
 public class EmployeeRegistService {
 	@Autowired
 	private EmployeeDao employeedao;
 
-	public void addEmployee(EmployeeRegistForm registForm){
+	public void addEmployee(EmployeeForm registForm){
 
 		//DBアクセス
 		Employee employee = new Employee();

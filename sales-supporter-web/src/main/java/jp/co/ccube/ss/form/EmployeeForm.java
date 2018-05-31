@@ -1,18 +1,16 @@
 package jp.co.ccube.ss.form;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import jp.co.ccube.ss.validation.EmployeeNoValid;
-import jp.co.ccube.ss.validation.NumberFormValid;
 
-public class EmployeeRegistForm {
+public class EmployeeForm {
 
 	//社員番号
-	@NotNull
-	@NumberFormValid
+	@NotEmpty
+	@Pattern(regexp ="^[0-9]+$")
 	@EmployeeNoValid
 	private String employeeNo;
 
@@ -37,13 +35,13 @@ public class EmployeeRegistForm {
 	private String mail;
 
 	//原価
-	@NotNull
-	@NumberFormValid
+	@NotEmpty
+
 	private String cost;
 
 	//役割
-	@NotNull
-	@NumberFormValid
+	@NotEmpty
+	@Pattern(regexp ="^[0-9]+$")
 	private String role;
 
 
