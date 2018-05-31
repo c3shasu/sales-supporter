@@ -12,15 +12,17 @@
 				<table>
 					<tr>
 						<td>アカウントID</td>
-						<td><input type="text" th:name="accountId" maxlength="10" /></td>
+						<td><input type="text" th:field="*{accountId}" th:name="accountId" maxlength="10" /></td>
 						<td>氏名</td>
-						<td><input type="text" th:name="name" maxlength="30" /></td>
+						<td><input type="text" th:field="*{name}" th:name="name" maxlength="30" /></td>
 						<td>部署</td>
-						<td><input type="text" th:name="department" maxlength="30" /></td>
+						<td><input type="text" th:field="*{department}" th:name="department" maxlength="30" /></td>
 					</tr>
 					<tr>
-<!--						<td>権限</td>
-						<td th:each="item : ${checkItems}"><input type="checkbox" th:name="permission" th:value="${item.value}" th:text="${item.key}" th:field="*{permission}" /></td>-->
+						<td>権限</td>
+						<td th:each="item : ${checkItems}"><input type="checkbox" th:name="permission" th:value="${item.value}" th:text="${item.key}" th:field="*{permission}" /></td>
+					</tr>
+					<tr>
 						<td colspan="2" class="align_right"><input id="search" type="submit" value="検索" /></td>
 					</tr>
 				</table>

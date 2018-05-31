@@ -14,25 +14,27 @@ import jp.co.ccube.ss.config.CheckBoxItemConfig;
 import jp.co.ccube.ss.controller.AbstractController;
 import jp.co.ccube.ss.entity.Users;
 import jp.co.ccube.ss.form.ManagementForm;
-import jp.co.ccube.ss.service.UserListService;
+import jp.co.ccube.ss.service.ManagementService;
 
 @Controller
 public class UserListController extends AbstractController {
 
 	@Autowired
-	UserListService userListService;
+	ManagementService managementService;
 
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
-	public String userList(@ModelAttribute("form") ManagementForm registForm, Model model){
+	public String userList(@ModelAttribute("form") ManagementForm form, Model model) {
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "management/userList";
 	}
 
 	@RequestMapping(value = "/userSearch", method = RequestMethod.POST)
-	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") ManagementForm form) {
+	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") ManagementForm form, Model model) {
+		// 検索結果の設定
 		mav.setViewName("/management/userList");
-		List<Users> result = userListService.search(form.getAccountId(), form.getName(), form.getDepartment());
-		mav.addObject("serachUserList",result);
+		List<Users> result = managementService.search(form);
+		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
+		mav.addObject("serachUserList", result);
 		return mav;
 	}
 

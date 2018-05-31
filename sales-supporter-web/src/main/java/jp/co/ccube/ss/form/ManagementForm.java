@@ -47,6 +47,7 @@ public class ManagementForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -54,6 +55,7 @@ public class ManagementForm {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDepartment() {
 		return department;
 	}
@@ -61,6 +63,7 @@ public class ManagementForm {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
+
 	public String getPosition() {
 		return position;
 	}
@@ -68,6 +71,7 @@ public class ManagementForm {
 	public void setPosition(String position) {
 		this.position = position;
 	}
+
 	public String getTel() {
 		return tel;
 	}
@@ -75,6 +79,7 @@ public class ManagementForm {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
 	public String getMail() {
 		return mail;
 	}
@@ -82,6 +87,7 @@ public class ManagementForm {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
 	public Integer[] getPermission() {
 		return permission;
 	}

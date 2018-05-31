@@ -12,6 +12,7 @@ public class AccountIdValidator implements ConstraintValidator<AccountIdCheck, S
 	private AccountIdCheck my;
 	@Autowired
 	private UsersDao usersDao;
+
 	@Override
 	public void initialize(AccountIdCheck annotation) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -22,14 +23,13 @@ public class AccountIdValidator implements ConstraintValidator<AccountIdCheck, S
 	public boolean isValid(String value, ConstraintValidatorContext context) {
 
 		// TODO 自動生成されたメソッド・スタブ
-		if ( !value.isEmpty() ) {
+		if (!value.isEmpty()) {
 			int cnt = usersDao.countByPrimaryKey(value);
-			if ( cnt > 0 ) {
+			if (cnt > 0) {
 				return false;
 			}
 		}
 		return true;
 	}
-
 
 }

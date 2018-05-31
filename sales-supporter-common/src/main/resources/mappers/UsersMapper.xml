@@ -394,6 +394,9 @@
     	<if test="department != null">
     		and department like '%' || #{department,jdbcType=VARCHAR} || '%'
     	</if>
+    	<if test="permission != null">
+    		and permission &amp; #{permission,jdbcType=BIT}::integer::bit(8) = #{permission,jdbcType=BIT}::integer::bit(8)
+    	</if>
     	    </trim>
     	</where>
   </select>

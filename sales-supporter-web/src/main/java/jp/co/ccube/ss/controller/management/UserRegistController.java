@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.ccube.ss.config.CheckBoxItemConfig;
 import jp.co.ccube.ss.controller.AbstractController;
 import jp.co.ccube.ss.form.ManagementForm;
-import jp.co.ccube.ss.service.UserRegistService;
+import jp.co.ccube.ss.service.ManagementService;
 
 @Controller
 public class UserRegistController extends AbstractController {
 
 	@Autowired
-	UserRegistService userRegistService;
+	ManagementService managementService;
 
 	private static final Logger log = LoggerFactory.getLogger(UserRegistController.class);
 
@@ -32,22 +32,22 @@ public class UserRegistController extends AbstractController {
 	 * @return テンプレートパス
 	 */
 	@RequestMapping(value = "/userRegist", method = RequestMethod.GET)
-	public String dispCheck(@ModelAttribute("form") ManagementForm form, Model model){
+	public String dispCheck(@ModelAttribute("form") ManagementForm form, Model model) {
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "management/userRegist";
 	}
 
 	@RequestMapping(value = "/userConfirm", method = RequestMethod.POST)
 	public String postCheck(@ModelAttribute("form") @Valid ManagementForm form, BindingResult result, Model model) {
-		//エラー表示判定
-		if(result.hasErrors()){
-			for(FieldError err: result.getFieldErrors()) {
-                log.debug("error code = [" + err.getCode() + "]");
-            }
+		// エラー表示判定
+		if (result.hasErrors()) {
+			for (FieldError err : result.getFieldErrors()) {
+				log.debug("error code = [" + err.getCode() + "]");
+			}
 			model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-			return  "management/userRegist";
+			return "management/userRegist";
 		}
-		userRegistService.addUser(form);
+		managementService.addUser(form);
 		model.addAttribute("accountId", form.getAccountId());
 		return "management/userConfirm";
 	}
