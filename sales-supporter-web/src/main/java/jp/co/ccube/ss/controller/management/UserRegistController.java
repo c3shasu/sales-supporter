@@ -32,13 +32,13 @@ public class UserRegistController extends AbstractController {
 	 * @return テンプレートパス
 	 */
 	@RequestMapping(value = "/userRegist", method = RequestMethod.GET)
-	public String dispCheck(@ModelAttribute("form") ManagementForm form, Model model) {
+	public String userRegist(@ModelAttribute("form") ManagementForm form, Model model) {
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "management/userRegist";
 	}
 
 	@RequestMapping(value = "/userConfirm", method = RequestMethod.POST)
-	public String postCheck(@ModelAttribute("form") @Valid ManagementForm form, BindingResult result, Model model) {
+	public String registCheck(@ModelAttribute("form") @Valid ManagementForm form, BindingResult result, Model model) {
 		// エラー表示判定
 		if (result.hasErrors()) {
 			for (FieldError err : result.getFieldErrors()) {

@@ -72,7 +72,7 @@ public class ManagementService {
 		if (!dept.isEmpty()) {
 			users.setDepartment(dept);
 		}
-		if (per != 0) {
+		if (per != 0  ) {
 			users.setPermission(per);
 		}
 		return usersDao.selectByUsers(users);

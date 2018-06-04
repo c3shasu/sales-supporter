@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
-		<form method="post" th:action="@{/userSearch}" th:object="${form}" >
+		<form method="post" th:action="@{/userSearch}" th:object="${form}">
 			<div>
 				<table>
 					<tr>
@@ -23,27 +23,32 @@
 						<td th:each="item : ${checkItems}"><input type="checkbox" th:name="permission" th:value="${item.value}" th:text="${item.key}" th:field="*{permission}" /></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="align_right"><input id="search" type="submit" value="検索" /></td>
+						<td colspan="2" class="align_right"><input id="search" type="submit" name="search" value="検索" /></td>
+						<td colspan="2" class="align_right"><input id="delete" type="submit" name="delete" value="削除" /></td>
 					</tr>
 				</table>
-				</div>
+			</div>
 			<table>
 				<thead>
 					<tr>
+						<th>選択</th>
 						<th>アカウントID</th>
 						<th>氏名</th>
 						<th>部署</th>
 						<th>メールアドレス</th>
+						<th>変更</th>
 					</tr>
-    			</thead>
-    			<tbody>
-    					<tr th:each="obj : ${serachUserList}">
-    					<td th:text="${obj.accountId}"></td>
-    					<td th:text="${obj.name}"></td>
-    					<td th:text="${obj.department}"></td>
-    					<td th:text="${obj.mailAddress}"></td>
-						</tr>
-    			</tbody>
+				</thead>
+				<tbody>
+					<tr th:each="obj : ${serachUserList}">
+						<td><input type="checkbox" th:value="${obj.accountId}" /></td>
+						<td th:text="${obj.accountId}"></td>
+						<td th:text="${obj.name}"></td>
+						<td th:text="${obj.department}"></td>
+						<td th:text="${obj.mailAddress}"></td>
+						<td colspan="2" class="align_right"><input id="edit" type="submit" name="edit" value="変更" /></td>
+					</tr>
+				</tbody>
 			</table>
 		</form>
 	</div>

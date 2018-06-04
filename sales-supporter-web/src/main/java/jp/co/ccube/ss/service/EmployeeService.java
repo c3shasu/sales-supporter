@@ -1,5 +1,7 @@
 package jp.co.ccube.ss.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,13 +10,13 @@ import jp.co.ccube.ss.entity.Employee;
 import jp.co.ccube.ss.form.EmployeeForm;
 
 @Service
-public class EmployeeRegistService {
+public class EmployeeService {
 	@Autowired
-	private EmployeeDao employeedao;
+	private EmployeeDao employeeDao;
 
-	public void addEmployee(EmployeeForm registForm){
+	// 登録
+	public void addEmployee(EmployeeForm registForm) {
 
-		//DBアクセス
 		Employee employee = new Employee();
 
 		employee.setEmployeeNo(Integer.parseInt(registForm.getEmployeeNo()));
@@ -26,8 +28,27 @@ public class EmployeeRegistService {
 		employee.setCost(Integer.parseInt(registForm.getCost()));
 		employee.setRole(Integer.parseInt(registForm.getRole()));
 
-		employeedao.insertSelective(employee);
+		employeeDao.insertSelective(employee);
 
+	}
+
+	// 検索
+	public List<Employee> search(EmployeeForm form) {
+		String employeeNo = form.getEmployeeNo();
+		String name = form.getName();
+		String dept = form.getDepartment();
+
+		Employee employee = new Employee();
+		if (!employeeNo.isEmpty()) {
+			employee.setEmployeeNo(Integer.parseInt(employeeNo));
+		}
+		if (!name.isEmpty()) {
+			employee.setName(name);
+		}
+		if (!dept.isEmpty()) {
+			employee.setDepartment(dept);
+		}
+		return employeeDao.selectByEmployee(employee);
 	}
 
 }

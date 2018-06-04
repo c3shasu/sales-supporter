@@ -36,7 +36,6 @@ public class EmployeeForm {
 
 	//原価
 	@NotEmpty
-
 	private String cost;
 
 	//役割
