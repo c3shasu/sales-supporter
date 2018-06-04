@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>ユーザ登録画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/clientConfirm}" th:object="${form}">
+			<div>
+				<table>
+					<tr>
+						<td>顧客名(会社名)</td>
+						<td><input type="text" th:field="*{clientName}" th:errorclass="fieldError" maxlength="20" /></td>
+						<td th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>住所</td>
+						<td><input type="text" th:field="*{clientAddress}" th:errorclass="fieldError" maxlength="256" /></td>
+						<td th:if="${#fields.hasErrors('clientAddress')}" th:errors="*{clientAddress}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><input type="text" th:field="*{clientTel}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('clientTel')}" th:errors="*{clientTel}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><input type="text" th:field="*{clientEmailAddress}" th:errorclass="fieldError" maxlength="30" /></td>
+						<td th:if="${#fields.hasErrors('clientEmailAddress')}" th:errors="*{clientEmailAddress}" style="color: red"></td>
+					</tr>
+ 					<tr>
+					<td>顧客種別</td>
+						<td><div th:each="item : ${checkItems}"><input type="checkbox" th:name="clientType" th:value="${item.value}" th:text="${item.key}" th:field="*{clientType}" /></div></td>
+						<td th:if="${#fields.hasErrors('clientType')}" th:errors="*{clientType}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>備考</td>
+						<td><textarea  th:field="*{clietDescription}" style="margin: 0px; height: 130px; width: 410px;" wrap="hard" maxlength="500"></textarea></td>
+						<td th:if="${#fields.hasErrors('clietDescription')}" th:errors="*{clietDescription}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="align_right"><input id="confirm" type="submit" value="登録" /></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
