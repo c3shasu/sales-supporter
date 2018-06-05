@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ClientForm {
 	@NotEmpty
-	@Pattern(regexp = "^[a-zA-Z0-9]+$")
 	private String clientName;
 
 	@NotEmpty
@@ -18,7 +17,6 @@ public class ClientForm {
 	@Pattern(regexp = "^([\\w])+([\\w\\._-])*\\@([\\w])+([\\w\\._-])*\\.([a-zA-Z])+$")
 	private String clientEmailAddress;
 
-	@NotEmpty
 	private String clietDescription;
 
 	@NotEmpty
@@ -47,7 +45,7 @@ public class ClientForm {
 	}
 	//メールアドレス
 	public String getClientEmailAddress() {
-		return clientName;
+		return clientEmailAddress;
 	}
 	public void setClientEmailAddress(String clientEmailAddress) {
 	this.clientEmailAddress = clientEmailAddress;
@@ -65,6 +63,11 @@ public class ClientForm {
 	}
 	public void setClientType(Integer[]  clientType) {
 	this.clientType = clientType;
+	}
+
+	public Integer getCompanyId() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 }

@@ -12,7 +12,7 @@
 				<table>
 					<tr>
 						<td>顧客名(会社名)</td>
-						<td><input type="text" th:field="*{clientName}" th:errorclass="fieldError" maxlength="20" /></td>
+						<td><input type="text" th:field="*{clientName}" th:errorclass="fieldError" maxlength="20"  /></td>
 						<td th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}" style="color: red"></td>
 					</tr>
 					<tr>

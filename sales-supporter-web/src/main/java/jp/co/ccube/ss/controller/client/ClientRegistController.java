@@ -21,7 +21,6 @@ import jp.co.ccube.ss.service.ClientService;
 @Controller
 public class ClientRegistController extends AbstractController {
 
-
 	@Autowired
 	ClientService ClientRegistService;
 
@@ -48,8 +47,8 @@ public class ClientRegistController extends AbstractController {
 			model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
 			return  "client/clientRegist";
 		}
-//		userRegistService.addUser(form);
-//		model.addAttribute("accountId", form.getAccountId());
+		ClientRegistService.addClient(form);
+		model.addAttribute("clientName", form.getClientName());
 		return "client/clientConfirm";
 	}
 }
