@@ -82,4 +82,6 @@ public interface UsersDao {
 	Integer countByPrimaryKey(String accountId);
 
 	List<Users> selectByUsers(Users recprd);
+
+	void deletedAtUpdate(String accountId);
 }

@@ -41,7 +41,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="obj : ${serachUserList}">
-						<td><input type="checkbox" th:value="${obj.accountId}" /></td>
+						<td><input type="checkbox" th:value="${obj.accountId}" th:name="deleteCheck" th:field="*{deleteCheck}"/></td>
 						<td th:text="${obj.accountId}"></td>
 						<td th:text="${obj.name}"></td>
 						<td th:text="${obj.department}"></td>

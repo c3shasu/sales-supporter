@@ -383,21 +383,24 @@
     select
     <include refid="Base_Column_List" />
     from users
-    <where>
-    	<trim prefixOverrides="and">
-    	<if test="accountId != null">
-    		account_id like '%' || #{accountId,jdbcType=VARCHAR} || '%'
-    	</if>
-    	<if test="name != null">
-    		and name like '%' || #{name,jdbcType=VARCHAR} || '%'
-    	</if>
-    	<if test="department != null">
-    		and department like '%' || #{department,jdbcType=VARCHAR} || '%'
-    	</if>
-    	<if test="permission != null">
-    		and permission &amp; #{permission,jdbcType=BIT}::integer::bit(8) != 0::integer::bit(8)
-    	</if>
-    	    </trim>
-    	</where>
+    where deleted_at is null
+   	<if test="accountId != null">
+   		and account_id like '%' || #{accountId,jdbcType=VARCHAR} || '%'
+   	</if>
+   	<if test="name != null">
+   		and name like '%' || #{name,jdbcType=VARCHAR} || '%'
+   	</if>
+   	<if test="department != null">
+   		and department like '%' || #{department,jdbcType=VARCHAR} || '%'
+   	</if>
+    <if test="permission != null">
+    	and permission &amp; #{permission,jdbcType=BIT}::integer::bit(8) != 0::integer::bit(8)
+    </if>
+  </select>
+
+  <select id="deletedAtUpdate" parameterType="java.lang.String" >
+     update users
+     set  deleted_at = current_timestamp
+     where account_id = #{accountId,jdbcType=VARCHAR}
   </select>
 </mapper>

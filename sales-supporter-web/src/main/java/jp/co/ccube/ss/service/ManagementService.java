@@ -54,7 +54,7 @@ public class ManagementService {
 	}
 
 	// ユーザ検索
-	public List<Users> search(ManagementForm form) {
+	public List<Users> searchUser(ManagementForm form) {
 
 		Users users = new Users();
 
@@ -78,11 +78,18 @@ public class ManagementService {
 		return usersDao.selectByUsers(users);
 	}
 
+	//ユーザ削除
+	public void deleteUser(ManagementForm form) {
+		for ( String id : form.getDeleteCheck()) {
+			usersDao.deletedAtUpdate(id);
+		}
+	}
+
 	// 権限の取得
 	public int permission(Integer[] permission) {
 		int res = 0;
 		for (int data : permission) {
-			res |= data;
+			res += data;
 		}
 		return res;
 	}
