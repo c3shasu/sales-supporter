@@ -338,7 +338,7 @@
         password_limit = #{passwordLimit,jdbcType=DATE},
       </if>
       <if test="permission != null">
-        permission = #{permission,jdbcType=BIT},
+        permission = #{permission,jdbcType=BIT}::integer::bit(8),
       </if>
       <if test="deletedAt != null">
         deleted_at = #{deletedAt,jdbcType=TIMESTAMP},

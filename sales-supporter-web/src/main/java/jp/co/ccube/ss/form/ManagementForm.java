@@ -4,12 +4,10 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import jp.co.ccube.ss.validation.AccountIdCheck;
-
 public class ManagementForm {
 	@NotEmpty
 	@Pattern(regexp = "^[a-zA-Z0-9]+$")
-	@AccountIdCheck
+	//@AccountIdCheck
 	private String accountId;
 
 	@NotEmpty

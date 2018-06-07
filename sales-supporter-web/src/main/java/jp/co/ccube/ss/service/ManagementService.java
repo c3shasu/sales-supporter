@@ -76,37 +76,66 @@ public class ManagementService {
 		return usersDao.selectByUsers(users);
 	}
 
-	//編集対象検索
+	// 編集対象検索
 	public ManagementForm editUserSearch(ManagementForm form) {
 		String accountId[] = form.getCheck();
 
 		Users users = usersDao.selectByPrimaryKey(accountId[0]);
 		int per = users.getPermission();
 		int n = 0;
-		int bin[] = new int[8];
-		while (per >= 2) {
-			bin[n] = per % 2;
-			n++;
-			per = per / 2;
-		}
-		bin[n] = per;
 		int cnt = 0;
-		Integer[] permission = new Integer[8];
-		for (int i = n; i >= 0; i--) {
-			if (bin[i] == 1) {
-				permission[cnt] =(int) Math.pow(2, i);
+		Integer[] bin = new Integer[8];
+		while (per >= 2) {
+			if (per % 2 == 1) {
+				bin[cnt] = (int) Math.pow(2, n);
 				cnt++;
 			}
+			per = per / 2;
+			n++;
 		}
+		bin[cnt] = (int) Math.pow(2, n);
+
 		form.setAccountId(users.getAccountId());
 		form.setDepartment(users.getDepartment());
 		form.setMail(users.getMailAddress());
 		form.setName(users.getName());
-		form.setPermission(permission);
+		form.setPermission(bin);
 		form.setPosition(users.getPosition());
 		form.setTel(users.getTelephone());
 
 		return form;
+	}
+
+	public void updateUser(ManagementForm form) {
+		// パスワード有効期限の設定
+				int addDate = 180;
+				Date date = new Date();
+				Calendar cal = Calendar.getInstance();
+
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+				String strDate = sdf.format(cal.getTime());
+
+				try {
+					date = sdf.parse(strDate);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				cal.setTime(date);
+				cal.add(Calendar.DATE, addDate);
+
+				Users users = new Users();
+
+				users.setAccountId(form.getAccountId());
+				users.setDepartment(form.getDepartment());
+				users.setPosition(form.getPosition());
+				users.setName(form.getName());
+				users.setTelephone(form.getTel());
+				users.setMailAddress(form.getMail());
+				users.setPasswordLimit(cal.getTime());
+				users.setPermission(permission(form.getPermission()));
+
+				usersDao.updateByPrimaryKeySelective(users);
+
 	}
 
 	// ユーザ削除

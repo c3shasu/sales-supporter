@@ -36,7 +36,7 @@ public class UserEditController {
 		return "management/userEdit";
 	}
 
-	@RequestMapping(value = "/userEditConfirm", method = RequestMethod.POST)
+	@RequestMapping(value = "/userEdit", method = RequestMethod.POST)
 	public String registCheck(@ModelAttribute("form") @Valid ManagementForm form, BindingResult result, Model model) {
 		// エラー表示判定
 		if (result.hasErrors()) {
@@ -46,7 +46,7 @@ public class UserEditController {
 			model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 			return "management/userEdit";
 		}
-		managementService.addUser(form);
+		managementService.updateUser(form);
 		model.addAttribute("accountId", form.getAccountId());
 		return "management/userConfirm";
 	}

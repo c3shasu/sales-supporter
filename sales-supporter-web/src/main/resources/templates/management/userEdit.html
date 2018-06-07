@@ -12,8 +12,7 @@
 				<table>
 					<tr>
 						<td>アカウントID</td>
-						<td><input type="text" th:field="*{accountId}" th:errorclass="fieldError" maxlength="10" /></td>
-						<td th:if="${#fields.hasErrors('accountId')}" th:errors="*{accountId}" style="color: red"></td>
+						<td><input type="text" th:field="*{accountId}" maxlength="10" th:readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td>パスワード</td>
@@ -51,7 +50,7 @@
 						<td th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}" style="color: red"></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="align_right"><input id="confirm" type="submit" value="登録" /></td>
+						<td colspan="2" class="align_right"><input id="confirm" type="submit" value="更新" /></td>
 					</tr>
 				</table>
 			</div>
