@@ -45,7 +45,6 @@ public class ManagementService {
 		users.setName(form.getName());
 		users.setTelephone(form.getTel());
 		users.setMailAddress(form.getMail());
-		users.setPassword(form.getPassword());
 		users.setPasswordLimit(cal.getTime());
 		users.setPermission(permission(form.getPermission()));
 
@@ -57,7 +56,6 @@ public class ManagementService {
 	public List<Users> searchUser(ManagementForm form) {
 
 		Users users = new Users();
-
 		String accountId = form.getAccountId();
 		String name = form.getName();
 		String dept = form.getDepartment();
@@ -72,15 +70,48 @@ public class ManagementService {
 		if (!dept.isEmpty()) {
 			users.setDepartment(dept);
 		}
-		if (per != 0  ) {
+		if (per != 0) {
 			users.setPermission(per);
 		}
 		return usersDao.selectByUsers(users);
 	}
 
-	//ユーザ削除
+	//編集対象検索
+	public ManagementForm editUserSearch(ManagementForm form) {
+		String accountId[] = form.getCheck();
+
+		Users users = usersDao.selectByPrimaryKey(accountId[0]);
+		int per = users.getPermission();
+		int n = 0;
+		int bin[] = new int[8];
+		while (per >= 2) {
+			bin[n] = per % 2;
+			n++;
+			per = per / 2;
+		}
+		bin[n] = per;
+		int cnt = 0;
+		Integer[] permission = new Integer[8];
+		for (int i = n; i >= 0; i--) {
+			if (bin[i] == 1) {
+				permission[cnt] =(int) Math.pow(2, i);
+				cnt++;
+			}
+		}
+		form.setAccountId(users.getAccountId());
+		form.setDepartment(users.getDepartment());
+		form.setMail(users.getMailAddress());
+		form.setName(users.getName());
+		form.setPermission(permission);
+		form.setPosition(users.getPosition());
+		form.setTel(users.getTelephone());
+
+		return form;
+	}
+
+	// ユーザ削除
 	public void deleteUser(ManagementForm form) {
-		for ( String id : form.getDeleteCheck()) {
+		for (String id : form.getCheck()) {
 			usersDao.deletedAtUpdate(id);
 		}
 	}

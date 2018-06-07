@@ -121,7 +121,8 @@
       This element was generated on Wed May 02 17:05:35 JST 2018.
     -->
     select
-    <include refid="Base_Column_List" />
+    account_id, department, position, name, telephone, mail_address, password, password_limit,
+    permission::bit(8)::integer, deleted_at
     from users
     where account_id = #{accountId,jdbcType=VARCHAR}
   </select>

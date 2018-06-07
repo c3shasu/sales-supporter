@@ -34,7 +34,7 @@ public class UserListController extends AbstractController {
 	}
 
 	// 検索処理
-	@RequestMapping(value = "/userSearch",params = "search", method = RequestMethod.POST)
+	@RequestMapping(value = "/userSearch", params = "search", method = RequestMethod.POST)
 	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") ManagementForm form, Model model) {
 
 		mav.setViewName("/management/userList");
@@ -47,8 +47,8 @@ public class UserListController extends AbstractController {
 	// 削除処理
 	@RequestMapping(value = "/userSearch", params = "delete", method = RequestMethod.POST)
 	public ModelAndView delete(ModelAndView mav, @ModelAttribute("form") ManagementForm form, Model model) {
-		//削除対象確認
-		if (form.getDeleteCheck().length != 0) {
+		// 削除対象確認
+		if (form.getCheck().length != 0) {
 			managementService.deleteUser(form);
 		}
 		mav.setViewName("/management/userList");
@@ -58,11 +58,17 @@ public class UserListController extends AbstractController {
 		return mav;
 	}
 
-	// 変更画面遷移処理
-//	@RequestMapping(value = "/userSearch", params = "edit", method = RequestMethod.POST)
-//	public String userEdit(@ModelAttribute("form") ManagementForm form, Model model) {
-//		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-//		return "management/userList";
-//	}
+	 //変更画面遷移処理
+	 @RequestMapping(value = "/userSearch", params = "edit", method = RequestMethod.POST)
+	 public String userEdit(ModelAndView mav, @ModelAttribute("form") ManagementForm form, Model model) {
+	if (form.getCheck().length != 1) {
+		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
+		return "management/userList";
+	}
+
+	model.addAttribute("form",managementService.editUserSearch(form));
+	model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
+	 return "management/userEdit";
+	 }
 
 }

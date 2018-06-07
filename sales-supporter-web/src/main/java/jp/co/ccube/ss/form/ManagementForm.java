@@ -32,7 +32,7 @@ public class ManagementForm {
 	@NotEmpty
 	private Integer[] permission;
 
-	private String[] deleteCheck;
+	private String[] check;
 
 	public String getAccountId() {
 		return accountId;
@@ -98,12 +98,12 @@ public class ManagementForm {
 		this.permission = permission;
 	}
 
-	public String[] getDeleteCheck() {
-		return deleteCheck;
+	public String[] getCheck() {
+		return check;
 	}
 
-	public void setDeleteCheck(String[] deleteCheck) {
-		this.deleteCheck = deleteCheck;
+	public void setCheck(String[] check) {
+		this.check = check;
 	}
 
 }
