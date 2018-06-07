@@ -44,7 +44,7 @@ public class ClientListController extends AbstractController {
 		return mav;
 	}
 
-	// 削除処理
+// 削除処理
 	@RequestMapping(value = "/clientSearch", params = "delete", method = RequestMethod.POST)
 	public ModelAndView delete(ModelAndView mav, @ModelAttribute("form") ClientForm form, Model model) {
 		// 削除対象確認
@@ -59,11 +59,16 @@ public class ClientListController extends AbstractController {
 		return mav;
 	}
 
-	// 変更画面遷移処理
-//	@RequestMapping(value = "/clientSearch", params = "edit", method = RequestMethod.POST)
-//	public String clientEdit(@ModelAttribute("form") ClientForm form, Model model) {
-//		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-//		return "client/clientList";
-//	}
+//変更画面遷移処理
+	 @RequestMapping(value = "/clientSearch", params = "edit", method = RequestMethod.POST)
+	 public String userEdit(ModelAndView mav, @ModelAttribute("form") ClientForm form, Model model) {
+	if (form.getCheck().length != 1) {
+		model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
+		return "/client/clientList";
+	}
+	model.addAttribute("form",clientService.editClientSearch(form));
+	model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
+	 return "/client/clientEdit";
+	 }
 
 }
