@@ -22,6 +22,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="align_left"><input id="delete" type="submit" name="delete" value="削除" /></td>
+						<td colspan="2" class="align_left"><input id="edit" type="submit" name="edit" value="変更" /></td>
 						<td colspan="2" class="align_right"><input id="search" type="submit" name="search" value="検索" /></td>
 					</tr>
 				</table>
@@ -35,18 +36,16 @@
 						<th>電話番号</th>
 						<th>メールアドレス</th>
 						<th>顧客種別</th>
-						<th>変更</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="obj : ${serachClientList}">
-						<td><input type="checkbox" th:value="${obj.companyId}" th:name="deleteCheck" th:field="*{deleteCheck}"/></td>
+						<td><input type="checkbox" th:value="${obj.companyId}" th:name="Check" th:field="*{Check}"/></td>
 						<td th:text="${obj.companyName}"></td>
 						<td th:text="${obj.address}"></td>
 						<td th:text="${obj.telephone}"></td>
 						<td th:text="${obj.mailAddress}"></td>
 						<td th:text="${obj.typeName}"></td>
-						<td colspan="2" class="align_right"><input id="edit" type="submit" name="edit" value="変更" /></td>
 					</tr>
 				</tbody>
 			</table>

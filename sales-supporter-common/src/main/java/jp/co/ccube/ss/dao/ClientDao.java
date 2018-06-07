@@ -99,4 +99,6 @@ public interface ClientDao {
 
 	List<ResultClient> selectByClient(Client record);
 
+	void deleteClient(Integer company_id);
+
 }

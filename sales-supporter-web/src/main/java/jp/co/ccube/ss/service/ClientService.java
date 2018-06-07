@@ -73,12 +73,12 @@ public class ClientService {
 		});
 	}
 
-////～～顧客情報の削除～～
-//	public void deleteClient(ClienttForm form) {
-//		for ( String id : form.getDeleteCheck()) {
-//			usersDao.deletedAtUpdate(id);
-//		}
-//	}
+//～～顧客情報の削除～～
+	public void deleteClient(ClientForm form) {
+		for ( Integer id : form.getCheck()) {
+			clientDao.deleteClient(id);
+		}
+	}
 
 }
 
