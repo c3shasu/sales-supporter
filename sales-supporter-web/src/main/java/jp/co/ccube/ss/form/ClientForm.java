@@ -22,6 +22,8 @@ public class ClientForm {
 	@NotEmpty
 	private Integer[] clientType;
 
+	private String[] deleteCheck;
+
 	//顧客名(会社名)
 	public String getClientName() {
 			return clientName;
@@ -63,6 +65,13 @@ public class ClientForm {
 	}
 	public void setClientType(Integer[]  clientType) {
 	this.clientType = clientType;
+	}
+	//削除チェック
+	public String[] getDeleteCheck() {
+		return deleteCheck;
+	}
+	public void setDeleteCheck(String[] deleteCheck) {
+		this.deleteCheck = deleteCheck;
 	}
 
 	public Integer getCompanyId() {

@@ -1,9 +1,12 @@
 package jp.co.ccube.ss.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import jp.co.ccube.ss.entity.Client;
 import jp.co.ccube.ss.entity.ClientExample;
-import org.apache.ibatis.annotations.Param;
+import jp.co.ccube.ss.entity.ResultClient;
 
 public interface ClientDao {
     /**
@@ -93,4 +96,7 @@ public interface ClientDao {
      * @mbggenerated Mon Jun 04 11:52:17 JST 2018
      */
     int updateByPrimaryKey(Client record);
+
+	List<ResultClient> selectByClient(Client record);
+
 }
