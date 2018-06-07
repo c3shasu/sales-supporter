@@ -22,7 +22,7 @@ public class ClientForm {
 	@NotEmpty
 	private Integer[] clientType;
 
-	private String[] deleteCheck;
+	private Integer[] check;
 
 	//顧客名(会社名)
 	public String getClientName() {
@@ -66,12 +66,12 @@ public class ClientForm {
 	public void setClientType(Integer[]  clientType) {
 	this.clientType = clientType;
 	}
-	//削除チェック
-	public String[] getDeleteCheck() {
-		return deleteCheck;
+	//変更および削除対象のチェックボックス情報
+	public Integer[] getCheck() {
+		return check;
 	}
-	public void setDeleteCheck(String[] deleteCheck) {
-		this.deleteCheck = deleteCheck;
+	public void setCheck(Integer[] check) {
+		this.check = check;
 	}
 
 	public Integer getCompanyId() {

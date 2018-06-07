@@ -73,12 +73,65 @@ public class ClientService {
 		});
 	}
 
-////～～顧客情報の削除～～
-//	public void deleteClient(ClienttForm form) {
-//		for ( String id : form.getDeleteCheck()) {
-//			usersDao.deletedAtUpdate(id);
-//		}
-//	}
+//～～顧客情報の削除～～
+	public void deleteClient(ClientForm form) {
+		for ( Integer id : form.getCheck()) {
+			clientDao.deleteClient(id);
+		}
+	}
+
+//～～編集対象の検索～～
+	public ClientForm editClientSearch(ClientForm form) {
+		Integer id[] = form.getCheck();
+
+		Client client = clientDao.selectByPrimaryKey(id[0]);
+		int type = client.getType();
+		Integer[] typeSet = new Integer[8];
+		int n = 0;
+		int cnt = 0;
+		while (type >= 2) {
+			if (type % 2 == 1) {
+				typeSet[cnt] = (int) Math.pow(2, n);
+				cnt++;
+			}
+			type = type / 2;
+			n++;
+		}
+		typeSet[cnt] = (int) Math.pow(2, n);
+
+		form.setClientName(client.getCompanyName());
+		form.setClientAddress(client.getAddress());
+		form.setClientTel(client.getTelephone());
+		form.setClientEmailAddress(client.getMailAddress());
+		form.setClientType(typeSet);
+		form.setClietDescription(client.getDescription());
+
+		return form;
+	}
+
+//～～顧客情報の編集～～
+	public void editClient(ClientForm form) {
+		//顧客種別の取得
+		int type = 0;
+		for ( int data: form.getClientType()) {
+			type += data;
+		}
+		//顧客IDの取得
+		int targetId = 0;
+		for ( Integer id : form.getCheck()) {
+			targetId = id;
+		}
+		//DBアクセス
+		Client client = new Client();
+		client.setCompanyId(targetId);
+		client.setCompanyName(form.getClientName());
+		client.setAddress(form.getClientAddress());
+		client.setTelephone(form.getClientTel());
+		client.setMailAddress(form.getClientEmailAddress());
+		client.setType(type);
+		client.setDescription(form.getClietDescription());
+		clientDao.updateByPrimaryKey(client);
+	}
 
 }
 

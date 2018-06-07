@@ -351,4 +351,10 @@
     </where>
   </select>
 
+<!-- 削除用  -->
+  <delete id="deleteClient" parameterType="java.lang.Integer" >
+     delete from client
+     where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+
 </mapper>
