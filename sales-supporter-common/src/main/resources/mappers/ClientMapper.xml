@@ -309,7 +309,7 @@
         mail_address = #{mailAddress,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
-        type = #{type,jdbcType=BIT},
+        type = #{type,jdbcType=BIT}::integer::bit(8),
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},

@@ -33,8 +33,8 @@ public class ClientListController extends AbstractController {
 		return "client/clientList";
 	}
 
-// 検索処理
-	@RequestMapping(value = "/clientSearch",params = "search", method = RequestMethod.POST)
+	// 検索処理
+	@RequestMapping(value = "/clientSearch", params = "search", method = RequestMethod.POST)
 	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") ClientForm form, Model model) {
 		mav.setViewName("/client/clientList");
 		List<ResultClient> result = clientService.searchClient(form);
@@ -44,7 +44,7 @@ public class ClientListController extends AbstractController {
 		return mav;
 	}
 
-// 削除処理
+	// 削除処理
 	@RequestMapping(value = "/clientSearch", params = "delete", method = RequestMethod.POST)
 	public ModelAndView delete(ModelAndView mav, @ModelAttribute("form") ClientForm form, Model model) {
 		// 削除対象確認
@@ -59,16 +59,18 @@ public class ClientListController extends AbstractController {
 		return mav;
 	}
 
-//変更画面遷移処理
-	 @RequestMapping(value = "/clientSearch", params = "edit", method = RequestMethod.POST)
-	 public String userEdit(ModelAndView mav, @ModelAttribute("form") ClientForm form, Model model) {
-	if (form.getCheck().length != 1) {
+	// 編集画面遷移処理
+	@RequestMapping(value = "/clientSearch", params = "edit", method = RequestMethod.POST)
+	public String userEdit(ModelAndView mav, @ModelAttribute("form") ClientForm form, Model model) {
+		// チェックボックスに一個のチェックがある時だけ編集画面に遷移
+		if (form.getCheck().length != 1) {
+			model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
+			return "/client/clientList";
+		}
+		model.addAttribute("form", clientService.editClientSearch(form));
 		model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-		return "/client/clientList";
+
+		return "/client/clientEdit";
 	}
-	model.addAttribute("form",clientService.editClientSearch(form));
-	model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-	 return "/client/clientEdit";
-	 }
 
 }

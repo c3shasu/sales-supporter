@@ -25,27 +25,18 @@ public class ClientEditController {
 
 	private static final Logger log = LoggerFactory.getLogger(ClientRegistController.class);
 
-	/**
-	 * ユーザ変更画面初期表示
-	 *
-	 * @return テンプレートパス
-	 */
-	@RequestMapping(value = "/clientEdit", method = RequestMethod.GET)
-	public String clientRegist(@ModelAttribute("form") ClientForm form, Model model){
-		model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-		return "client/clientEdit";
-	}
-
-	@RequestMapping(value = "/clientEditConfirm", method = RequestMethod.POST)
+	@RequestMapping(value = "/clientEdit", method = RequestMethod.POST)
 	public String registCheck(@ModelAttribute("form") @Valid ClientForm form, BindingResult result, Model model) {
-		//エラー表示判定
-		if(result.hasErrors()){
-			for(FieldError err: result.getFieldErrors()) {
-                log.debug("error code = [" + err.getCode() + "]");
-            }
+		// エラー表示判定
+		// 異常系
+		if (result.hasErrors()) {
+			for (FieldError err : result.getFieldErrors()) {
+				log.debug("error code = [" + err.getCode() + "]");
+			}
 			model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-			return  "client/clientEdit";
+			return "client/clientEdit";
 		}
+		// 正常系
 		clientService.editClient(form);
 		model.addAttribute("clientName", form.getClientName());
 		return "client/clientConfirm";

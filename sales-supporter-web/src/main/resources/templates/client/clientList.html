@@ -40,7 +40,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="obj : ${serachClientList}">
-						<td><input type="checkbox" th:value="${obj.companyId}" th:name="Check" th:field="*{Check}"/></td>
+						<td><input type="checkbox" th:value="${obj.companyId}" th:name="Check" th:field="*{Check}" /></td>
 						<td th:text="${obj.companyName}"></td>
 						<td th:text="${obj.address}"></td>
 						<td th:text="${obj.telephone}"></td>

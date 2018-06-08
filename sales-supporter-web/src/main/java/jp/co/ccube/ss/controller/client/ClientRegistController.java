@@ -32,20 +32,20 @@ public class ClientRegistController extends AbstractController {
 	 * @return テンプレートパス
 	 */
 	@RequestMapping(value = "/clientRegist", method = RequestMethod.GET)
-	public String dispCheck(@ModelAttribute("form") ClientForm form, Model model){
+	public String dispCheck(@ModelAttribute("form") ClientForm form, Model model) {
 		model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
 		return "client/clientRegist";
 	}
 
 	@RequestMapping(value = "/clientConfirm", method = RequestMethod.POST)
 	public String postCheck(@ModelAttribute("form") @Valid ClientForm form, BindingResult result, Model model) {
-		//エラー表示判定
-		if(result.hasErrors()){
-			for(FieldError err: result.getFieldErrors()) {
-                log.debug("error code = [" + err.getCode() + "]");
-            }
+		// エラー表示判定
+		if (result.hasErrors()) {
+			for (FieldError err : result.getFieldErrors()) {
+				log.debug("error code = [" + err.getCode() + "]");
+			}
 			model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-			return  "client/clientRegist";
+			return "client/clientRegist";
 		}
 		ClientRegistService.addClient(form);
 		model.addAttribute("clientName", form.getClientName());

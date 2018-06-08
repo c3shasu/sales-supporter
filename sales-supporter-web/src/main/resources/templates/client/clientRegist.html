@@ -12,7 +12,7 @@
 				<table>
 					<tr>
 						<td>顧客名(会社名)</td>
-						<td><input type="text" th:field="*{clientName}" th:errorclass="fieldError" maxlength="20"  /></td>
+						<td><input type="text" th:field="*{clientName}" th:errorclass="fieldError" maxlength="20" /></td>
 						<td th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}" style="color: red"></td>
 					</tr>
 					<tr>
@@ -30,14 +30,16 @@
 						<td><input type="text" th:field="*{clientEmailAddress}" th:errorclass="fieldError" maxlength="30" /></td>
 						<td th:if="${#fields.hasErrors('clientEmailAddress')}" th:errors="*{clientEmailAddress}" style="color: red"></td>
 					</tr>
- 					<tr>
-					<td>顧客種別</td>
-						<td><div th:each="item : ${checkItems}"><input type="checkbox" th:name="clientType" th:value="${item.value}" th:text="${item.key}" th:field="*{clientType}" /></div></td>
+					<tr>
+						<td>顧客種別</td>
+						<td><div th:each="item : ${checkItems}">
+								<input type="checkbox" th:name="clientType" th:value="${item.value}" th:text="${item.key}" th:field="*{clientType}" />
+							</div></td>
 						<td th:if="${#fields.hasErrors('clientType')}" th:errors="*{clientType}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>備考</td>
-						<td><textarea  th:field="*{clietDescription}" style="margin: 0px; height: 130px; width: 410px;" wrap="hard" maxlength="500"></textarea></td>
+						<td><textarea th:field="*{clietDescription}" style="margin: 0px; height: 130px; width: 410px;" wrap="hard" maxlength="500"></textarea></td>
 						<td th:if="${#fields.hasErrors('clietDescription')}" th:errors="*{clietDescription}" style="color: red"></td>
 					</tr>
 					<tr>
