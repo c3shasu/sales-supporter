@@ -25,17 +25,6 @@ public class UserEditController {
 
 	private static final Logger log = LoggerFactory.getLogger(UserRegistController.class);
 
-	/**
-	 * ユーザ変更画面初期表示
-	 *
-	 * @return テンプレートパス
-	 */
-	@RequestMapping(value = "/userEdit", method = RequestMethod.GET)
-	public String userRegist(@ModelAttribute("form") ManagementForm form, Model model) {
-		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-		return "management/userEdit";
-	}
-
 	@RequestMapping(value = "/userEdit", method = RequestMethod.POST)
 	public String registCheck(@ModelAttribute("form") @Valid ManagementForm form, BindingResult result, Model model) {
 		// エラー表示判定
