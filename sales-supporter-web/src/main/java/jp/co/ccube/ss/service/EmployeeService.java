@@ -23,10 +23,10 @@ public class EmployeeService {
 		employee.setDepartment(registForm.getDepartment());
 		employee.setPosition(registForm.getPosition());
 		employee.setName(registForm.getName());
-		employee.setTelephon(registForm.getTel());
+		employee.setTelephone(registForm.getTel());
 		employee.setMailAddress(registForm.getMail());
 		employee.setCost(Integer.parseInt(registForm.getCost()));
-		employee.setRole(Integer.parseInt(registForm.getRole()));
+		employee.setRole(role(registForm.getRole()));
 
 		employeeDao.insertSelective(employee);
 
@@ -49,6 +49,15 @@ public class EmployeeService {
 			employee.setDepartment(dept);
 		}
 		return employeeDao.selectByEmployee(employee);
+	}
+
+	// 役割の取得
+	public int role(Integer[] role) {
+		int res = 0;
+		for (int data : role) {
+			res += data;
+		}
+		return res;
 	}
 
 }
