@@ -3,13 +3,13 @@
 <head>
 <title>ユーザ一覧画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
 		<form method="post" th:action="@{/userSearch}" th:object="${form}">
-			<div>
-				<table>
+			<div >
+				<table class="search">
 					<tr>
 						<td>アカウントID</td>
 						<td><input type="text" th:field="*{accountId}" th:name="accountId" maxlength="10" /></td>
@@ -19,13 +19,13 @@
 						<td><input type="text" th:field="*{department}" th:name="department" maxlength="30" /></td>
 					</tr>
 					<tr>
-						<td>権限</td>
+						<td >権限</td>
 						<td th:each="item : ${checkItems}"><input type="checkbox" th:name="permission" th:value="${item.value}" th:text="${item.key}" th:field="*{permission}" /></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="align_right"><input id="search" type="submit" name="search" value="検索" /></td>
-						<td colspan="2" class="align_right"><input id="edit" type="submit" name="edit" value="変更" /></td>
-						<td colspan="2" class="align_right"><input id="delete" type="submit" name="delete" value="削除" /></td>
+						<td colspan="2"><input id="search" type="submit" name="search" value="検索" /></td>
+						<td colspan="2"><input id="edit" type="submit" name="edit" value="変更" /></td>
+						<td colspan="2"><input id="delete" type="submit" name="delete" value="削除" /></td>
 					</tr>
 				</table>
 			</div>
@@ -33,11 +33,10 @@
 				<thead>
 					<tr>
 						<th>選択</th>
-						<th>アカウントID</th>
-						<th>氏名</th>
-						<th>部署</th>
-						<th>メールアドレス</th>
-						<th>変更</th>
+						<th class="data">アカウントID</th>
+						<th class="data">氏名</th>
+						<th class="data">部署</th>
+						<th class="data">メールアドレス</th>
 					</tr>
 				</thead>
 				<tbody>

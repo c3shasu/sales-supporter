@@ -46,7 +46,7 @@
 					</tr>
 					<tr>
 						<td>役割</td>
-						<td><input type="text" th:field="*{role}" th:errorclass="fieldError" /></td>
+						<td><div th:each="item : ${checkItems}"><input type="checkbox" th:name="role" th:value="${item.value}" th:text="${item.key}" th:field="*{role}" /></div></td>
 						<td th:if="${#fields.hasErrors('role')}" th:errors="*{role}" style="color: red"></td>
 					</tr>
 					<tr>

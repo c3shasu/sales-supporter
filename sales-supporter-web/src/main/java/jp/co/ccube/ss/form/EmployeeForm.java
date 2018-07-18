@@ -40,8 +40,7 @@ public class EmployeeForm {
 
 	//役割
 	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$")
-	private String role;
+	private Integer[] role;
 
 
 	public String getEmployeeNo() {
@@ -100,11 +99,11 @@ public class EmployeeForm {
 		this.cost = cost;
 	}
 
-	public String getRole() {
+	public Integer[] getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Integer[] role) {
 		this.role = role;
 	}
 

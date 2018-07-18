@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.ccube.ss.config.CheckBoxItemConfig;
 import jp.co.ccube.ss.controller.AbstractController;
 import jp.co.ccube.ss.form.EmployeeForm;
 import jp.co.ccube.ss.service.EmployeeService;
@@ -32,6 +33,7 @@ public class EmployeeRegistController extends AbstractController {
 	 */
 	@RequestMapping(value = "/employeeRegist", method = RequestMethod.GET)
 	public String dispCheck(@ModelAttribute("form") EmployeeForm registForm, Model model) {
+		model.addAttribute("checkItems", CheckBoxItemConfig.ROLE_ITEMS);
 		return "resource/employeeRegist";
 
 	}
@@ -44,6 +46,7 @@ public class EmployeeRegistController extends AbstractController {
 			for (FieldError err : result.getFieldErrors()) {
 				log.debug("error code = [" + err.getCode() + "]");
 			}
+			model.addAttribute("checkItems", CheckBoxItemConfig.ROLE_ITEMS);
 			return "resource/employeeRegist";
 		}
 		employeeregistservice.addEmployee(registForm);
