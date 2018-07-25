@@ -1,0 +1,181 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>エンジニア情報更新画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../../../../static/css/base.css" rel="stylesheet" />
+<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
+<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
+<link href="../../../../static/css/login/login.css" rel="stylesheet" />
+<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
+<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+<script>
+$(function() {
+	$('.datepicker')
+			.datepicker(
+					{
+						dateFormat : "yy/mm/dd",
+						dayNamesMin : [ '日', '月', '火', '水', '木', '金', '土' ],
+						showOn : "button",
+						buttonImageOnly : true,
+						buttonImage : "https://www.softel.co.jp/blogs/jquery/wp/wp-content/uploads/2012/01/calendar.gif",
+						beforeShow : function(input, inst) {
+							// 開く前に日付を上書き
+							var year = $(this).parent().find(".year").val();
+							var month = $(this).parent().find(".month").val();
+							var date = $(this).parent().find(".date").val();
+							$(this).datepicker("setDate",
+									year + "/" + month + "/" + date)
+						},
+						onSelect : function(dateText, inst) {
+							var dates = dateText.split('/');
+							$(this).parent().find(".year").val(dates[0]);
+							$(this).parent().find(".month").val(dates[1]);
+							$(this).parent().find(".date").val(dates[2]);
+						}
+					});
+});
+</script>
+
+</head>
+<body>
+	<input type="hidden" id="base_url" value="/SalesSupporter/" />
+	<div class="main_div">
+		<div class="header">
+			<div>
+				<ul>
+					<li class="logo"><img src="../../../../static/images/logo.png" width="280" height="45" /></li>
+					<li class="logout">
+						<form method="post" action="/SalesSupporter/logout">
+							<input type="submit" name="logout" class="button" value="ログアウト" />
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="menu">
+			<ul class="nav">
+				<li id="menu_top">トップ</li>
+				<li>プロジェクト
+					<ul class="child">
+						<li><a href="#">プロジェクト一覧</a></li>
+						<li><a href="#">プロジェクト登録</a></li>
+					</ul>
+				</li>
+				<li>案件
+					<ul class="child">
+						<li><a href="#">案件一覧</a></li>
+						<li><a href="#">案件登録</a></li>
+					</ul>
+				</li>
+				<li>顧客
+					<ul class="child">
+						<li><a href="clientList">顧客一覧</a></li>
+						<li><a href="clientRegist">顧客登録</a></li>
+					</ul>
+				</li>
+				<li>人材
+					<ul class="child">
+						<li><a href="employeeList">社員一覧</a></li>
+						<li><a href="employeeRegist">社員登録</a></li>
+						<li><a href="#">BP一覧</a></li>
+						<li><a href="#">BP登録</a></li>
+					</ul>
+				</li>
+				<li>管理
+					<ul class="child">
+						<li><a href="userList">ユーザ一覧</a></li>
+						<li><a href="userRegist">ユーザ登録</a></li>
+					</ul>
+				</li>
+				<li>サンプル
+					<ul class="child">
+						<li><a href="hello">Hello</a></li>
+						<li><a href="input">入力</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="column">
+			<div class="main_contents">
+				<div class="contents">
+					<form action="/SalesSupporter/userConfirm">
+						<div>
+							<h3>エンジニア情報更新</h3>
+							<table>
+								<tr>
+								<!--  実装時に社員番号なのかBPコードなのか判断して表示
+									<td>社員番号</td>
+									<td><input type="text" maxlength="10" id="employeeNo" name="employeeNo" value="123企画開発部" disabled="disabled"/>　</td>
+								</tr>-->
+								<tr>
+									<td>BPコード</td>
+									<td><input type="text" maxlength="30" id="clientId" name="clientId" value="456シーキューブソフト" disabled="disabled"/>　</td>
+								</tr>
+								<tr>
+									<td>エンジニア名</td>
+									<td><input type="text" maxlength="10" id="engineerName" name="engineerName" value="鈴木太郎" />　</td>
+								</tr>
+								<tr>
+									<td>単価</td>
+									<td><input type="text" maxlength="10" id="price" name="price" value="188" size="16" disabled="disabled">千円　</td>
+								</tr>
+								<tr>
+									<td>超過金額</td>
+									<td><input type="text" maxlength="10" id="" name="" value="1000" size="18" >円　</td>
+								</tr>
+								<tr>
+									<td>控除単価</td>
+									<td><input type="text" maxlength="10" id="startDate" name="startDate" value="1000" size="18"/>円　</td>
+								</tr>
+								<tr>
+									<td>原価</td>
+									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="188" size="16"/ disabled="disabled">千円　</td>
+								</tr>
+								<tr>
+									<td>超過原価</td>
+									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="1000" size="18"/>円　</td>
+								</tr>
+								<tr>
+									<td>控除原価</td>
+									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="1000" size="18"/>円　</td>
+								</tr>
+								<tr>
+									<td>開始日</td>
+									<td><input type="text" value="1998" class="year" size="2" />年<input type="text" value="8" class="month" size="1" />月<input type="text" value="1" class="date" size="1" />日<input type="text" value="" class="datepicker" style="display: none;" /></td>
+								</tr>
+								<tr>
+									<td>終了日</td>
+									<td><input type="text" value="1998" class="year" size="2" />年<input type="text" value="8" class="month" size="1" />月<input type="text" value="5" class="date" size="1" />日<input type="text" value="" class="datepicker" style="display: none;" /></td>
+								</tr>
+								<tr>
+									<td>予定工数</td>
+									<td><input type="text" maxlength="10" id="manHour" name="manHour" value="4"  size="16"/>人月　</td>
+								</tr>
+							</table>
+							<br />
+							<div class="align_center">
+							<input id="button" onClick="location.href='../subproject/caseDetail.html'" type="button" value="戻る"/>
+								<input id="button" onClick="location.href='engineerEditConfirm.html'" type="button" value="更新" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<footer>
+				<div>
+					<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

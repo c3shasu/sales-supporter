@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>社員情報検索画面</title>
+<link href="../../../../static/css/base.css" rel="stylesheet" />
+<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
+<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
+<link href="../../../../static/css/list.css" rel="stylesheet" />
+<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
+<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+</head>
+<body>
+	<input type="hidden" id="base_url" value="/SalesSupporter/" />
+	<div class="main_div">
+		<div class="header">
+			<div>
+				<ul>
+					<li class="logo"><a href="/SalesSupporter/top"> <img width="280" height="45" src="../../../../static/images/logo.png" />
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="menu"></div>
+		<div class="column">
+			<div class="main_contents">
+				<div class="contents">
+					<form action="/SalesSupporter/userSearch">
+						<div>
+							<h3>社員情報検索画面</h3>
+							<a>氏名<input type="text" id="datepicker" size="21" /></a> <input id="search" type="button" name="search" onClick="document.getElementById('div_2').style.display='block';" value="検索" />
+
+							<!-- モック中はテーブルにID付与 -->
+							<table id="div_2" style="display: none">
+								<tr>
+									<td></td>
+									<td width="200">社員番号</td>
+									<td width="200">部署名</td>
+									<td width="200">エンジニア名</td>
+								</tr>
+								<tr>
+									<td><input type="radio" /></td>
+									<td>123</td>
+									<td>企画開発部</td>
+									<td>鈴木太郎</td>
+								</tr>
+							</table>
+						</div>
+
+						<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /> <br>
+						<input href="javascript:void(0)" id="confirm" type="button" onclick="window.close();" value="決定" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<footer>
+				<div>
+					<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>案件詳細登録画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
+<!--<link href="../../../../static/css/base.css" rel="stylesheet" />
+<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
+<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
+<link href="../../../../static/css/login/login.css" rel="stylesheet" />
+<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
+<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+<link rel="stylesheet" href="themes/base/jquery.ui.all.css" />
+<script type="text/javascript" src="jquery-1.4.2.js"></script>
+<script type="text/javascript" src="ui/jquery-ui-1.8.12.custom.min.js"></script>
+<script type="text/javascript" src="ui/i18n/jquery.ui.datepicker-ja.js"></script>
+<script>
+$(function() {
+	$('.datepicker')
+			.datepicker(
+					{
+						dateFormat : "yy/mm/dd",
+						dayNamesMin : [ '日', '月', '火', '水', '木', '金', '土' ],
+						showOn : "button",
+						buttonImageOnly : true,
+						buttonImage : "https://www.softel.co.jp/blogs/jquery/wp/wp-content/uploads/2012/01/calendar.gif",
+						beforeShow : function(input, inst) {
+							// 開く前に日付を上書き
+							var year = $(this).parent().find(".year").val();
+							var month = $(this).parent().find(".month").val();
+							var date = $(this).parent().find(".date").val();
+							$(this).datepicker("setDate",
+									year + "/" + month + "/" + date)
+						},
+						onSelect : function(dateText, inst) {
+							var dates = dateText.split('/');
+							$(this).parent().find(".year").val(dates[0]);
+							$(this).parent().find(".month").val(dates[1]);
+							$(this).parent().find(".date").val(dates[2]);
+						}
+					});
+});
+</script>!-->
+</head>
+<body>
+	<input type="hidden" id="base_url" value="/SalesSupporter/" />
+	<div class="main_div">
+
+
+		<div class="column">
+			<div class="main_contents">
+				<div class="contents">
+					<form action="/SalesSupporter/userConfirm">
+						<div>
+							<h3>案件詳細登録</h3>
+							<table class="search">
+					<tr>
+						<td>開始予定日</td>
+						<td> <input type="text" value="" class="year" size="3" />年 <input type="text" value="" class="month" size="1" />月 <input type="text" value="" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" /></td>
+					</tr>
+					<tr>
+						<td>終了予定日</td>
+						<td> <input type="text" value="" class="year" size="3" />年 <input type="text" value="" class="month" size="1" />月 <input type="text" value="" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" /></td>
+					</tr>
+					<tr>
+						<td>下限時間</td>
+						<td> <input type="text" size="9" value=""/>時<input type="text" size="8" value=""/>分</td>
+					</tr>
+					<tr>
+						<td>上限時間</td>
+						<td> <input type="text" size="9" value=""/>時<input type="text" size="8" value=""/>分</td>
+					</tr>
+					<tr>
+						<td>精算方法</td>
+						<td class="input_value">
+							<div th:if="${session.userPayment!=null}" >
+								<select name="cardType"   style="width: 220px">
+
+									<option value=""></option>
+
+									<option value="1" th:selected="${}" >上下割り </option>
+
+									<option value="2" th:selected="${}">中間値割り</option>
+
+									<option value="3" th:selected="${}">なし</option>
+							</select>
+					</div></td></tr>
+				</table>
+				<input  id="confirm" type="button" onClick="location.href = '../subproject/caseDetail.html'"value="戻る" />
+				<input  id="confirm" type="button" onClick="location.href = '../engineer/engineerDetailSearch.html'"value="次へ" />
+							<br />
+							</div>
+							</form>
+						</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
