@@ -28,12 +28,6 @@ public class SubprojectListController extends AbstractController{
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "subproject/subProjectListSearch";
 	}
-	@RequestMapping(value = "/subProjectDetail", method = RequestMethod.GET)
-	public String subProjectDetail(@ModelAttribute("form") ManagementForm form, Model model) {
-		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-		return "subproject/subProjectDetail";
-	}
-
 
 
 
