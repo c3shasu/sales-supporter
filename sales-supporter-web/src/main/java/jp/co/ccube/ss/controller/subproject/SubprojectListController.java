@@ -1,4 +1,4 @@
-package jp.co.ccube.ss.controller.subProject;
+package jp.co.ccube.ss.controller.subproject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import jp.co.ccube.ss.form.ManagementForm;
 import jp.co.ccube.ss.service.ManagementService;
 
 @Controller
-public class SubProjectListController extends AbstractController{
+public class SubprojectListController extends AbstractController{
 
 	@Autowired
 	ManagementService managementService;
