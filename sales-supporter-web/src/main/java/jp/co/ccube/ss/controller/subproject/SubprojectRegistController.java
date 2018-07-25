@@ -1,6 +1,5 @@
 package jp.co.ccube.ss.controller.subproject;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,9 +12,7 @@ import jp.co.ccube.ss.form.ManagementForm;
 import jp.co.ccube.ss.service.ManagementService;
 
 @Controller
-public class SubprojectListController extends AbstractController{
-
-	@Autowired
+public class SubprojectRegistController extends AbstractController{
 	ManagementService managementService;
 
 	/**
@@ -23,21 +20,11 @@ public class SubprojectListController extends AbstractController{
 	 *
 	 * @return テンプレートパス
 	 */
-	@RequestMapping(value = "/subProjectListSearch", method = RequestMethod.GET)
-	public String subProjectList(@ModelAttribute("form") ManagementForm form, Model model) {
+	@RequestMapping(value = "/subProjectRegist", method = RequestMethod.GET)
+	public String subProjectRegist(@ModelAttribute("form") ManagementForm form, Model model) {
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-		return "subproject/subProjectListSearch";
+		return "subproject/subProjectRegistInput";
 	}
-	@RequestMapping(value = "/subProjectDetail", method = RequestMethod.GET)
-	public String subProjectDetail(@ModelAttribute("form") ManagementForm form, Model model) {
-		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
-		return "subproject/subProjectDetail";
-	}
-
-
 
 
 }
-
-
-
