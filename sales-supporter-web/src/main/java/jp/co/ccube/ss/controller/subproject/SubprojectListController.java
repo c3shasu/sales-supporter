@@ -30,5 +30,4 @@ public class SubprojectListController extends AbstractController{
 	}
 
 
-
 }
