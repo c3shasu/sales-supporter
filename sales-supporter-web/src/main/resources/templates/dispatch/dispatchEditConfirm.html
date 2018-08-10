@@ -52,11 +52,11 @@ $(function() {
 		<div class="column">
 			<div class="main_contents">
 				<div class="contents">
-					<form action="/SalesSupporter/userConfirm">
+					<form th:action="@{/dispatchEditConfirm}">
 							<h3>案件詳細情報更新完了しました</h3>
 					</form>
 					<div class="align_center">
-				<input id="button" onClick="location.href='../subproject/subProjectDetail'" type="button" value="案件詳細へ戻る" />
+				<input id="button" onClick="location.href='subProjectDetailA'" type="button" value="案件詳細へ戻る" />
 							</div>
 						</div>
 				</div>
