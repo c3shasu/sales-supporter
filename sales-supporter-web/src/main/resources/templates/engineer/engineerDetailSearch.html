@@ -1,39 +1,17 @@
-
-<!DOCTYPE html>
-<html lang="ja">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>エンジニア情報登録画面</title>
-<link href="../../../../static/css/base.css" rel="stylesheet" />
-<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
-<link href="../../../../static/css/login/login.css" rel="stylesheet" />
-<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
-<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<link href="../../../../static/css/base.css" rel="stylesheet" />
-<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
-<link href="../../../../static/css/login/login.css" rel="stylesheet" />
-<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
-<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
-<link rel="stylesheet" href="themes/base/jquery.ui.all.css" />
-<script type="text/javascript" src="jquery-1.4.2.js"></script>
-<script type="text/javascript" src="ui/jquery-ui-1.8.12.custom.min.js"></script>
-<script type="text/javascript" src="ui/i18n/jquery.ui.datepicker-ja.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js}"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" th:href="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css}" />
+
+
 <script type="text/javascript">
 	function entryChange1() {
 		radio = document.getElementsByName('entryPlan')
@@ -55,7 +33,7 @@
 			document.getElementById('secondBox2').style.display = "";
 			document.getElementById('secondBox3').style.display = "";
 			document.getElementById('firstNotice').style.display = "";
-		}else{
+		} else {
 			document.getElementById('firstBox').style.display = "none";
 			document.getElementById('firstBox2').style.display = "none";
 			document.getElementById('firstBox3').style.display = "none";
@@ -68,205 +46,105 @@
 	//オンロードさせ、リロード時に選択を保持
 	window.onload = entryChange1;
 </script>
-<script>
-$(function() {
-	$('.datepicker')
-			.datepicker(
-					{
-						dateFormat : "yy/mm/dd",
-						dayNamesMin : [ '日', '月', '火', '水', '木', '金', '土' ],
-						showOn : "button",
-						buttonImageOnly : true,
-						buttonImage : "https://www.softel.co.jp/blogs/jquery/wp/wp-content/uploads/2012/01/calendar.gif",
-						beforeShow : function(input, inst) {
-							// 開く前に日付を上書き
-							var year = $(this).parent().find(".year").val();
-							var month = $(this).parent().find(".month").val();
-							var date = $(this).parent().find(".date").val();
-							$(this).datepicker("setDate",
-									year + "/" + month + "/" + date)
-						},
-						onSelect : function(dateText, inst) {
-							var dates = dateText.split('/');
-							$(this).parent().find(".year").val(dates[0]);
-							$(this).parent().find(".month").val(dates[1]);
-							$(this).parent().find(".date").val(dates[2]);
-						}
-					});
-});
+
+<script type="text/javascript">
+	// 子ウィンドウを開く<input href="" type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" />
+	function openWindow() {
+		window.open('./engineerBpSearch', 'child', 'width=1000,height=500')
+		//window.open('http://localhost:8080/SalesSupporter/engineerBpSearch', 'child', 'width=1000,height=500')
+	}
 </script>
+<script>
+	// 子ウィンドウを開く<input href="" type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" />
+	function windowOpen() {
+		window.open('./engineerEmployeeSearch', 'child',
+				'width=1000,height=500')
+	}
+</script>
+<script type="text/javascript" src="/javascript/datepicker.js" th:src="@{/javascript/datepicker.js}"></script>
 </head>
 <body>
-<div class="row" style="margin-top: 30px;">
-            <div class="col-md-7">
-                <form name="parentfrm" action="" method="post">
-                    <input type="text" class="form-control" name="parent_input" value="" placeholder="ここに値がセットされます。">
-                </form>
-            </div>
-        </div>
-	<input type="hidden" id="base_url" value="/SalesSupporter/" />
-	<div class="main_div">
-		<div class="header">
-			<div>
-				<ul>
-					<li class="logo"><a href="/SalesSupporter/top"> <img width="280" height="45" src="../../../../static/images/logo.png" />
-					</a></li>
-					<li class="logout">
-						<form method="post" action="/SalesSupporter/logout">
-							<input type="submit" name="logout" class="button" value="ログアウト" /> <input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" />
-						</form>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="menu">
-			<div>
-				<ul class="nav">
-					<li id="menu_top">トップ</li>
-					<li>プロジェクト
-						<ul class="child">
-							<li><a href="#">プロジェクト一覧</a></li>
-							<li><a href="#">プロジェクト登録</a></li>
-						</ul>
-					</li>
-					<li>案件
-						<ul class="child">
-							<li><a href="#">案件一覧</a></li>
-							<li><a href="#">案件登録</a></li>
-						</ul>
-					</li>
-					<li>顧客
-						<ul class="child">
-							<li><a href="clientList">顧客一覧</a></li>
-							<li><a href="clientRegist">顧客登録</a></li>
-						</ul>
-					</li>
-					<li>人材
-						<ul class="child">
-							<li><a href="employeeList">社員一覧</a></li>
-							<li><a href="employeeRegist">社員登録</a></li>
-							<li><a href="#">BP一覧</a></li>
-							<li><a href="#">BP登録</a></li>
-						</ul>
-					</li>
-					<li>管理
-						<ul class="child">
-							<li><a href="userList">ユーザ一覧</a></li>
-							<li><a href="userRegist">ユーザ登録</a></li>
-						</ul>
-					</li>
-					<li>サンプル
-						<ul class="child">
-							<li><a href="hello">Hello</a></li>
-							<li><a href="input">入力</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="column">
-			<div class="main_contents">
-				<div class="contents">
-					<h3>エンジニア登録画面</h3>
-					<div id="output"></div>
-					<form>
-							<input type="radio" name="entryPlan" value="hoge1" onclick="entryChange1();" />BP
-							<input type="radio" name="entryPlan" value="hoge2" onclick="entryChange1();" />社員
+	<div layout:fragment="contents" class="contents">
+		<form name="parentfrm" method="post" th:action="@{/registConfirm}" th:object="${form}">
+			<h3>エンジニア情報登録画面</h3>
 
-							<table id="firstNotice">
+ <input type="text" class="form-control" name="parent_input" value="" placeholder="ここに値がセットされます。"/>
 
-							<!-- 表示非表示切り替え -->
-							<tr id="firstBox">
-								<th>BPコード</th>
-								<td><input type="text"disabled="disabled" />
-									<input href="" type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" >
+			<input type="radio" name="entryPlan" value="hoge1" onclick="entryChange1();" />BP
+			<input type="radio" name="entryPlan" value="hoge2" onclick="entryChange1();" />社員
+			<table id="firstNotice" border="1">
+				<!-- 表示非表示切り替え -->
+				<tr id="firstBox">
+					<th>BPコード</th>
+					<td><input  type="text" class="form-control" name="parent_input" th:field="*{clientId}" disabled="disabled" /> <input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /><input style="display: none;" onClick="location.href='engineerBpSearch'" type="button"
+						value="" /></td>
+				</tr>
+				<!-- 表示非表示切り替え -->
+				<tr id="secondBox">
+					<th>社員番号</th>
+					<td><input type="text" class="employee" th:field="*{employeeNo}" disabled="disabled" /> <input type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
+				</tr>
+				<!-- 表示非表示切り替え -->
+				<tr id="secondBox2">
+					<td >エンジニア名</td>
+					<td><input th:align="left" type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" disabled="disabled" /></td>
+				</tr>
+				<tr id="firstBox2">
+					<td >エンジニア名</td>
+					<td><input  type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" /></td>
+				</tr>
+				<tr>
+					<td >単価</td>
+					<td><input type="text" maxlength="10" id="price" name="price" th:field="*{price}" size="20" />千円</td>
+				</tr>
+				<tr>
+					<td >超過金額</td>
+					<td><input type="text" maxlength="10" id="" name="" th:field="*{excessPrice}" size="20" />円</td>
+				</tr>
+				<tr>
+					<td>控除単価</td>
+					<td><input type="text" maxlength="10" id="startDate" name="startDate" th:field="*{deductionPrice}" size="20" />円</td>
+				</tr>
+				<!-- 表示非表示切り替え -->
+				<tr id="secondBox3">
+					<td>原価</td>
+					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{cost}" size="20" disabled="disabled" />千円</td>
+				</tr>
+				<tr id="firstBox3">
+					<td>原価</td>
+					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{cost}" size="20" />千円</td>
+				</tr>
+				<tr>
+					<td>超過原価</td>
+					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{excessCost}" size="20" />円</td>
+				</tr>
+				<tr>
+					<td>控除原価</td>
+					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{deductionCost}" size="20" />円</td>
+				</tr>
+				<tr>
+					<td>開始日</td>
+					<td><input type="text" th:field="*{engineerStartYear}" class="year" size="2" />年 <input type="text" th:field="*{engineerStartMonth}" class="month" size="1" />月<input type="text" th:field="*{engineerStartDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
+						style="display: none;" /></td>
+				</tr>
+				<tr>
+					<td>終了日</td>
+					<td><input type="text" th:field="*{engineerEndYear}" class="year" size="2" />年 <input type="text" th:field="*{engineerEndMonth}" class="month" size="1" />月<input type="text" th:field="*{engineerEndDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
+						style="display: none;" /></td>
+				</tr>
+				<tr>
+					<td>予定工数</td>
+					<td>
+					<input type="text" maxlength="10" id="manHour" name="manHour" th:field="*{manHours}" size="20" />人月
+					</td>
+				</tr>
+			</table>
+			<br /> <input id="button" onClick="location.href='../subproject/caseDetail.html'" type="submit" value="戻る" /> <input type="submit" value="次へ" />
+		</form>
+<a href="" onClick="windowOpen()">
+                        子ウィンドウを開く&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+</a>
+	</div>
 
-							</tr>
-
-							<!-- 表示非表示切り替え -->
-							<tr id="secondBox">
-								<th>社員番号</th>
-								<td><input type="text" disabled="disabled"/>
-								<input href="" type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" >
-							</tr>
-							<!-- 表示非表示切り替え -->
-							<tr id="secondBox2">
-									<td>エンジニア名</td>
-									<td><input type="text" maxlength="10" id="engineerName" name="engineerName" value="" disabled="disabled"/>　　　</td>
-								</tr>
-								<tr id="firstBox2">
-									<td>エンジニア名</td>
-									<td><input type="text" maxlength="10" id="engineerName" name="engineerName" value="" />　　　</td>
-								</tr>
-								<tr>
-									<td>単価</td>
-									<td><input type="text" maxlength="10" id="price" name="price" value="" size="20"/>千円　</td>
-								</tr>
-								<tr>
-									<td>超過金額</td>
-									<td><input type="text" maxlength="10" id="" name="" value="" size="20"/>円　　</td>
-								</tr>
-								<tr>
-									<td>控除単価</td>
-									<td><input type="text" maxlength="10" id="startDate" name="startDate" value="" size="20"/>円　　</td>
-								</tr>
-								<!-- 表示非表示切り替え -->
-								<tr id="secondBox3">
-									<td>原価</td>
-									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="" size="20" disabled="disabled"/>千円　</td>
-								</tr>
-								<tr id="firstBox3">
-									<td>原価</td>
-									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="" size="20" />千円　</td>
-								</tr>
-								<tr>
-									<td>超過原価</td>
-									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="" size="20"/>円　　</td>
-								</tr>
-								<tr>
-									<td>控除原価</td>
-									<td><input type="text" maxlength="10" id="endDate" name="endDate" value="" size="20"/>円　　</td>
-								</tr>
-								<tr>
-									<td>開始日</td>
-									<td><input type="text" value="" class="year" size="2" />年 <input type="text" value="" class="month" size="1" />月 <input type="text" value="" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" />　　 </td>
-								</tr>
-								<tr>
-									<td>終了日</td>
-									<td><input type="text" value="" class="year" size="2" />年 <input type="text" value="" class="month" size="1" />月 <input type="text" value="" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" />　　 </td>
-								</tr>
-								<tr>
-									<td>予定工数</td>
-									<td><input type="text" maxlength="10" id="manHour" name="manHour" value="" /size="20">人月　</td>
-								</tr>
-
-						</table>
-					</form>
-					<input id="confirm" type="button" onClick="location.href = '../dispatch/dispatchRegist.html'" value="戻る" />
-					<input id="confirm" type="button" onClick="location.href = '../engineer/engineerRegistConfirm.html'" value="次へ" />
-				</div>
-			</div>
-		</div>
-		<div class="footer">
-			<footer>
-				<div>
-					<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
-				</div>
-			</footer>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script>
-        // 子ウィンドウを開く<input href="" type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" >
-        function openWindow() {
-            window.open('engineerBpSearch.html', 'child', 'width=1000,height=500')
-        }
-    </script>
-    <script>
-        // 子ウィンドウを開く<input href="" type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" >
-        function windowOpen() {
-            window.open('engineerEmployeeSearch.html', 'child', 'width=1000,height=500')
-        }
-    </script>
 </body>
 </html>

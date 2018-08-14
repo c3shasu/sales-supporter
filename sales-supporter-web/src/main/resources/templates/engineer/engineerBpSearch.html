@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>顧客情報検索画面</title>
-<link href="../../../../static/css/base.css" rel="stylesheet" />
-<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
-<link href="../../../../static/css/list.css" rel="stylesheet" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
 <script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
 <script type="text/javascript" src="../../../../static/javascript/message.js"></script>
 <script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
@@ -15,24 +12,12 @@
 
 </head>
 <body>
-	<input type="hidden" id="base_url" value="/SalesSupporter/" />
-	<div class="main_div">
-		<div class="header">
-			<div>
-				<ul>
-					<li class="logo"><a href="/SalesSupporter/top"> <img width="280" height="45" src="../../../../static/images/logo.png" />
-					</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="menu"></div>
-		<div class="column">
-			<div class="main_contents">
-				<div class="contents">
-					<form action="/SalesSupporter/userSearch">
+		<div layout:fragment="contents" class="contents">
+					<form name="childfrm" method="post" th:action="@{/engineerRegist}" th:object="${form}">
 						<div>
 							<h3>顧客情報検索画面</h3>
-							<a>会社名<input type="text" id="datepicker" size="21" /></a> <input id="search" type="button" name="search" onClick="document.getElementById('div_2').style.display='block';" value="検索" />
+							<a>会社名</a>
+							<div class="form-group"><input type="text" name="sub_input" id="inputText" value="" class="form-control" /></div> <input id="search" type="button" name="search" onClick="document.getElementById('div_2').style.display='block';" value="検索" />
 
 							<!-- モック中はテーブルにID付与 -->
 							<table id="div_2" style="display: none">
@@ -51,19 +36,11 @@
 							</table>
 						</div>
 
-						<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /> <br>
-						<input href="javascript:void(0)" id="confirm" type="button" onclick="window.close();" value="決定" />
+						<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" />
+						<div class="form-group">
+						<input  class="btn btn-success" id="confirm" type="button" onclick="setFormInput()" value="決定" />
+						</div>
 					</form>
 				</div>
-			</div>
-		</div>
-		<div class="footer">
-			<footer>
-				<div>
-					<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
-				</div>
-			</footer>
-		</div>
-	</div>
 </body>
 </html>
