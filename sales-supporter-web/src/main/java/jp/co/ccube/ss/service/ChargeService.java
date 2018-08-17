@@ -130,7 +130,7 @@ public class ChargeService {
 	}
 
 	// ～～エンジニア情報の削除～～
-	public void chargeDelete(ChargeForm form) throws ParseException {
+	public void chargeDelete(ChargeForm form) {
 		Integer projectId[] = new Integer[1];
 		projectId[0] = 3;
 		Integer subProjectId[] = new Integer[1];
@@ -139,7 +139,7 @@ public class ChargeService {
 		branchNo[0] = 3;
 
 		// engineerDao.deleteByPrimaryKey(projectId[0],subProjectId[0],branchNo[0]);
-		chargeDao.deletedAtUpdate(3, 3, 3);
+		chargeDao.deletedAtUpdate(projectId[0], subProjectId[0], branchNo[0]);
 	}
 
 }
