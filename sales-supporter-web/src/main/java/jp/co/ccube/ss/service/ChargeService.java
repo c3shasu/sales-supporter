@@ -42,7 +42,7 @@ public class ChargeService {
 		charge.setCaseId(3);
 		// charge.setProjectId(form.getProject_id());
 		// charge.setCaseId(form.getCase_id());
-		//charge.setBranchNo(5);
+		// charge.setBranchNo(5);
 		charge.setEmployeeNo(form.getEmployeeNo());
 		charge.setClientId(form.getClientId());
 		charge.setEngineerName(form.getEngineerName());
@@ -129,10 +129,17 @@ public class ChargeService {
 		chargeDao.updateByPrimaryKeySelective(charge);
 	}
 
-	// 案件担当者削除
-	public void deleteCharge(ChargeForm form) {
-		Integer branch = 161;
-		chargeDao.deletedAtUpdate(branch);
+	// ～～エンジニア情報の削除～～
+	public void chargeDelete(ChargeForm form) throws ParseException {
+		Integer projectId[] = new Integer[1];
+		projectId[0] = 3;
+		Integer subProjectId[] = new Integer[1];
+		subProjectId[0] = 3;
+		Integer branchNo[] = new Integer[1];
+		branchNo[0] = 3;
+
+		// engineerDao.deleteByPrimaryKey(projectId[0],subProjectId[0],branchNo[0]);
+		chargeDao.deletedAtUpdate(3, 3, 3);
 	}
 
 }

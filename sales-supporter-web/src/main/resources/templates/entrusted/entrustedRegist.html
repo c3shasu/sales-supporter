@@ -1,127 +1,62 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
 <title>受託情報登録画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="../../../../static/css/base.css" rel="stylesheet" />
-<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
-<link href="../../../../static/css/login/login.css" rel="stylesheet" />
-<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
-<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
-<script type="text/javascript" src="../../../../static/javascript/datepicker.js"></script>
+<link href="/SalesSupporter/css/base.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js}"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" th:href="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css}" />
+<script type="text/javascript" src="/javascript/datepicker.js" th:src="@{/javascript/datepicker.js}"></script>
 </head>
 <body>
-	<input type="hidden" id="base_url" value="/SalesSupporter/" />
-	<div class="main_div">
-		<div class="header">
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{entrustedConfirm}" th:object="${form}">
 			<div>
-				<ul>
-					<li class="logo"><img src="../../../../static/images/logo.png" width="280" height="45" /></li>
-					<li class="logout">
-						<form method="post" action="/SalesSupporter/logout">
-							<input type="submit" name="logout" class="button" value="ログアウト" />
-						</form>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="menu">
-			<ul class="nav">
-				<li id="menu_top">トップ</li>
-				<li>プロジェクト
-					<ul class="child">
-						<li><a href="#">プロジェクト一覧</a></li>
-						<li><a href="#">プロジェクト登録</a></li>
-					</ul>
-				</li>
-				<li>案件
-					<ul class="child">
-						<li><a href="#">案件一覧</a></li>
-						<li><a href="#">案件登録</a></li>
-					</ul>
-				</li>
-				<li>顧客
-					<ul class="child">
-						<li><a href="clientList">顧客一覧</a></li>
-						<li><a href="clientRegist">顧客登録</a></li>
-					</ul>
-				</li>
-				<li>人材
-					<ul class="child">
-						<li><a href="employeeList">社員一覧</a></li>
-						<li><a href="employeeRegist">社員登録</a></li>
-						<li><a href="#">BP一覧</a></li>
-						<li><a href="#">BP登録</a></li>
-					</ul>
-				</li>
-				<li>管理
-					<ul class="child">
-						<li><a href="userList">ユーザ一覧</a></li>
-						<li><a href="userRegist">ユーザ登録</a></li>
-					</ul>
-				</li>
-				<li>サンプル
-					<ul class="child">
-						<li><a href="hello">Hello</a></li>
-						<li><a href="input">入力</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<div class="column">
-			<div class="main_contents">
-				<div class="contents">
-					<form action="/SalesSupporter/userConfirm">
-						<div>
-							<h3>受託情報登録</h3>
-							<table>
-								<tr>
-									<td>開始予定日</td>
-									<td><input type="text" value="" class="year" size="2" />年 <input type="text" value="" class="month" size="1" />月 <input type="text" value="" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" /></td>
-								</tr>
-								<tr>
-									<td>終了予定日</td>
-									<td><input type="text" value="" class="year" size="2" />年 <input type="text" value="" class="month" size="1" />月 <input type="text" value="" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" /></td>
-								</tr>
-								<tr>
-									<td>予定工数</td>
-									<td><input type="text" maxlength="10" id="manHour" name="manHour" value="" size="18" />人月</td>
-								</tr>
-								<tr>
-									<td>単価</td>
-									<td><input type="text" maxlength="10" id="price" name="price" value="" size="18" />千円</td>
-								</tr>
-								<tr>
-									<td>追加金額</td>
-									<td><input type="text" maxlength="10" id="additional" name="additional" value="" />円</td>
-								</tr>
-								<tr>
-									<td>売上金額</td>
-									<td><input type="text" maxlength="10" id=sales name="sales" value="" />円</td>
-								</tr>
-							</table>
-							<br />
-							<div class="align_center">
-								<input id="confirm" type="button" onClick="location.href='../charge/chargeRegist.html'" value="戻る" /> <input id="confirm" type="button" onClick="location.href='pasRegistConfirm.html'" value="次へ" />
-							</div>
-						</div>
-					</form>
+				<h3>受託情報登録</h3>
+				<table>
+					<tr>
+						<td>開始予定日</td>
+						<td><input type="text" th:field="*{startYear}" class="year" size="2" />年 <input type="text" th:field="*{startMonth}" class="month" size="1" />月 <input type="text" th:field="*{startDay}" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" /></td>
+						<td th:if="${#fields.hasErrors('startYear')}" th:errors="*{startYear}" style="color: red"></td>
+						<td th:if="${#fields.hasErrors('startMonth')}" th:errors="*{startMonth}" style="color: red"></td>
+						<td th:if="${#fields.hasErrors('startDay')}" th:errors="*{startDay}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>終了予定日</td>
+						<td><input type="text" th:field="*{endYear}" class="year" size="2" />年 <input type="text" th:field="*{endMonth}" class="month" size="1" />月 <input type="text" th:field="*{endDay}" class="date" size="1" />日 <input type="text" value="" class="datepicker" style="display: none;" /></td>
+						<td th:if="${#fields.hasErrors('endYear')}" th:errors="*{endYear}" style="color: red"></td>
+						<td th:if="${#fields.hasErrors('endMonth')}" th:errors="*{endMonth}" style="color: red"></td>
+						<td th:if="${#fields.hasErrors('endDay')}" th:errors="*{endDay}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>予定工数</td>
+						<td><input type="text" th:field="*{manHour}" size="18" />人月</td>
+						<td th:if="${#fields.hasErrors('manHour')}" th:errors="*{manHour}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>単価</td>
+						<td><input type="text" th:field="*{price}" maxlength="10" size="18" />千円</td>
+						<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>追加金額</td>
+						<td><input type="text" th:field="*{additional}" maxlength="10" size="20" />円</td>
+						<td th:if="${#fields.hasErrors('additional')}" th:errors="*{additional}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>売上金額</td>
+						<td><input type="text" th:field="*{sales}" size="20" />円</td>
+						<td th:if="${#fields.hasErrors('sales')}" th:errors="*{sales}" style="color: red"></td>
+					</tr>
+				</table>
+				<br />
+				<div class="align_center">
+					<input id="confirm" type="submit" onClick="location.href='../subproject/caseDetail.html'" value="戻る" /> <input id="confirm" type="submit" value="登録" />
 				</div>
 			</div>
-		</div>
-		<div class="footer">
-			<footer>
-				<div>
-					<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
-				</div>
-			</footer>
-		</div>
+		</form>
 	</div>
 </body>
 </html>
