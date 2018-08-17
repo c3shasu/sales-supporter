@@ -9,7 +9,7 @@ public class EngineerForm {
 	@NotEmpty
 	private Integer projectId;
 	@NotEmpty
-	private Integer cameId;
+	private Integer caseId;
 	@NotEmpty
 	private Integer branchNo;
 	private Integer employeeNo;
@@ -37,10 +37,11 @@ public class EngineerForm {
 	private String startYear;
 	private String startMonth;
 	private String startDay;
+	private String startYms;
 	private String endYear;
 	private String endMonth;
 	private String endDay;
-
+	private String endYms;
 
 
 
@@ -50,11 +51,11 @@ public class EngineerForm {
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
-	public Integer getCameId() {
-		return cameId;
+	public Integer getCaseId() {
+		return caseId;
 	}
-	public void setCameId(Integer cameId) {
-		this.cameId = cameId;
+	public void setCaseId(Integer caseId) {
+		this.caseId = caseId;
 	}
 	public Integer getBranchNo() {
 		return branchNo;
@@ -169,6 +170,18 @@ public class EngineerForm {
 	}
 	public void setEndDay(String endDay) {
 		this.endDay = endDay;
+	}
+	public String getStartYms() {
+		return startYms;
+	}
+	public void setStartYms(String startYms) {
+		this.startYms = startYms;
+	}
+	public String getEndYms() {
+		return endYms;
+	}
+	public void setEndYms(String endYms) {
+		this.endYms = endYms;
 	}
 
 }
