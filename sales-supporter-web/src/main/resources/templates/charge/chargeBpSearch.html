@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>顧客一覧画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+<script type="text/javascript" src="/javascript/bpSearch.js" th:src="@{/javascript/bpSearch.js}"></script>
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/chargeBpSearch}" th:object="${form}">
+			<div>
+				<table>
+					<tr>
+						<td>顧客名(会社名)</td>
+						<td><input type="text" th:field="*{clientName}" th:name="clientName" maxlength="10" /></td>
+						<td>電話番号</td>
+						<td><input type="text" th:field="*{clientTel}" th:name="clientTel" maxlength="30" /></td>
+					</tr>
+					<tr>
+						<td>顧客種別</td>
+						<td th:each="item : ${checkItems}"><input type="checkbox" th:name="clientType" th:value="${item.value}" th:text="${item.key}" th:field="*{clientType}" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="align_right"><input id="search" type="submit" name="search" value="検索" /></td>
+					</tr>
+				</table>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>選択</th>
+						<th>顧客名(会社名)</th>
+						<th>住所</th>
+						<th>電話番号</th>
+						<th>メールアドレス</th>
+						<th>顧客種別</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obj : ${serachClientList}">
+						<td><input type="radio" th:value="${obj.companyId}" name="Check" /></td>
+						<td th:text="${obj.companyName}"></td>
+						<td th:text="${obj.address}"></td>
+						<td th:text="${obj.telephone}"></td>
+						<td th:text="${obj.mailAddress}"></td>
+						<td th:text="${obj.typeName}"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="align_right"><input type="button" onclick="getRadioValue('Check');" value="決定" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
