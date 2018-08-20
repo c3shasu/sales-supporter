@@ -25,7 +25,14 @@ public class ChargeRegistController extends AbstractController {
 		return "charge/chargeRegist";
 	}
 
-	@RequestMapping(value = "/chargeRegistConfirm", method = RequestMethod.POST)
+	//案件詳細画面へ戻る
+	@RequestMapping(value = "/chargeRegistConfirm", params = "back", method = RequestMethod.POST)
+	public String chargeRregistBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "subproject/subProjectDetail2";
+	}
+
+	// 案件担当者の登録処理
+	@RequestMapping(value = "/chargeRegistConfirm", params = "confirm", method = RequestMethod.POST)
 	public String chargeRregistConfirm(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model)
 			throws ParseException {
 		// if (result.hasErrors()) {

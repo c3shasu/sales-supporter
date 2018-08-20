@@ -27,7 +27,14 @@ public class ChargeEditContoller extends AbstractController {
 		return "/charge/chargeEdit";
 	}
 
-	@RequestMapping(value = "/chargeEdit", method = RequestMethod.POST)
+	//
+	@RequestMapping(value = "/chargeEdit", params = "back", method = RequestMethod.POST)
+	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "/subproject/subProjectDetail2";
+	}
+
+	// 案件担当者更新処理
+	@RequestMapping(value = "/chargeEdit", params = "confirm", method = RequestMethod.POST)
 	public String chargeEditConfirm(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model)
 			throws ParseException {
 		// if (result.hasErrors()) {

@@ -27,7 +27,14 @@ public class ChargeDeleteController extends AbstractController {
 		return "/charge/chargeDeleteCheck";
 	}
 
-	@RequestMapping(value = "/chargeDeleteConfirm", method = RequestMethod.POST)
+	// 案件詳細画面に戻る
+	@RequestMapping(value = "/chargeDeleteConfirm", params = "back", method = RequestMethod.POST)
+	public String chargeDeletecBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "/subproject/subProjectDetail2";
+	}
+
+	// 案件担当者削除処理
+	@RequestMapping(value = "/chargeDeleteConfirm", params = "confirm", method = RequestMethod.POST)
 	public String chargeDeletec(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model)
 			throws ParseException {
 		chargeService.chargeDelete(form);

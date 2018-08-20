@@ -30,7 +30,14 @@ public class EntrustedEditController extends AbstractController {
 		return "/entrusted/entrustedEdit";
 	}
 
-	@RequestMapping(value = "/entrustedEdit", method = RequestMethod.POST)
+	// 案件詳細画面へ戻る
+	@RequestMapping(value = "/entrustedEdit", params = "back", method = RequestMethod.POST)
+	public String entrustedEditBack(@ModelAttribute("form") EntrustedForm form, BindingResult result, Model model) {
+		return "subproject/subProjectDetail2";
+	}
+
+	// 受託情報更新画面
+	@RequestMapping(value = "/entrustedEdit", params = "confirm", method = RequestMethod.POST)
 	public String entrustedEditConfirm(@ModelAttribute("form") EntrustedForm form, BindingResult result, Model model)
 			throws ParseException {
 		// if (result.hasErrors()) {

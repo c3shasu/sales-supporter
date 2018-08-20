@@ -40,7 +40,7 @@ public class EntrustedService {
 
 		// DBアクセス
 		entrusted.setProjectId(10);
-		entrusted.setCaseId(10);
+		entrusted.setCaseId(8);
 //		entrusted.setProjectId(form.getProject_id());
 //		entrusted.setCaseId(form.getCase_id());
 		entrusted.setStartDate(startDate);
