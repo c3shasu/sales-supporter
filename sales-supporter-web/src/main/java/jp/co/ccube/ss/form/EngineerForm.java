@@ -2,36 +2,36 @@ package jp.co.ccube.ss.form;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class EngineerForm {
 
-	@NotEmpty
+	@NotNull
 	private Integer projectId;
-	@NotEmpty
+	@NotNull
 	private Integer caseId;
-	@NotEmpty
+	@NotNull
 	private Integer branchNo;
 	private Integer employeeNo;
 	private Integer clientId;
 	private String engineerName;
-	@NotEmpty
+	@NotNull
 	private Integer price;
-	@NotEmpty
+	@NotNull
 	private Integer excessPrice;
-	@NotEmpty
+	@NotNull
 	private Integer deductionPrice;
-	@NotEmpty
+	@NotNull
 	private Integer cost;
-	@NotEmpty
+	@NotNull
 	private Integer excessCost;
-	@NotEmpty
+	@NotNull
 	private Integer deductionCost;
-	@NotEmpty
+	@NotNull
 	private Date startDate;
-	@NotEmpty
+	@NotNull
 	private Date endDate;
-	@NotEmpty
+	@NotNull
 	private java.math.BigDecimal manHours;
 
 	private String startYear;

@@ -2,16 +2,16 @@ package jp.co.ccube.ss.form;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class DispatchForm {
-	@NotEmpty
+	@NotNull
 	private Integer projectID;
-	@NotEmpty
+	@NotNull
 	private Integer caseID;
-	@NotEmpty
+	@NotNull
 	private Date startDate;
-	@NotEmpty
+	@NotNull
 	private Date endDate;
 
 	private Integer lowerTime;

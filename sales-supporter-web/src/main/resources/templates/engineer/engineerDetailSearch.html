@@ -65,10 +65,9 @@
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
-		<form name="parentfrm" method="post" th:action="@{/registConfirm}" th:object="${form}">
+		<form name="parentfrm" method="post" th:action="@{/engineerAddConfirm}" th:object="${form}">
 			<h3>エンジニア情報登録画面</h3>
 
- <input type="text" class="form-control" name="parent_input" value="" placeholder="ここに値がセットされます。"/>
 
 			<input type="radio" name="entryPlan" value="hoge1" onclick="entryChange1();" />BP
 			<input type="radio" name="entryPlan" value="hoge2" onclick="entryChange1();" />社員
@@ -76,22 +75,22 @@
 				<!-- 表示非表示切り替え -->
 				<tr id="firstBox">
 					<th>BPコード</th>
-					<td><input  type="text" class="form-control" name="parent_input" th:field="*{clientId}" disabled="disabled" /> <input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /><input style="display: none;" onClick="location.href='engineerBpSearch'" type="button"
+					<td><input  type="text" class="form-control" name="parent_input" th:field="*{clientId}" id="bpCode" disabled="disabled" /> <input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /><input style="display: none;" onClick="location.href='engineerBpSearch'" type="button"
 						value="" /></td>
 				</tr>
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox">
 					<th>社員番号</th>
-					<td><input type="text" class="employee" th:field="*{employeeNo}" disabled="disabled" /> <input type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
+					<td><input type="text" class="employee" th:field="*{employeeNo}" id="employeeCode" disabled="disabled" /> <input type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
 				</tr>
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox2">
 					<td >エンジニア名</td>
-					<td><input th:align="left" type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" disabled="disabled" /></td>
+					<td><input  type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" disabled="disabled" /></td>
 				</tr>
 				<tr id="firstBox2">
 					<td >エンジニア名</td>
-					<td><input  type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" /></td>
+					<td><input  type="text" maxlength="10" id="" name="engineerName" th:field="*{engineerName}" /></td>
 				</tr>
 				<tr>
 					<td >単価</td>
@@ -108,11 +107,11 @@
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox3">
 					<td>原価</td>
-					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{cost}" size="20" disabled="disabled" />千円</td>
+					<td><input type="text" maxlength="10" th:field="*{cost}" size="20" disabled="disabled" />千円</td>
 				</tr>
 				<tr id="firstBox3">
 					<td>原価</td>
-					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{cost}" size="20" />千円</td>
+					<td><input type="text" maxlength="10" id="cost"  th:field="*{cost}" size="20" />千円</td>
 				</tr>
 				<tr>
 					<td>超過原価</td>
@@ -139,11 +138,8 @@
 					</td>
 				</tr>
 			</table>
-			<br /> <input id="button" onClick="location.href='../subproject/caseDetail.html'" type="submit" value="戻る" /> <input type="submit" value="次へ" />
+			<br /> <input id="button" onClick="location.href='../subproject/caseDetail.html'" type="submit" value="戻る" /> <input type="submit" value="登録" />
 		</form>
-<a href="" onClick="windowOpen()">
-                        子ウィンドウを開く&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-</a>
 	</div>
 
 </body>

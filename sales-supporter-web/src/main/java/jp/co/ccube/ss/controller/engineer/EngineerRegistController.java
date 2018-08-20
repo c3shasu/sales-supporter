@@ -23,19 +23,29 @@ public class EngineerRegistController {
 	DispatchService dispatchService;
 	@Autowired
 	EngineerService engineerService;
+
 	@RequestMapping(value = "/engineerRegist", method = RequestMethod.POST)
 	public String userList(@ModelAttribute("form") CaseDispatchEngineerForm form, HttpSession session) throws ParseException {
 		// 正常系
-		session.setAttribute("dispatchDetail", form);//formの情報をsessionに保存
+//session.setAttribute("dispatchDetail", form);//formの情報をsessionに保存
+//		CaseDispatchEngineerForm disform = new CaseDispatchEngineerForm();
+//		disform = (CaseDispatchEngineerForm) session.getAttribute("dispatchDetail");//前画面のformをsessionから取り出す
+		dispatchService.insertDispatch(form);
+		return "engineer/engineerRegistConfirm";
+	}
+
+	@RequestMapping(value = "/engineerAdd", method = RequestMethod.GET)
+	public String userList(@ModelAttribute("form") CaseDispatchEngineerForm form) throws ParseException {
+		// 正常系
+
 		return "engineer/engineerDetailSearch";
 	}
-	@RequestMapping(value = "/registConfirm", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/engineerAddConfirm", method = RequestMethod.POST)
 	public String userList(@ModelAttribute("form")Dispatch dispatch, CaseDispatchEngineerForm form,BindingResult result, HttpSession session) throws ParseException {
-		CaseDispatchEngineerForm disform = new CaseDispatchEngineerForm();
-		disform = (CaseDispatchEngineerForm) session.getAttribute("dispatchDetail");//前画面のformをsessionから取り出す
-		//データベース登録はコメントアウト中
-		dispatchService.insertDispatch(disform);
+
 		engineerService.insertEngineer(form);
 		return "engineer/engineerRegistConfirm";
 	}
+
 }

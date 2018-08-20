@@ -121,7 +121,7 @@
  project_id,case_id,start_date,end_date,lower_time,upper_time,production
     from dispatch
     where project_id = #{projectId,jdbcType=INTEGER}
-      <!--  and case_id = #{caseId,jdbcType=INTEGER}-->
+      and case_id = #{caseId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="jp.co.ccube.ss.entity.DispatchKey" >
     <!--

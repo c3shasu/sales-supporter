@@ -139,9 +139,9 @@
       This element was generated on Tue Jul 31 09:26:06 JST 2018.
     -->
     delete from engineer
-    where project_id = #{projectId,jdbcType=INTEGER}
-          and case_id = #{subProjectId,jdbcType=INTEGER}
-      and branch_no = #{branchNo,jdbcType=INTEGER}
+    where project_id = #{param1,jdbcType=INTEGER}
+          and case_id = #{param2,jdbcType=INTEGER}
+      and branch_no = #{param3,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="jp.co.ccube.ss.entity.EngineerExample" >
     <!--

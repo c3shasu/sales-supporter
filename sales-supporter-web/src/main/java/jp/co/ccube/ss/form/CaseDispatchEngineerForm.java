@@ -57,8 +57,10 @@ public class CaseDispatchEngineerForm {
 	private String engineerEndMonth;
 	private String engineerEndDay;
 
-
-
+	private String caseName;
+	private String cliantId;
+	private String caseBranchNo;
+	private String agreementType;
 
 	public Integer getProjectID() {
 		return projectID;
@@ -263,5 +265,29 @@ public class CaseDispatchEngineerForm {
 	}
 	public void setEngineerEndDay(String engineerEndDay) {
 		this.engineerEndDay = engineerEndDay;
+	}
+	public String getCaseName() {
+		return caseName;
+	}
+	public void setCaseName(String caseName) {
+		this.caseName = caseName;
+	}
+	public String getCliantId() {
+		return cliantId;
+	}
+	public void setCliantId(String cliantId) {
+		this.cliantId = cliantId;
+	}
+	public String getCaseBranchNo() {
+		return caseBranchNo;
+	}
+	public void setCaseBranchNo(String caseBranchNo) {
+		this.caseBranchNo = caseBranchNo;
+	}
+	public String getAgreementType() {
+		return agreementType;
+	}
+	public void setAgreementType(String agreementType) {
+		this.agreementType = agreementType;
 	}
 }

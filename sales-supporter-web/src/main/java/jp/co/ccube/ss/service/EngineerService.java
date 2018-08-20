@@ -49,7 +49,7 @@ public class EngineerService {
 		String endday = endd.format(engineer.getEndDate());
 
 		String endYms = endyear+endmonth+endday;
-System.out.println("1");
+
 		form.setProjectId(engineer.getProjectId());
 		form.setCaseId(engineer.getCaseId());
 		form.setEmployeeNo(engineer.getEmployeeNo());
@@ -64,10 +64,18 @@ System.out.println("1");
 		form.setStartYms(startYms);
 		form.setEndYms(endYms);
 		form.setManHours(engineer.getManHours());
+		form.setStartYear(startyear);
+		form.setStartMonth(startmonth);
+		form.setStartDay(startday);
+		form.setEndYear(endyear);
+		form.setEndMonth(endmonth);
+		form.setEndDay(endday);
+
 		return form;
 	}
 	// ～～エンジニア情報の登録～～
 			public  void insertEngineer(CaseDispatchEngineerForm form) throws ParseException  {
+
 							Engineer engineer = new Engineer();
 						//開始日String→Date
 							String startyear =form.getEngineerStartYear();
@@ -105,6 +113,45 @@ System.out.println("1");
 				// 情報をDBに保存
 							engineerDao.insertSelective(engineer);
 						}
+
+			//～～エンジニア情報更新～～
+			public  void engineerUpdate(EngineerForm form) throws ParseException  {
+				Engineer engineer = new Engineer();
+				engineer.setProjectId(10);
+				engineer.setCaseId(9);
+				engineer.setBranchNo(6);
+
+				//開始予定日String→Date
+				String startyear =form.getStartYear();
+				String startmonth =form.getStartMonth();
+				String startday =form.getStartDay();
+				String startymd = startyear+startmonth+startday;
+				DateFormat startFormat=new SimpleDateFormat("yyyyMMdd");
+				Date startDate = startFormat.parse(startymd);
+
+			//終了予定日String→Date
+				String endyesr =form.getEndYear();
+				String endmonth =form.getEndMonth();
+				String endday =form.getEndDay();
+				String endymd = endyesr+endmonth+endday;
+				DateFormat endFormat=new SimpleDateFormat("yyyyMMdd");
+				Date endDate = endFormat.parse(endymd);
+
+				engineer.setClientId(form.getClientId());
+				engineer.setEmployeeNo(form.getEmployeeNo());
+				engineer.setEngineerName(form.getEngineerName());
+				engineer.setPrice(form.getPrice());
+				engineer.setExcessPrice(form.getExcessPrice());
+				engineer.setDeductionPrice(form.getDeductionPrice());
+				engineer.setCost(form.getCost());
+				engineer.setExcessCost(form.getExcessCost());
+				engineer.setDeductionCost(form.getDeductionCost());
+				engineer.setStartDate(startDate);
+				engineer.setEndDate(endDate);
+				engineer.setManHours(form.getManHours());
+				engineerDao.updateByPrimaryKeySelective(engineer);
+			}
+
 			//～～エンジニア情報の削除～～
 			public  void engineerDelete(EngineerForm form) throws ParseException  {
 				Integer projectId[] = new Integer[1];
@@ -114,6 +161,6 @@ System.out.println("1");
 				Integer branchNo[] = new Integer[1];
 				branchNo[0]=6;
 
-				//engineerDao.deleteByPrimaryKey(projectId[0],subProjectId[0],branchNo[0]);
+			engineerDao.deleteByPrimaryKey(projectId[0],subProjectId[0],branchNo[0]);
 			}
 	}

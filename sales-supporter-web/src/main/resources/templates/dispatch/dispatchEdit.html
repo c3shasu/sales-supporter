@@ -18,22 +18,22 @@
 				<table class="search">
 					<tr>
 						<td>開始予定日</td>
-						<td><input type="text" th:field="*{startYear}" th:errorclass="fieldError" class="year" size="3" />年　<input type="text" th:field="*{startMonth}" th:errorclass="fieldError" class="month" size="1" />月　<input type="text" th:field="*{startDay}" th:errorclass="fieldError" class="date" size="1" />日　<input type="text" value="" class="datepicker" style="display: none;" /></td>
+						<td><input type="text" th:field="*{startYear}" th:errorclass="fieldError" class="year"  size="3"/>年　<input type="text" th:field="*{startMonth}" th:errorclass="fieldError" class="month" size="1"/>月　<input type="text" th:field="*{startDay}" th:errorclass="fieldError" class="date"  size="1"/>日　<input type="text" value="" class="datepicker" style="display: none;" /></td>
 						<td th:if="${#fields.hasErrors('startYear')}" th:errors="*{startYear}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>終了予定日</td>
-						<td><input type="text" th:field="*{endYear}" th:errorclass="fieldError" class="year" size="3" />年　<input type="text" th:field="*{endMonth}" th:errorclass="fieldError" class="month" size="1" />月　<input type="text" th:field="*{endDay}" th:errorclass="fieldError" class="date" size="1" />日　<input type="text" value="" class="datepicker" style="display: none;" /></td>
+						<td><input type="text" th:field="*{endYear}" th:errorclass="fieldError" class="year"  size="3"/>年　<input type="text" th:field="*{endMonth}" th:errorclass="fieldError" class="month" size="1"/>月　<input type="text" th:field="*{endDay}" th:errorclass="fieldError" class="date" size="1"/>日　<input type="text" value="" class="datepicker" style="display: none;" /></td>
 						<td th:if="${#fields.hasErrors('endYear')}" th:errors="*{clientAddress}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>下限時間</td>
-						<td><input type="text" th:field="*{lowerTime}" th:errorclass="fieldError" size="9" />時<input type="text" th:field="*{lowerTimem}"  size="8" />分</td>
+						<td><input type="text" th:field="*{lowerTime}" th:errorclass="fieldError" size="9" />時<input type="text" th:field="*{lowerTimem}" size="8"  />分</td>
 						<td th:if="${#fields.hasErrors('lowerTime')}" th:errors="*{clientAddress}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>上限時間</td>
-						<td><input type="text" th:field="*{upperTIme}" th:errorclass="fieldError" size="9" />時<input type="text" th:field="*{upperTImem}" size="8" />分</td>
+						<td><input type="text" th:field="*{upperTIme}" th:errorclass="fieldError" size="9"/>時<input type="text" th:field="*{upperTImem}" size="8" />分</td>
 						<td th:if="${#fields.hasErrors('upperTIme')}" th:errors="*{clientAddress}" style="color: red"></td>
 					</tr>
 					<tr>
@@ -51,7 +51,7 @@
 					</div></td></tr>
 				</table>
 					<input id="button" onClick="location.href='../subproject/caseDetail.html'" type="submit" value="戻る"/>
-				<input  type="submit" value="次へ" />
+				<input  type="submit" value="更新" />
 			</div>
 		</form>
 	</div>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>顧客編集画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/engineerEditConfirm}" th:object="${form}">
+			<div>
+			<h3>エンジニア情報更新</h3>
+				<table>
+				<tr>
+					<th>社員番号</th>
+					<td><input  type="text" class="form-control" name="parent_input" th:field="*{EmployeeNo}"  disabled="disabled" />
+				</td>
+				</tr>
+				<tr >
+					<td >エンジニア名</td>
+					<td><input  type="text" maxlength="10" id="" name="engineerName" th:field="*{engineerName}" /></td>
+				</tr>
+					<tr >
+					<td >単価</td>
+					<td><input  type="text" maxlength="10" id=""  th:field="*{Price}" /></td>
+				</tr>
+				<tr>
+					<td >超過金額</td>
+					<td><input type="text" maxlength="10" id="" name="" th:field="*{ExcessPrice}" size="20" />円</td>
+				</tr>
+				<tr>
+					<td>控除単価</td>
+					<td><input type="text" maxlength="10"  th:field="*{DeductionPrice}" size="20" />円</td>
+				</tr>
+
+				<tr >
+					<td>原価</td>
+					<td><input type="text" maxlength="10" id="cost"  th:field="*{Cost}" size="20" />千円</td>
+				</tr>
+				<tr>
+					<td>超過原価</td>
+					<td><input type="text" maxlength="10"  th:field="*{ExcessCost}" size="20" />円</td>
+				</tr>
+				<tr>
+					<td>控除原価</td>
+					<td><input type="text" maxlength="10"  th:field="*{DeductionCost}" size="20" />円</td>
+				</tr>
+				<tr>
+					<td>開始日</td>
+					<td><input type="text" th:field="*{StartYear}" class="year" size="2" />年 <input type="text" th:field="*{StartMonth}" class="month" size="1" />月<input type="text" th:field="*{StartDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
+						style="display: none;" /></td>
+				</tr>
+				<tr>
+					<td>終了日</td>
+					<td><input type="text" th:field="*{EndYear}" class="year" size="2" />年 <input type="text" th:field="*{EndMonth}" class="month" size="1" />月<input type="text" th:field="*{EndDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
+						style="display: none;" /></td>
+				</tr>
+				<tr>
+					<td>予定工数</td>
+					<td>
+					<input type="text" maxlength="10" id="manHour" name="manHour" th:field="*{ManHours}" size="20" />人月
+					</td>
+				</tr>
+				</table>
+				<input  type="submit" value="更新" />
+			</div>
+		</form>
+	</div>
+</body>
+</html>

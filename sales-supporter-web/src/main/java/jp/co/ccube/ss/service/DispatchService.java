@@ -30,7 +30,9 @@ public class DispatchService {
 	Integer projectId[] = new Integer[1];
 	projectId[0]=5;
 			Dispatch dispatch = new Dispatch();
-			dispatch = dispatchDao.selectByPrimaryKey(projectId[0]);
+			dispatch.setProjectId(10);
+			dispatch.setCaseId(9);
+			dispatch = dispatchDao.selectByPrimaryKey(dispatch);
 		//開始予定日の設定
 			SimpleDateFormat starty = new SimpleDateFormat("yyyy");
 			String startyear = starty.format(dispatch.getStartDate());
@@ -122,7 +124,7 @@ public class DispatchService {
 			dispatch.setProduction(form.getProduction());
 
 // 変更をDBに保存
-			//dispatchDao.updateByPrimaryKeySelective(dispatch);
+			dispatchDao.updateByPrimaryKeySelective(dispatch);
 		}
 
 		// ～～顧客情報の登録～～
@@ -166,7 +168,7 @@ public class DispatchService {
 						dispatch.setProduction(disform.getProduction());
 
 			// 情報をDBに保存
-						//dispatchDao.insertSelective(dispatch);
+						dispatchDao.insertSelective(dispatch);
 					}
 }
 
