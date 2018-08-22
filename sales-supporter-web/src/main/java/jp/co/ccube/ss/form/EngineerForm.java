@@ -42,7 +42,8 @@ public class EngineerForm {
 	private String endMonth;
 	private String endDay;
 	private String endYms;
-
+private double wprice;
+private double wcost;
 
 
 	public Integer getProjectId() {
@@ -182,6 +183,18 @@ public class EngineerForm {
 	}
 	public void setEndYms(String endYms) {
 		this.endYms = endYms;
+	}
+	public double getWprice() {
+		return wprice;
+	}
+	public void setWprice(double wprice) {
+		this.wprice = wprice;
+	}
+	public double getWcost() {
+		return wcost;
+	}
+	public void setWcost(double wcost) {
+		this.wcost = wcost;
 	}
 
 }

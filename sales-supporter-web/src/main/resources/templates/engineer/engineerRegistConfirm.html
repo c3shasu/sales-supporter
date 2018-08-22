@@ -9,12 +9,12 @@
 <body>
 		<div layout:fragment="contents" class="contents">
 
-					<form method="post" th:action="@{/engineerRegistConfirm}">
+					<form method="post" th:action="@{/engineerConfirm}">
 						<div>
 							<h3>案件詳細情報登録完了しました</h3>
 
 							<div class="align_center">
-								<input id="confirm" type="button" onClick="location.href = 'subProjectDetailA'" value="案件詳細に戻る" />
+								<input id="confirm" type="submit" onClick="location.href = 'subProjectDetailA'" value="案件詳細に戻る" />
 							</div>
 						</div>
 					</form>

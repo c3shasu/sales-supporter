@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.ccube.ss.form.ChargeForm;
 import jp.co.ccube.ss.form.EngineerForm;
 import jp.co.ccube.ss.service.EngineerService;
 
@@ -30,9 +31,11 @@ public class EngineerDeleteController {
 	@RequestMapping(value = "/EngineerDelete", method = RequestMethod.POST)
 	public String EngineerDelete(@ModelAttribute("form")@Valid  EngineerForm form, BindingResult result,Model model) throws ParseException {
 		// 正常系
-		System.out.println("遷移時のコントローラ(削除前)");
 		engineerService.engineerDelete(form);
-		System.out.println("削除後のコントローラ");
 		return "engineer/engineerDeleteConfirm";
 }
+	@RequestMapping(value = "/EngineerDelete", params = "back", method = RequestMethod.POST)
+	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "/subproject/subProjectDetailA";
+	}
 }

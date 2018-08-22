@@ -23,7 +23,7 @@
 				</tr>
 					<tr >
 					<td >単価</td>
-					<td><input  type="text" maxlength="10" id=""  th:field="*{Price}" /></td>
+					<td><input  type="text" maxlength="10" id=""  th:field="*{wprice}" />千円</td>
 				</tr>
 				<tr>
 					<td >超過金額</td>
@@ -35,7 +35,7 @@
 				</tr>
 				<tr >
 					<td>原価</td>
-					<td><input type="text" maxlength="10" id="cost"  th:field="*{Cost}" size="20" />千円</td>
+					<td><input type="text" maxlength="10" id="cost"  th:field="*{wcost}" size="20" />千円</td>
 				</tr>
 				<tr>
 					<td>超過原価</td>
@@ -62,6 +62,7 @@
 					</td>
 				</tr>
 				</table>
+				<input type="submit" name="back" value="戻る"/>
 				<input  type="submit" value="更新" />
 			</div>
 		</form>

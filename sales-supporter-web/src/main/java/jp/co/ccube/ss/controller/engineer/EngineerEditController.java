@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ccube.ss.controller.dispatch.DispatchEditController;
+import jp.co.ccube.ss.form.ChargeForm;
 import jp.co.ccube.ss.form.EngineerForm;
 import jp.co.ccube.ss.service.EngineerService;
 
@@ -40,4 +41,9 @@ public class EngineerEditController {
 		mav.setViewName("engineer/engineerEditConfirm");
 		return mav;
 }
+
+	@RequestMapping(value = "/engineerEditConfirm", params = "back", method = RequestMethod.POST)
+	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "/subproject/subProjectDetailA";
+	}
 }

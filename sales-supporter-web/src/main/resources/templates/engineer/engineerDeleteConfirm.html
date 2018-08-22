@@ -8,13 +8,13 @@
 </head>
 <body>
 				<div layout:fragment="contents" class="contents">
-					<form method="post" th:action="@{/EngineerDelete}" th:object="${form}">
+					<form method="post" th:action="@{/engineerConfirm}" th:object="${form}">
 						<div>
 							<h3>エンジニア情報削除完了しました</h3>
 
 
 							<div class="align_center">
-								<input id="button" onClick="location.href = 'subProjectDetailA'" type="button" value="案件詳細へ戻る" />
+								<input id="button" onClick="location.href = 'subProjectDetailA'" type="submit" value="案件詳細へ戻る" />
 							</div>
 						</div>
 					</form>

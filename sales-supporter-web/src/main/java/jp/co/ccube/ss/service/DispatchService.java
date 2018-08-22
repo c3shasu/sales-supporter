@@ -168,7 +168,7 @@ public class DispatchService {
 						dispatch.setProduction(disform.getProduction());
 
 			// 情報をDBに保存
-						dispatchDao.insertSelective(dispatch);
+						//dispatchDao.insertSelective(dispatch);
 					}
 }
 

@@ -94,7 +94,7 @@
 				</tr>
 				<tr>
 					<td >単価</td>
-					<td><input type="text" maxlength="10" id="price" name="price" th:field="*{price}" size="20" />千円</td>
+					<td><input type="text" maxlength="10" id="" name="" th:field="*{wprice}" size="20" />千円</td>
 				</tr>
 				<tr>
 					<td >超過金額</td>
@@ -107,11 +107,11 @@
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox3">
 					<td>原価</td>
-					<td><input type="text" maxlength="10" th:field="*{cost}" size="20" disabled="disabled" />千円</td>
+					<td><input type="text" maxlength="10" th:field="*{Wcost}" size="20" disabled="disabled" />千円</td>
 				</tr>
 				<tr id="firstBox3">
 					<td>原価</td>
-					<td><input type="text" maxlength="10" id="cost"  th:field="*{cost}" size="20" />千円</td>
+					<td><input type="text" maxlength="10" id=""  th:field="*{Wcost}" size="20" />千円</td>
 				</tr>
 				<tr>
 					<td>超過原価</td>
@@ -138,7 +138,7 @@
 					</td>
 				</tr>
 			</table>
-			<br /> <input id="button" onClick="location.href='../subproject/caseDetail.html'" type="submit" value="戻る" /> <input type="submit" value="登録" />
+			<br /><input type="submit" name="back" value="戻る"/> <input type="submit" value="登録" />
 		</form>
 	</div>
 

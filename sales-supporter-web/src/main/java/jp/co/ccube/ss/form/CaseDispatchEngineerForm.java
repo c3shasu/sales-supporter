@@ -62,6 +62,9 @@ public class CaseDispatchEngineerForm {
 	private String caseBranchNo;
 	private String agreementType;
 
+	private double wprice;
+	private double wcost;
+
 	public Integer getProjectID() {
 		return projectID;
 	}
@@ -289,5 +292,17 @@ public class CaseDispatchEngineerForm {
 	}
 	public void setAgreementType(String agreementType) {
 		this.agreementType = agreementType;
+	}
+	public double getWprice() {
+		return wprice;
+	}
+	public void setWprice(double wprice) {
+		this.wprice = wprice;
+	}
+	public double getWcost() {
+		return wcost;
+	}
+	public void setWcost(double wcost) {
+		this.wcost = wcost;
 	}
 }
