@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.ccube.ss.form.ChargeForm;
 import jp.co.ccube.ss.form.DispatchForm;
 import jp.co.ccube.ss.service.DispatchService;
 
@@ -32,6 +33,12 @@ public class DispatchEditController {
 			dispatchService.editDispatchSearch(form);
 		return "dispatch/dispatchEdit";
 	}
+
+	@RequestMapping(value = "/dispatchConfirm", params = "back", method = RequestMethod.POST)
+	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "/subproject/subProjectDetailA";
+	}
+
 	@RequestMapping(value = "/dispatchConfirm", method = RequestMethod.POST)
 	public String DispatchEditConfirm(@ModelAttribute("form")@Valid  DispatchForm form, BindingResult result,Model model) throws ParseException {
 		// 正常系

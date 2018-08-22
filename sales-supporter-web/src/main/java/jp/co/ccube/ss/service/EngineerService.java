@@ -23,7 +23,7 @@ public class EngineerService {
 
 		engineer.setProjectId(10);
 		engineer.setCaseId(9);
-		engineer.setBranchNo(6);
+		engineer.setBranchNo(9);
 
 		engineer = engineerDao.deleteSelect(engineer);
 		//開始予定日の設定
@@ -36,7 +36,7 @@ public class EngineerService {
 		SimpleDateFormat startd = new SimpleDateFormat("dd");
 		String startday = startd.format(engineer.getStartDate());
 
-		String startYms = startyear+startmonth+startday;
+		String startYms = startyear+"年"+startmonth+"月"+startday+"日";
 
 	//終了予定日の設定
 		SimpleDateFormat endy = new SimpleDateFormat("yyyy");
@@ -48,7 +48,13 @@ public class EngineerService {
 		SimpleDateFormat endd = new SimpleDateFormat("dd");
 		String endday = endd.format(engineer.getEndDate());
 
-		String endYms = endyear+endmonth+endday;
+		String endYms = endyear+"年"+endmonth+"月"+endday+"日";
+
+		//原価と単価を小数点3桁
+		double wprice = (double) engineer.getPrice();
+		wprice=wprice/1000;
+		double wcost = (double) engineer.getCost();
+		wcost=wcost/1000;
 
 		form.setProjectId(engineer.getProjectId());
 		form.setCaseId(engineer.getCaseId());
@@ -56,9 +62,11 @@ public class EngineerService {
 		form.setClientId(engineer.getClientId());
 		form.setEngineerName(engineer.getEngineerName());
 		form.setPrice(engineer.getPrice());
+		form.setWprice(wprice);
 		form.setExcessPrice(engineer.getExcessPrice());
 		form.setDeductionPrice(engineer.getDeductionPrice());
 		form.setCost(engineer.getCost());
+		form.setWcost(wcost);
 		form.setExcessCost(engineer.getExcessCost());
 		form.setDeductionCost(engineer.getDeductionCost());
 		form.setStartYms(startYms);
@@ -93,6 +101,12 @@ public class EngineerService {
 							DateFormat endFormat=new SimpleDateFormat("yyyyMMdd");
 							Date endDate = endFormat.parse(endymd);
 
+							//単価と原価を千円単位→円単位
+							form.setWprice(form.getWprice()*1000);
+							int price = (int)form.getWprice();
+							form.setWcost(form.getWcost()*1000);
+							int cost = (int)form.getWcost();
+
 						//エンティティに登録
 							engineer.setProjectId(10);//
 							engineer.setCaseId(9);
@@ -101,10 +115,10 @@ public class EngineerService {
 							engineer.setEmployeeNo(3);
 							engineer.setClientId(3);
 							engineer.setEngineerName(form.getEngineerName());
-							engineer.setPrice(form.getPrice());
+							engineer.setPrice(price);
 							engineer.setExcessPrice(form.getExcessPrice());
 							engineer.setDeductionPrice(form.getDeductionPrice());
-							engineer.setCost(form.getCost());
+							engineer.setCost(cost);
 							engineer.setExcessCost(form.getExcessCost());
 							engineer.setDeductionCost(form.getDeductionCost());
 							engineer.setStartDate(startDate);
@@ -119,7 +133,7 @@ public class EngineerService {
 				Engineer engineer = new Engineer();
 				engineer.setProjectId(10);
 				engineer.setCaseId(9);
-				engineer.setBranchNo(6);
+				engineer.setBranchNo(10);
 
 				//開始予定日String→Date
 				String startyear =form.getStartYear();
@@ -137,13 +151,19 @@ public class EngineerService {
 				DateFormat endFormat=new SimpleDateFormat("yyyyMMdd");
 				Date endDate = endFormat.parse(endymd);
 
+			//単価と原価を千円単位→円単位
+				form.setWprice(form.getWprice()*1000);
+				int price = (int)form.getWprice();
+				form.setWcost(form.getWcost()*1000);
+				int cost = (int)form.getWcost();
+
 				engineer.setClientId(form.getClientId());
 				engineer.setEmployeeNo(form.getEmployeeNo());
 				engineer.setEngineerName(form.getEngineerName());
-				engineer.setPrice(form.getPrice());
+				engineer.setPrice(price);
 				engineer.setExcessPrice(form.getExcessPrice());
 				engineer.setDeductionPrice(form.getDeductionPrice());
-				engineer.setCost(form.getCost());
+				engineer.setCost(cost);
 				engineer.setExcessCost(form.getExcessCost());
 				engineer.setDeductionCost(form.getDeductionCost());
 				engineer.setStartDate(startDate);
@@ -159,7 +179,7 @@ public class EngineerService {
 				Integer subProjectId[] = new Integer[1];
 				subProjectId[0]=9;
 				Integer branchNo[] = new Integer[1];
-				branchNo[0]=6;
+				branchNo[0]=9;
 
 			engineerDao.deleteByPrimaryKey(projectId[0],subProjectId[0],branchNo[0]);
 			}

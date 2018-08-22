@@ -31,27 +31,27 @@
 								</tr>
 								<tr>
 									<td>単価</td>
-									<td th:text="*{price}"></td>
+									<td th:text="*{wprice}">千円</td>
 								</tr>
 								<tr>
 									<td>超過金額</td>
-									<td th:text="*{excessPrice}"></td>
+									<td th:text="*{excessPrice}">円</td>
 								</tr>
 								<tr>
 									<td>控除単価</td>
-									<td th:text="*{deductionPrice}"></td>
+									<td th:text="*{deductionPrice}">円</td>
 								</tr>
 								<tr>
 									<td>原価</td>
-									<td th:text="*{cost}"></td>
+									<td th:text="*{wcost}">千円</td>
 								</tr>
 								<tr>
 									<td>超過原価</td>
-									<td th:text="*{excessCost}"></td>
+									<td th:text="*{excessCost}">円</td>
 								</tr>
 								<tr>
 									<td>控除原価</td>
-									<td th:text="*{deductionCost}"></td>
+									<td th:text="*{deductionCost}">円</td>
 								</tr>
 								<tr>
 									<td>開始日</td>
@@ -63,13 +63,12 @@
 								</tr>
 								<tr>
 									<td>予定工数</td>
-									<td th:text="*{manHours}"></td>
+									<td th:text="*{manHours}">人月</td>
 								</tr>
 							</table>
 							<br />
 							<div class="align_center">
-							<input id="button" onClick="location.href='../subproject/caseDetail.html'" type="button" value="戻る"/>
-
+							<input type="submit" name="back" value="戻る"/>
 								<input  type="submit" value="削除" />
 							</div>
 						</div>

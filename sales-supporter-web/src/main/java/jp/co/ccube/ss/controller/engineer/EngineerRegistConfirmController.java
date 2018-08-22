@@ -13,7 +13,7 @@ import jp.co.ccube.ss.form.CaseDispatchEngineerForm;
 
 @Controller
 public class EngineerRegistConfirmController {
-	@RequestMapping(value = "/engineerRegistConfirm", method = RequestMethod.POST)
+	@RequestMapping(value = "/engineerConfirm", method = RequestMethod.POST)
 	public String userList(@ModelAttribute("form") CaseDispatchEngineerForm form,BindingResult result, Model model) throws ParseException {
 
 		return "subProject/subProjectDetailA";
