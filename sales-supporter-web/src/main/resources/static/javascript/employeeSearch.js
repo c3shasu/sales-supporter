@@ -24,5 +24,6 @@ function RadioValue(name) {
 	window.opener.document.getElementById("employeeCode").value = result1;
 	window.opener.document.getElementById("engineerName").value = result2;
 	window.opener.document.getElementById("Wcost").value = result3;
+
 	window.close();
 }
