@@ -13,7 +13,7 @@
     <result column="client_id" property="clientId" jdbcType="INTEGER" />
     <result column="branch_no" property="branchNo" jdbcType="INTEGER" />
     <result column="agreement_type" property="agreementType" jdbcType="BIT" />
-    <result column="delete_at" property="deleteAt" jdbcType="TIMESTAMP" />
+    <result column="deleted_at" property="deletedAt" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="CaseProjectResultMap" type="jp.co.ccube.ss.entity.CaseProject" >
     <!--
@@ -28,7 +28,7 @@
     <result column="client_id" property="clientId" jdbcType="INTEGER" />
     <result column="branch_no" property="branchNo" jdbcType="INTEGER" />
     <result column="agreement_type" property="agreementType" jdbcType="BIT" />
-    <result column="delete_at" property="deleteAt" jdbcType="TIMESTAMP" />
+    <result column="deleted_at" property="deletedAt" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="CaseDetailResultMap" type="jp.co.ccube.ss.entity.CaseDetail" >
     <!--
@@ -55,7 +55,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="kana" property="kana" jdbcType="VARCHAR" />
     <result column="classification_name" property="classificationName" jdbcType="VARCHAR" />
-    <result column="delete_at" property="deleteAt" jdbcType="TIMESTAMP" />
+    <result column="deleted_at" property="deletedAt" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -346,12 +346,13 @@
 <!-- 案件検索結果受け取り用 -->
 <select id="selectByCase" resultMap="CaseProjectResultMap" >
     select
-    p.project_name ,c.case_name, c.case_id
+    p.project_name ,c.case_name, c.case_id, c.project_id
     from project p inner join "case" c
     on p.project_id = c.project_id
     <where>
+    c.deleted_at is null
    	<if test="projectName != null">
-       p.project_name like '%' || #{projectName,jdbcType=VARCHAR} || '%'
+      and p.project_name like '%' || #{projectName,jdbcType=VARCHAR} || '%'
    	</if>
    	<if test="caseName != null">
    	   and c.case_name like '%' || #{caseName,jdbcType=VARCHAR} || '%'
@@ -359,29 +360,30 @@
     </where>
   </select>
   <select id = "selectByDetail" resultMap="CaseDetailResultMap">
-    select p.project_name, c.case_name, cl.company_name, cr."name", c.agreement_type, m.classification_name, c.case_id
+    select p.project_name, c.case_name, cl.company_name, cr."name", c.agreement_type, m.classification_name, c.case_id, c.project_id
 from "case" c  inner join project p on c.project_id = p.project_id
-    inner join client cl on p.client_id = cl.company_id
+    inner join client cl on c.client_id = cl.company_id
     inner join client_responsible cr  on c.branch_no = cr.branch_no
     inner join m_classification m on c.agreement_type = m.classification_id and m.classification_code = 'agreement_type'
     <where>
-      c.case_id = #{caseId,jdbcType=INTEGER}
+      c.case_id = #{caseId,jdbcType=INTEGER} and c.project_id = #{projectId,jdbcType=INTEGER}
 </where>
   </select>
 
   <select id = "selectByEditSearch" resultMap="CaseDetailResultMap">
-    select p.project_name, c.case_name, cl.company_name, cr."name", c.agreement_type, m.classification_name, c.case_id
+    select p.project_name, c.case_name, cl.company_name, cr."name", c.agreement_type, m.classification_name, c.case_id, c.project_id
 from "case" c  inner join project p on c.project_id = p.project_id
-    inner join client cl on p.client_id = cl.company_id
-    inner join client_responsible cr  on c.branch_no = cr.branch_no
+    inner join client cl on c.client_id = cl.company_id
+    inner join client_responsible cr on c.branch_no = cr.branch_no
     inner join m_classification m on c.agreement_type = m.classification_id and m.classification_code = 'agreement_type'
     <where>
       c.case_id = #{caseId,jdbcType=INTEGER}
+      and c.project_id = #{projectId,jdbcType=INTEGER}
 </where>
   </select>
   <select id="deletedAtUpdate" parameterType="java.lang.Integer">
      update "case"
      set  deleted_at = current_timestamp
-     where case_id = #{caseId,jdbcType=INTEGER}
+     where case_id = #{caseId,jdbcType=INTEGER} and project_id = #{projectId,jdbcType=INTEGER}
   </select>
 </mapper>
