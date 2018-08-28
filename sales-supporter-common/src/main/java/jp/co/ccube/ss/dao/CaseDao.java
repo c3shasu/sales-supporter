@@ -103,11 +103,12 @@ public interface CaseDao {
     int updateByPrimaryKey(Case record);
 
 	List<CaseProject> selectByCase(CaseProject record);
-	List<CaseDetail> selectByDetail(CaseDetail record);
+
+	CaseDetail selectByDetail(CaseDetail record);
 
 	CaseDetail selectByEditSearch(CaseDetail record);
 
-	void deletedAtUpdate(Integer id);
+	void deletedAtUpdate(CaseDetail record);
 
 
 
