@@ -27,7 +27,7 @@ public class ChargeEditContoller extends AbstractController {
 		return "/charge/chargeEdit";
 	}
 
-	//
+	// 案件担当者更新画面の戻るボタン
 	@RequestMapping(value = "/chargeEdit", params = "back", method = RequestMethod.POST)
 	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
 		return "/subproject/subProjectDetail2";
@@ -46,6 +46,12 @@ public class ChargeEditContoller extends AbstractController {
 		chargeService.editCharge(form);
 		// System.out.println(form.getProject_id());
 		return "/charge/chargeConfirm";
+	}
+
+	// 案件担当者更新完了画面の案件詳細へボタン
+	@RequestMapping(value = "/chargeConfirm", method = RequestMethod.POST)
+	public String chargeConfirm(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+		return "/subproject/subProjectDetail2";
 	}
 
 }

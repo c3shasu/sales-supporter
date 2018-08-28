@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>マスタ削除確認画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/SalesSupporter/css/base.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js}"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" th:href="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css}" />
+<script type="text/javascript" src="/javascript/datepicker.js" th:src="@{/javascript/datepicker.js}"></script>
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/classificationDeleteConfirm}" th:object="${form}">
+			<div>
+				<h3>マスタ削除確認</h3>
+				<table>
+					<tr>
+						<td>マスタコード</td>
+						<td th:text="*{classificationCode}"></td>
+					</tr>
+					<tr>
+						<td>マスタID</td>
+						<td th:text="*{classificationId}"></td>
+					</tr>
+					<tr>
+						<td>マスタ種別</td>
+						<td th:text="*{classificationName}"></td>
+					</tr>
+				</table>
+				<br />
+				<div class="align_center">
+					<input type="submit" name="back" value="戻る" /> <input name="confirm" type="submit" value="削除" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
+tml>

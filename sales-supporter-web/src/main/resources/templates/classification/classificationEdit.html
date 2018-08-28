@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>マスタ更新画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/SalesSupporter/css/base.css" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/classificationEdit}" th:object="${form}">
+			<div>
+				<h3>マスタ更新</h3>
+				<div id="output"></div>
+				<table>
+					<tr>
+						<td>分類コード</td>
+						<td><input type="text" th:field="*{classificationCode}" maxlength="10" size="20" /></td>
+						<td th:if="${#fields.hasErrors('classificationCode')}" th:errors="*{classificationCode}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>分類ID</td>
+						<td><input type="text" th:field="*{classificationId}" maxlength="10" size="20" /></td>
+						<td th:if="${#fields.hasErrors('classificationId')}" th:errors="*{classificationId}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>分類名</td>
+						<td><input type="text" th:field="*{classificationName}" maxlength="10" size="20" /></td>
+						<td th:if="${#fields.hasErrors('classificationName')}" th:errors="*{classificationName}" style="color: red"></td>
+					</tr>
+				</table>
+				<br />
+				<div class="align_center">
+					<input type="submit" name="back" value="戻る" /> <input name="confirm" type="submit" value="更新" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

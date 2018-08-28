@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>社員一覧画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/classificationList}" th:object="${form}">
+			<div>
+				<table>
+					<tr>
+						<td>種別コード</td>
+						<td><input type="text" th:value="*{classificationCode}" th:name="classificationCode" maxlength="10" /></td>
+						<td colspan="2" class="align_right"><input id="search" name="search" type="submit" value="検索" /></td>
+					</tr>
+				</table>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>選択</th>
+						<th>種別コード</th>
+						<th>種別ID</th>
+						<th>種別名</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obj : ${serachClassificationList}">
+						<td th:text="${obj.classificationCode}"></td>
+						<td th:text="${obj.classificationId}"></td>
+						<td th:text="${obj.classificationName}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

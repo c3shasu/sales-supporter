@@ -59,7 +59,6 @@ public class ChargeService {
 		Integer projectId[] = new Integer[1];
 		projectId[0] = 3;
 		Charge charge = new Charge();
-		System.out.println(projectId[0]);
 		charge = chargeDao.selectByPrimaryKey(projectId[0]);
 
 		// 開始予定日の設定
@@ -129,7 +128,7 @@ public class ChargeService {
 		chargeDao.updateByPrimaryKeySelective(charge);
 	}
 
-	// ～～エンジニア情報の削除～～
+	// ～～案件担当者情報の削除～～
 	public void chargeDelete(ChargeForm form) {
 		Integer projectId[] = new Integer[1];
 		projectId[0] = 3;

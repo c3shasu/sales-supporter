@@ -41,7 +41,6 @@ public class ChargeRegistController extends AbstractController {
 		// }
 		// return "entrusted/entrustedEdit";
 		// }
-		System.out.println("test2");
 		chargeService.registCharge(form);
 		// System.out.println(form.getProject_id());
 		return "charge/chargeConfirm";
