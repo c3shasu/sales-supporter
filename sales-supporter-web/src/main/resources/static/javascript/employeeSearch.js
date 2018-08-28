@@ -16,10 +16,13 @@ function RadioValue(name) {
 			break;
 		}
 	}
-//	 alert("value値は" + result1 + "です"+"value値は" + result2 + "です"+"value値は" + result3 + "です");
+	// value値を表示する
+	 alert("value値は" + result1 + "です");
+	//document.getElementById("target").value = result;
 
 	// value値を表示する
 	window.opener.document.getElementById("employeeCode").value = result1;
 	window.opener.document.getElementById("engineerName").value = result2;
-	window.opener.document.getElementById("Wcost").value = result3;}
+	window.opener.document.getElementById("Wcost").value = result3;
 	window.close();
+}
