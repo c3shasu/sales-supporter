@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
+<title>社員一覧画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>社員情報検索画面</title>
 <link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
 <script type="text/javascript" src="/javascript/employeeSearch.js" th:src="@{/javascript/employeeSearch.js}"></script>
 </head>
 <body>
-		<div th:name="childfrm" layout:fragment="contents" class="contents">
-		<form method="post" th:action="@{/chargeEmployeeSearch}" th:object="${form}">
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/engineerEmployeeSearch}" th:object="${form}">
 			<div>
 				<table>
 					<tr>
@@ -31,20 +31,22 @@
 					<tr>
 						<th></th>
 						<th>社員番号</th>
+						<th></th>
 						<th>氏名</th>
+						<th></th>
 						<th>部署</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="obj : ${serachEmployeeList}">
-						<td><input type="radio" th:value="${obj.employeeNo}" name="Check" /></td>
-						<td th:text="${obj.name}"></td>
-						<td th:text="${obj.department}"></td>
+						<td><input type="radio" th:value="${obj.employeeNo}" name="Check" /><td th:text="${obj.employeeNo}"></td></td>
+						<td><input type="text" th:value="${obj.name}" name="Name" style="display: none;"/><td th:text="${obj.name}"></td></td>
+						<td><input type="radio" th:value="${obj.cost}" name="Cost" style="display: none;"/><td th:text="${obj.department}"></td></td>
 					</tr>
 				</tbody>
 			</table>
-			<input type="button" onclick="getRadioValue('Check');" value="決定" />
-					</form>
-				</div>
+			<input type="button" onclick="RadioValue('Check','Name','Cost');" value="決定" />
+		</form>
+	</div>
 </body>
 </html>

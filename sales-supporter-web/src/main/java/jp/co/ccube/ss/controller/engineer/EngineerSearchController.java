@@ -49,7 +49,7 @@ public class EngineerSearchController {
 
 	@RequestMapping(value = "/engineerEmployeeSearch", method = RequestMethod.POST)
 	public ModelAndView employeeSearch(ModelAndView mav, @ModelAttribute("form") EmployeeForm form) {
-		mav.setViewName("engineer/engineerBpSearch");
+		mav.setViewName("engineer/engineerEmployeeSearch");
 
 		if (Pattern.compile("^[0-9]*$").matcher(form.getEmployeeNo()).find()) {
 			List<Employee> mavresult = employeeService.search(form);

@@ -99,4 +99,5 @@ public interface EmployeeDao {
 	Integer countByPrimaryKey(Integer employeeNo);
 
 	List<Employee> selectByEmployee(Employee recprd);
+	Employee employeeSelect(Integer employee_no);
 }

@@ -27,8 +27,6 @@ public class DispatchService {
 		// 編集対象検索
 		public   DispatchForm editDispatchSearch(DispatchForm form) throws ParseException {
 			//Integer projectId = form.getProjectID();
-	Integer projectId[] = new Integer[1];
-	projectId[0]=5;
 			Dispatch dispatch = new Dispatch();
 			dispatch.setProjectId(10);
 			dispatch.setCaseId(9);
@@ -168,7 +166,7 @@ public class DispatchService {
 						dispatch.setProduction(disform.getProduction());
 
 			// 情報をDBに保存
-						//dispatchDao.insertSelective(dispatch);
+						dispatchDao.insertSelective(dispatch);
 					}
 }
 

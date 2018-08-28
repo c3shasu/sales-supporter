@@ -44,8 +44,28 @@ public class EngineerForm {
 	private String endYms;
 private double wprice;
 private double wcost;
+private String companyName;
+private String bpCompanyName;
+private String department;
 
 
+public String getDepartment() {
+	return department;
+}
+
+public void setDepartment(String department) {
+	this.department = department;
+}
+
+private String employeeDepartment;
+
+public String getCompanyName() {
+	return companyName;
+}
+
+public void setCompanyName(String companyName) {
+	this.companyName = companyName;
+}
 	public Integer getProjectId() {
 		return projectId;
 	}
@@ -195,6 +215,22 @@ private double wcost;
 	}
 	public void setWcost(double wcost) {
 		this.wcost = wcost;
+	}
+
+	public String getBpCompanyName() {
+		return bpCompanyName;
+	}
+
+	public void setBpCompanyName(String bpCompanyName) {
+		this.bpCompanyName = bpCompanyName;
+	}
+
+	public String getEmployeeDepartment() {
+		return employeeDepartment;
+	}
+
+	public void setEmployeeDepartment(String employeeDepartment) {
+		this.employeeDepartment = employeeDepartment;
 	}
 
 }

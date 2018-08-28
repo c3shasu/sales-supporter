@@ -19,39 +19,39 @@
 							<table>
 								<tr>
 									<td width="150">社員番号</td>
-									<td th:text="*{employeeNo}"></td>
+									<td th:text="*{employeeDepartment}"></td>
 								</tr>
-								<!--  実装時に社員番号なのかBPコードなのか判断して表示<tr>
+								<tr>
 									<td>BPコード</td>
-									<td th:text="*{clientId}"></td>
-								</tr>!-->
+									<td th:text="*{bpCompanyName}"></td>
+								</tr>
 								<tr>
 									<td>エンジニア名</td>
 									<td th:text="*{engineerName}"></td>
 								</tr>
 								<tr>
 									<td>単価</td>
-									<td th:text="*{wprice}">千円</td>
+									<td><a th:text="*{wprice}"></a>千円</td>
 								</tr>
 								<tr>
 									<td>超過金額</td>
-									<td th:text="*{excessPrice}">円</td>
+									<td><a th:text="*{excessPrice}"></a>円</td>
 								</tr>
 								<tr>
 									<td>控除単価</td>
-									<td th:text="*{deductionPrice}">円</td>
+									<td><a th:text="*{deductionPrice}"></a>円</td>
 								</tr>
 								<tr>
 									<td>原価</td>
-									<td th:text="*{wcost}">千円</td>
+									<td><a th:text="*{wcost}"></a>千円</td>
 								</tr>
 								<tr>
 									<td>超過原価</td>
-									<td th:text="*{excessCost}">円</td>
+									<td><a th:text="*{excessCost}"></a>円</td>
 								</tr>
 								<tr>
 									<td>控除原価</td>
-									<td th:text="*{deductionCost}">円</td>
+									<td><a th:text="*{deductionCost}"></a>円</td>
 								</tr>
 								<tr>
 									<td>開始日</td>
@@ -63,7 +63,7 @@
 								</tr>
 								<tr>
 									<td>予定工数</td>
-									<td th:text="*{manHours}">人月</td>
+									<td><a th:text="*{manHours}"></a>人月</td>
 								</tr>
 							</table>
 							<br />

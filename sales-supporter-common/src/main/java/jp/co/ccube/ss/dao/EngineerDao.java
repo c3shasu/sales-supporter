@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import jp.co.ccube.ss.entity.Client;
 import jp.co.ccube.ss.entity.Engineer;
 import jp.co.ccube.ss.entity.EngineerExample;
 
@@ -97,5 +98,7 @@ public interface EngineerDao {
     int updateByPrimaryKey(Engineer record);
 
 
-Engineer deleteSelect(Engineer key);
+    Engineer select(Engineer key);
+Engineer employeeSelect(Engineer key);
+Client bpSelect(Integer company_id);
 }
