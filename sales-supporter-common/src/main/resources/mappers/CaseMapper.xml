@@ -359,26 +359,29 @@
    	</if>
     </where>
   </select>
+
+  <!-- 案件詳細 -->
   <select id = "selectByDetail" resultMap="CaseDetailResultMap">
-    select p.project_name, c.case_name, cl.company_name, cr."name", c.agreement_type, m.classification_name, c.case_id, c.project_id
-from "case" c  inner join project p on c.project_id = p.project_id
-    inner join client cl on c.client_id = cl.company_id
-    inner join client_responsible cr  on c.branch_no = cr.branch_no
+   select c.case_id, p.project_id, p.project_name, c.case_name, cl.company_name, cr."name", m.classification_name
+   from "case" c  inner join project p on c.project_id = p.project_id
+    inner join client cl on p.client_id = cl.company_id
+    inner join client_responsible cr  on c.branch_no = cr.branch_no and cr.company_id = c.client_id
     inner join m_classification m on c.agreement_type = m.classification_id and m.classification_code = 'agreement_type'
     <where>
-      c.case_id = #{caseId,jdbcType=INTEGER} and c.project_id = #{projectId,jdbcType=INTEGER}
+     p.project_id = #{projectId,jdbcType=INTEGER} and c.case_id = #{caseId,jdbcType=INTEGER}
 </where>
   </select>
 
+
+<!-- 案件更新 -->
   <select id = "selectByEditSearch" resultMap="CaseDetailResultMap">
-    select p.project_name, c.case_name, cl.company_name, cr."name", c.agreement_type, m.classification_name, c.case_id, c.project_id
-from "case" c  inner join project p on c.project_id = p.project_id
-    inner join client cl on c.client_id = cl.company_id
-    inner join client_responsible cr on c.branch_no = cr.branch_no
+    select c.case_id, p.project_id, p.project_name, c.case_name, cl.company_name, cr."name", m.classification_name
+   from "case" c  inner join project p on c.project_id = p.project_id
+    inner join client cl on p.client_id = cl.company_id
+    inner join client_responsible cr  on c.branch_no = cr.branch_no and cr.company_id = c.client_id
     inner join m_classification m on c.agreement_type = m.classification_id and m.classification_code = 'agreement_type'
     <where>
-      c.case_id = #{caseId,jdbcType=INTEGER}
-      and c.project_id = #{projectId,jdbcType=INTEGER}
+     p.project_id = #{projectId,jdbcType=INTEGER} and c.case_id = #{caseId,jdbcType=INTEGER}
 </where>
   </select>
   <select id="deletedAtUpdate" parameterType="java.lang.Integer">
@@ -386,4 +389,12 @@ from "case" c  inner join project p on c.project_id = p.project_id
      set  deleted_at = current_timestamp
      where case_id = #{caseId,jdbcType=INTEGER} and project_id = #{projectId,jdbcType=INTEGER}
   </select>
+
+  <!-- プロジェクト削除に伴う案件の削除 -->
+  <select id="projectDeletedAtUpdate" parameterType="java.lang.Integer">
+		update "case"
+		set deleted_at = current_timestamp
+		where deleted_at is null
+		and project_id = #{projectId,jdbcType=INTEGER}
+	</select>
 </mapper>

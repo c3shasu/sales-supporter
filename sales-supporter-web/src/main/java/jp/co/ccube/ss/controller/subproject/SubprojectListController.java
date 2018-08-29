@@ -1,6 +1,9 @@
 package jp.co.ccube.ss.controller.subproject;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,17 +37,25 @@ public class SubprojectListController extends AbstractController{
 	}
 
 	@RequestMapping(value = "/subProjectList", params="search",method =RequestMethod.POST)
-	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") SubprojectForm form, Model model){
+	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") SubprojectForm form, Model model, HttpSession session){
 
-		System.out.println("search testA");
+//		System.out.println("search testA");
 		mav.setViewName("/subproject/subProjectListSearch");
-		System.out.println("search testB");
+//		System.out.println("search testB");
 		List<CaseProject> result = subprojectService.searchCase(form);
+	//	System.out.println(result.get(0).getProjectId());
 		System.out.println("search testC456");
 		model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
 		System.out.println("search testCC123");
-		System.out.println(result.get(0).getCaseName());
-		mav.addObject("searchSubprojectList", result);
+
+		//検索結果の保存
+		session.setAttribute("searchList", result);
+		List<CaseProject> list = new ArrayList<CaseProject>();
+		list = (List<CaseProject>) session.getAttribute("searchList");
+
+		System.out.println(list.get(0).getCaseName());
+		System.out.println(list.get(1).getProjectId());
+		mav.addObject("result", result);
 		return mav;
 	}
 

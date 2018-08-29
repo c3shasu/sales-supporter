@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/baselayout">
+<head>
+<title>案件情報検索・一覧画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{subProjectList}" th:object="${form}">
+			<div>
+				<h3>顧客担当者検索画面</h3>
+				<table class="none">
+					<tr>
+						<td class="none">顧客担当者名</td>
+						<td class="none"><input type="text" maxlength="30"
+							name="caseName" id="department" value="" /></td>
+					</tr>
+				</table>
+				<input id="search" type="submit" name="search" value="検索" />
+			</div>
+			<br />
+			<h3>案件検索結果一覧</h3>
+			<table class="search">
+				<thead>
+					<tr>
+						<th class="right">選択</th>
+						<th class="data">案件名</th>
+						<th class="data">プロジェクト名</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obj:${searchSubprojectList}">
+						<td class="right">
+						<input type="checkbox"
+						th:value="${obj.caseId}"
+						th:name="Check"
+						th:field="*{CaseId}" />
+						</td>
+						<td th:text="${obj.caseName}"></td>
+						<td th:text="${obj.projectName}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<input id="detail" type="submit" name="detail" value="決定" />
+		</form>
+	</div>
+</body>
+</html>

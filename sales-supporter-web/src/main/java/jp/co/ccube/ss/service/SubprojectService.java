@@ -27,18 +27,18 @@ public class SubprojectService {
         System.out.println("aaa" + projectName + "bbb");
 
 		System.out.println("searchCase B");
-//		if(!projectName.isEmpty()){
+		if(!projectName.isEmpty()){
         subproject.setProjectName(projectName);
-//		}
+		}
 		System.out.println("searchCase C");
-//		if (!subprojectName.isEmpty()) {
+		if (!subprojectName.isEmpty()) {
 			subproject.setCaseName(subprojectName);
-//		}
+		}
 		System.out.println("searchCase End");
 		return caseDao.selectByCase(subproject);
 
 	}
-	//案件詳細表示
+	//案件詳細表示(案件名)
 	public CaseDetail detailCase(SubprojectForm form){
 		CaseDetail sub = new CaseDetail();
 //		List<CaseDetail> list = new ArrayList<CaseDetail>();

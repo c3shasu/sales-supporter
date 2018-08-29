@@ -105,10 +105,12 @@ public interface CaseDao {
 	List<CaseProject> selectByCase(CaseProject record);
 
 	CaseDetail selectByDetail(CaseDetail record);
-
 	CaseDetail selectByEditSearch(CaseDetail record);
 
 	void deletedAtUpdate(CaseDetail record);
+
+	//プロジェクト削除時
+	Case projectDeletedAtUpdate(Integer project_id);
 
 
 

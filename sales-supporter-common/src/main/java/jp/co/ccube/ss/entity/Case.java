@@ -36,14 +36,14 @@ public class Case extends CaseKey {
     private Boolean agreementType;
 
 
-    private Date deleteAt;
+    private Date deletedAt;
 
     public Date getDeleteAt() {
-		return deleteAt;
+		return deletedAt;
 	}
 
-	public void setDeleteAt(Date deleteAt) {
-		this.deleteAt = deleteAt;
+	public void setDeleteAt(Date deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
 	/**
