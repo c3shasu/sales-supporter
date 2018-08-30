@@ -70,7 +70,7 @@
 					</tr>
 					<tr id="firstBox2">
 						<td>BPコード</td>
-						<td><input type="text" th:field="*{clientId}" maxlength="10" size="22" id="bpCode" /><input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
+						<td><input type="text" th:field="*{clientId}" maxlength="10" size="22" id="bpCode" readonly="readonly"/><input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
 						<td th:if="${#fields.hasErrors('clientId')}" th:errors="*{clientId}" style="color: red"></td>
 					</tr>
 					<tr>

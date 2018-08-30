@@ -1,9 +1,11 @@
 package jp.co.ccube.ss.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import jp.co.ccube.ss.entity.Project;
 import jp.co.ccube.ss.entity.ProjectExample;
-import org.apache.ibatis.annotations.Param;
 
 public interface ProjectDao {
     /**
@@ -93,4 +95,8 @@ public interface ProjectDao {
      * @mbggenerated Mon Aug 27 15:02:39 JST 2018
      */
     int updateByPrimaryKey(Project record);
+
+	Integer deletedAtUpdate(Project record);
+
+	List<Project> selectByProject(Project project);
 }

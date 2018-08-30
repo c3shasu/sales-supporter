@@ -25,7 +25,7 @@ public class ChargeRegistController extends AbstractController {
 		return "charge/chargeRegist";
 	}
 
-	//案件詳細画面へ戻る
+	// 案件詳細画面へ戻る
 	@RequestMapping(value = "/chargeRegistConfirm", params = "back", method = RequestMethod.POST)
 	public String chargeRregistBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
 		return "subproject/subProjectDetail2";

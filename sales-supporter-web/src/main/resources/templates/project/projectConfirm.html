@@ -1,111 +1,24 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
-<meta charset="UTF-8">
-<title>プロジェクト情報登録完了画面</title>
-<link href="../../../../static/css/base.css"rel="stylesheet" />
-	<link href="../../../../static/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
-	<link href="../../../../static/css/list.css" rel="stylesheet">
-	<link href="../../../../static/css/login/login.css" rel="stylesheet" />
-	<script type="text/javascript" th:src="../../../../static/javascript/handsontable.full.js"></script>
-	<script type="text/javascript" th:src="../../../../static/javascript/handsontableutils.js"></script>
-	<script type="text/javascript" th:src="../../../../static/javascript/message.js"></script>
-	<script type="text/javascript" th:src="../../../../static/javascript/jquery-2.2.3.js"></script>
+<title>顧客情報登録完了画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
 </head>
 <body>
-     <input type="hidden" id="base_url" value="/SalesSupporter/" />
-	<div class="main_div">
-		<div class="header">
-			<div>
-		<ul>
-			<li class="logo">
-				<a href="/SalesSupporter/top">
-					<img width="280" height="45" src="../../../../static/images/logo.png" />
-				</a>
-			</li>
-			<li class="logout">
-				<form method="post" action="/SalesSupporter/logout">
-					<input type="submit" name="logout" class="button" value="ログアウト" />
-				<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /></form>
-			</li>
-		</ul>
-	</div>
-		</div>
-		<div class="menu">
-			<div>
-		<ul class="nav">
-			<li id="menu_top">トップ</li>
-			<li>プロジェクト
-				<ul class="child">
-					<li><a href="#">プロジェクト一覧</a></li>
-					<li><a href="#">プロジェクト登録</a></li>
-				</ul>
-			</li>
-			<li>案件
-				<ul class="child">
-					<li><a href="#">案件一覧</a></li>
-					<li><a href="#">案件登録</a></li>
-				</ul>
-			</li>
-			<li>顧客
-				<ul class="child">
-					<li><a href="clientList">顧客一覧</a></li>
-					<li><a href="clientRegist">顧客登録</a></li>
-				</ul>
-			</li>
-			<li>人材
-				<ul class="child">
-					<li><a href="employeeList">社員一覧</a></li>
-					<li><a href="employeeRegist">社員登録</a></li>
-					<li><a href="#">BP一覧</a></li>
-					<li><a href="#">BP登録</a></li>
-				</ul>
-			</li>
-			<li>管理
-				<ul class="child">
-					<li><a href="userList">ユーザ一覧</a></li>
-					<li><a href="userRegist">ユーザ登録</a></li>
-				</ul>
-			</li>
-			<li>サンプル
-				<ul class="child">
-					<li><a href="hello">Hello</a></li>
-					<li><a href="input">入力</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-		</div>
-		<div class="column">
-			<div class="main_contents">
-				<div class="contents">
-	<form>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/top}" th:object="${form}">
 			<div>
 				<table>
 					<tr>
-						<td nowrap>以下のプロジェクト情報の登録が完了しました。</td>
+						<td>プロジェクト情報の登録が完了しました。</td>
 					</tr>
 					<tr>
-						<td>SampleSystem</td>
-					</tr>
-					<tr>
-						<td colspan="2" class="align_right"><input id="regist" type="button" onClick="location.href='projectDetails.html'"value="プロジェクト情報一覧へ" /></td>
+						<td colspan="2" class="align_right"><input id="regist" type="submit" value="トップへ" /></td>
 					</tr>
 				</table>
 			</div>
-
-		<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /></form>
-	</div>
-			</div>
-		</div>
-		<div class="footer">
-			<footer>
-		<div>
-			<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
-		</div>
-	</footer>
-		</div>
+		</form>
 	</div>
 </body>
 </html>

@@ -10,6 +10,7 @@ import jp.co.ccube.ss.entity.CaseDetail;
 import jp.co.ccube.ss.entity.CaseExample;
 import jp.co.ccube.ss.entity.CaseKey;
 import jp.co.ccube.ss.entity.CaseProject;
+import jp.co.ccube.ss.entity.Project;
 
 
 @Mapper
@@ -110,7 +111,7 @@ public interface CaseDao {
 	void deletedAtUpdate(CaseDetail record);
 
 	//プロジェクト削除時
-	Case projectDeletedAtUpdate(Integer project_id);
+	void projectDeletedAtUpdate(Project project);
 
 
 

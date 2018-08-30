@@ -1,124 +1,36 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
-<meta charset="UTF-8">
-<title>プロジェクト情報削除確認画面</title>
-<link href="../../../../static/css/base.css"  rel="stylesheet" />
-	<link href="../../../../static/css/font-awesome.min.css"  rel="stylesheet" />
-	<link href="../../../../static/css/handsontable.full.css" rel="stylesheet" />
-	<link href="../../../../static/css/list.css" rel="stylesheet" />
-	<link href="../../../../static/css/tableNoneBorder.css" rel="stylesheet" />
-	<script type="text/javascript" src="../../../../static/javascript/jquery-2.2.3.js"></script>
-	<script type="text/javascript" src="../../../../static/javascript/message.js"></script>
-	<script type="text/javascript" src="../../../../static/javascript/menu.js"></script>
+<title>プロジェクト削除確認画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/SalesSupporter/css/base.css" rel="stylesheet" />
 </head>
 <body>
-     <input type="hidden" id="base_url" value="/SalesSupporter/" />
-	<div class="main_div">
-		<div class="header">
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{/projectDeleteConfirm}" th:object="${form}">
 			<div>
-		<ul>
-			<li class="logo">
-				<a href="/SalesSupporter/top">
-					<img width="280" height="45" src="../../../../static/images/logo.png" />
-				</a>
-			</li>
-			<li class="logout">
-				<form method="post" action="/SalesSupporter/logout">
-					<input type="submit" name="logout" class="button" value="ログアウト" />
-				<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /></form>
-			</li>
-		</ul>
-	</div>
-		</div>
-		<div class="menu">
-			<div>
-		<ul class="nav">
-			<li id="menu_top">トップ</li>
-			<li>プロジェクト
-				<ul class="child">
-					<li><a href="#">プロジェクト一覧</a></li>
-					<li><a href="#">プロジェクト登録</a></li>
-				</ul>
-			</li>
-			<li>案件
-				<ul class="child">
-					<li><a href="#">案件一覧</a></li>
-					<li><a href="#">案件登録</a></li>
-				</ul>
-			</li>
-			<li>顧客
-				<ul class="child">
-					<li><a href="clientList">顧客一覧</a></li>
-					<li><a href="clientRegist">顧客登録</a></li>
-				</ul>
-			</li>
-			<li>人材
-				<ul class="child">
-					<li><a href="employeeList">社員一覧</a></li>
-					<li><a href="employeeRegist">社員登録</a></li>
-					<li><a href="#">BP一覧</a></li>
-					<li><a href="#">BP登録</a></li>
-				</ul>
-			</li>
-			<li>管理
-				<ul class="child">
-					<li><a href="userList">ユーザ一覧</a></li>
-					<li><a href="userRegist">ユーザ登録</a></li>
-				</ul>
-			</li>
-			<li>サンプル
-				<ul class="child">
-					<li><a href="hello">Hello</a></li>
-					<li><a href="input">入力</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-		</div>
-		<div class="column">
-			<div class="main_contents">
-				<div class="contents">
-		<form  action="/SalesSupporter/userSearch">
-			<div><h3>プロジェクト情報削除確認画面</h3>
-				<table class="search">
+				<h3>プロジェクト削除確認</h3>
+				<table>
 					<tr>
 						<td>プロジェクトID</td>
-						<td>001</td>
+						<td th:text="*{project_id}"></td>
+						<td><input type="text" th:field="*{project_id}" /></td>
 					</tr>
 					<tr>
 						<td>プロジェクト名</td>
-						<td>SampleSystem</td>
+						<td th:text="*{projectName}"></td>
 					</tr>
 					<tr>
-						<td>顧客コード</td>
-						<td>136</td>
+						<td>顧客ID</td>
+						<td th:text="*{clientId}"></td>
 					</tr>
 				</table>
-				<table class = "none">
-				<tr>
-				   <td class="none">&nbsp;</td>
-				    <td class="none">&nbsp;</td>
-				</tr>
-				   <tr>
-						<td class="none">
-						<input id="edit" type="button" onClick="location.href='ProjectDetails.html'"  name="edit" value="戻る" />&nbsp;&nbsp;&nbsp;
-						<input id="edit" type="button" onClick="location.href='projectDeleteConfirm.html'" name="edit" value="削除" /></td>
-					</tr>
-				</table>
+				<br />
+				<div class="align_center">
+					<input type="submit" name="back" value="戻る" /> <input name="confirm" type="submit" value="削除" />
+				</div>
 			</div>
-
-		<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /></form>
-	</div>
-			</div>
-		</div>
-		<div class="footer">
-			<footer>
-		<div>
-			<a href="http://www.c-cube.co.jp/" target="_blank">Copyright © 2018 C-Cube Soft All Rights Reserved.</a>
-		</div>
-	</footer>
-		</div>
+		</form>
 	</div>
 </body>
 </html>
