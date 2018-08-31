@@ -15,6 +15,7 @@ public class EngineerForm {
 	private Integer employeeNo;
 	private Integer clientId;
 	private String engineerName;
+	private String bpEngineerName;
 	@NotNull
 	private Integer price;
 	@NotNull
@@ -44,10 +45,10 @@ public class EngineerForm {
 	private String endYms;
 private double wprice;
 private double wcost;
+private double bpWcost;
 private String companyName;
 private String bpCompanyName;
 private String department;
-
 
 public String getDepartment() {
 	return department;
@@ -231,6 +232,22 @@ public void setCompanyName(String companyName) {
 
 	public void setEmployeeDepartment(String employeeDepartment) {
 		this.employeeDepartment = employeeDepartment;
+	}
+
+	public String getBpEngineerName() {
+		return bpEngineerName;
+	}
+
+	public void setBpEngineerName(String bpEngineerName) {
+		this.bpEngineerName = bpEngineerName;
+	}
+
+	public double getBpWcost() {
+		return bpWcost;
+	}
+
+	public void setBpWcost(double bpWcost) {
+		this.bpWcost = bpWcost;
 	}
 
 }

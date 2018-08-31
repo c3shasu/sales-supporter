@@ -75,65 +75,65 @@
 				<!-- 表示非表示切り替え -->
 				<tr id="firstBox">
 					<th>BPコード</th>
-					<td><input  type="text" class="form-control" name="parent_input" th:field="*{clientId}" id="bpCode" disabled="disabled" /> <input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
+					<td><input  type="text" class="form-control" name="parent_input" th:field="*{clientId}" id="bpCode" readonly="readonly" /> <input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
 				</tr>
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox">
 					<th>社員番号</th>
-					<td><input type="text" class="employeeCode" th:field="*{employeeNo}" id="employeeCode" disabled="disabled" /> <input type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
+					<td><input type="text" class="employeeCode" th:field="*{employeeNo}" id="employeeCode" readonly="readonly" /> <input type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
 				</tr>
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox2">
 					<td >エンジニア名</td>
-					<td><input  type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" disabled="disabled" /></td>
+					<td><input  type="text" maxlength="10" id="engineerName" name="engineerName" th:field="*{engineerName}" readonly="readonly" /></td>
 				</tr>
 				<tr id="firstBox2">
 					<td >エンジニア名</td>
-					<td><input  type="text" maxlength="10" id="" name="" th:field="*{engineerName}" /></td>
+					<td><input  type="text" maxlength="10" id="" name="" th:field="*{bpEngineerName}" /></td>
 				</tr>
 				<tr>
 					<td >単価</td>
-					<td><input type="text" maxlength="10" id="" name="" th:field="*{wprice}" size="20" />千円</td>
+					<td><input type="text" maxlength="10" id="price" name="" th:field="*{wprice}" size="20" />千円</td>
 				</tr>
 				<tr>
 					<td >超過金額</td>
-					<td><input type="text" maxlength="10" id="" name="" th:field="*{excessPrice}" size="20" />円</td>
+					<td><input type="text" maxlength="10" id="excessPrice" name="" th:field="*{excessPrice}" size="20" />円</td>
 				</tr>
 				<tr>
 					<td>控除単価</td>
-					<td><input type="text" maxlength="10" id="startDate" name="startDate" th:field="*{deductionPrice}" size="20" />円</td>
+					<td><input type="text" maxlength="10" id="deductionPrice" name="" th:field="*{deductionPrice}" size="20" />円</td>
 				</tr>
 				<!-- 表示非表示切り替え -->
 				<tr id="secondBox3">
 					<td>原価</td>
-					<td><input type="text" maxlength="10" id="Wcost" name="Wcost" th:field="*{Wcost}" size="20" disabled="disabled" />千円</td>
+					<td><input type="text" maxlength="10" id="Wcost" name="Wcost" th:field="*{wcost}" size="20" readonly="readonly" />千円</td>
 				</tr>
 				<tr id="firstBox3">
 					<td>原価</td>
-					<td><input type="text" maxlength="10" id=""  th:field="*{Wcost}" size="20" />千円</td>
+					<td><input type="text" maxlength="10" id="cost"  th:field="*{bpWcost}" size="20" />千円</td>
 				</tr>
 				<tr>
 					<td>超過原価</td>
-					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{excessCost}" size="20" />円</td>
+					<td><input type="text" maxlength="10" id="excessCost" name="endDate" th:field="*{excessCost}" size="20" />円</td>
 				</tr>
 				<tr>
 					<td>控除原価</td>
-					<td><input type="text" maxlength="10" id="endDate" name="endDate" th:field="*{deductionCost}" size="20" />円</td>
+					<td><input type="text" maxlength="10" id="deductionCost" name="endDate" th:field="*{deductionCost}" size="20" />円</td>
 				</tr>
 				<tr>
 					<td>開始日</td>
-					<td><input type="text" th:field="*{engineerStartYear}" class="year" size="2" />年 <input type="text" th:field="*{engineerStartMonth}" class="month" size="1" />月<input type="text" th:field="*{engineerStartDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
+					<td><input type="text" th:field="*{StartYear}" class="year" size="2" />年 <input type="text" th:field="*{StartMonth}" class="month" size="1" />月<input type="text" th:field="*{StartDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
 						style="display: none;" /></td>
 				</tr>
 				<tr>
 					<td>終了日</td>
-					<td><input type="text" th:field="*{engineerEndYear}" class="year" size="2" />年 <input type="text" th:field="*{engineerEndMonth}" class="month" size="1" />月<input type="text" th:field="*{engineerEndDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
+					<td><input type="text" th:field="*{EndYear}" class="year" size="2" />年 <input type="text" th:field="*{EndMonth}" class="month" size="1" />月<input type="text" th:field="*{EndDay}" class="date" size="1" />日<input type="text" value="" class="datepicker"
 						style="display: none;" /></td>
 				</tr>
 				<tr>
 					<td>予定工数</td>
 					<td>
-					<input type="text" maxlength="10" id="manHour" name="manHour" th:field="*{manHours}" size="20" />人月
+					<input type="text" maxlength="10" id="manHours" name="manHour" th:field="*{manHours}" size="20" />人月
 					</td>
 				</tr>
 			</table>

@@ -31,7 +31,9 @@ public class EngineerEditController {
 		engineerService.engineerSearch(form);
 		if(form.getEmployeeNo()==null){
 			mav.setViewName("engineer/engineerBpEdit");}
+		if(form.getClientId()==null){
 		mav.setViewName("engineer/engineerEmployeeEdit");
+		}
 		mav.addObject("ya", form);
 			return mav;
 	}
@@ -43,7 +45,8 @@ public class EngineerEditController {
 }
 
 	@RequestMapping(value = "/engineerEditConfirm", params = "back", method = RequestMethod.POST)
-	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+	public String EngineerEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
 		return "/subproject/subProjectDetailA";
 	}
+
 }

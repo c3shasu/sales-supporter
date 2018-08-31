@@ -29,7 +29,7 @@ public class DispatchService {
 			//Integer projectId = form.getProjectID();
 			Dispatch dispatch = new Dispatch();
 			dispatch.setProjectId(10);
-			dispatch.setCaseId(9);
+			dispatch.setCaseId(11);
 			dispatch = dispatchDao.selectByPrimaryKey(dispatch);
 		//開始予定日の設定
 			SimpleDateFormat starty = new SimpleDateFormat("yyyy");
@@ -113,8 +113,8 @@ public class DispatchService {
 
 		//エンティティに登録
 
-			dispatch.setProjectId(3);//
-			dispatch.setCaseId(form.getCaseID());
+			dispatch.setProjectId(10);
+			dispatch.setCaseId(11);
 			dispatch.setStartDate(startDate);
 			dispatch.setEndDate(endDate);
 			dispatch.setLowerTime(LowerrTime);
@@ -158,7 +158,7 @@ public class DispatchService {
 
 					//エンティティに登録
 						dispatch.setProjectId(10);
-						dispatch.setCaseId(10);
+						dispatch.setCaseId(11);
 						dispatch.setStartDate(startDate);
 						dispatch.setEndDate(endDate);
 						dispatch.setLowerTime(LowerrTime);

@@ -9,10 +9,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js" th:src="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js}"></script>
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" th:href="@{http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css}" />
 <script type="text/javascript" src="/javascript/datepicker.js" th:src="@{/javascript/datepicker.js}"></script>
-
-
+<!--  <script type="text/javascript" src="/javascript/comma3.js" th:src="@{/javascript/comma3.js}"></script>-->
+<script type="text/javascript" src="/javascript/engineerComma3.js" th:src="@{/javascript/engineerComma3.js}"></script>
 </head>
-<body>
+<body onload="num3('excessPrice');">
 	<div layout:fragment="contents" class="contents">
 		<form method="post" th:action="@{/engineerEditConfirm}" th:object="${form}">
 			<div>
@@ -26,37 +26,37 @@
 					</tr>
 					<tr>
 						<td>エンジニア名</td>
-						<td><input  type="text" maxlength="10" id="" name="engineerName" th:field="*{engineerName}" /></td>
+						<td><input  type="text" maxlength="10"  name="engineerName" th:field="*{engineerName}" /></td>
 						<td th:if="${#fields.hasErrors('engineerName')}" th:errors="*{engineerName}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>単価</td>
-						<td><input type="text" th:field="*{Wprice}" maxlength="10" size="17" />千円</td>
+						<td><input type="text" th:field="*{Wprice}" maxlength="10" size="17" id="price" />千円</td>
 						<td th:if="${#fields.hasErrors('price')}" th:errors="*{Wprice}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>超過金額</td>
-						<td><input type="text" th:field="*{ExcessPrice}" maxlength="10" />円</td>
+						<td><input type="text" th:field="*{ExcessPrice}" maxlength="10" id="excessPrice" />円</td>
 						<td th:if="${#fields.hasErrors('ExcessPrice')}" th:errors="*{ExcessPrice}" style="color: red"></td>
 					</tr>
 					<tr>
-						<td>控除単価名</td>
-						<td><input type="text" maxlength="10"  th:field="*{DeductionPrice}" size="20" />円</td>
+						<td>控除単価</td>
+						<td><input type="text" maxlength="10"  th:field="*{DeductionPrice}" size="20" id="deductionPrice"/>円</td>
 						<td th:if="${#fields.hasErrors('DeductionPrice')}" th:errors="*{DeductionPrice}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>原価</td>
-						<td><input type="text" maxlength="10" id="" name="" th:field="*{wcost}" size="20" />円</td>
+						<td><input type="text" maxlength="10"  th:field="*{wcost}" size="20" id="cost"/>円</td>
 						<td th:if="${#fields.hasErrors('wcost')}" th:errors="*{wcost}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>超過原価</td>
-						<td><input type="text" maxlength="10"  th:field="*{ExcessCost}" size="20" />円</td>
+						<td><input type="text" maxlength="10"  th:field="*{ExcessCost}" size="20" id="excessCost"/>円</td>
 						<td th:if="${#fields.hasErrors('ExcessCost')}" th:errors="*{ExcessCost}" style="color: red"></td>
 					</tr>
 					<tr>
 						<td>控除原価</td>
-						<td><input type="text" maxlength="10"  th:field="*{DeductionCost}" size="20" />円</td>
+						<td><input type="text" maxlength="10"  th:field="*{DeductionCost}" size="20" id="deductionCost"/>円</td>
 						<td th:if="${#fields.hasErrors('DeductionCost')}" th:errors="*{DeductionCost}" style="color: red"></td>
 					</tr>
 					<tr>
@@ -75,7 +75,7 @@
 					</tr>
 					<tr>
 						<td>予定工数</td>
-						<td><input type="text" th:field="*{ManHours}" width="50" />人月</td>
+						<td><input type="text" th:field="*{ManHours}" width="50" id="manHours"/>人月</td>
 						<td th:if="${#fields.hasErrors('ManHours')}" th:errors="*{ManHours}" style="color: red"></td>
 					</tr>
 				</table>

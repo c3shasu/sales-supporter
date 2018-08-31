@@ -14,7 +14,6 @@ import jp.co.ccube.ss.dao.EngineerDao;
 import jp.co.ccube.ss.entity.Client;
 import jp.co.ccube.ss.entity.Employee;
 import jp.co.ccube.ss.entity.Engineer;
-import jp.co.ccube.ss.form.CaseDispatchEngineerForm;
 import jp.co.ccube.ss.form.EngineerForm;
 
 @Service
@@ -30,7 +29,7 @@ public class EngineerService {
 		Engineer engineer = new Engineer();
 		engineer.setProjectId(10);
 		engineer.setCaseId(9);
-		engineer.setBranchNo(9);
+		engineer.setBranchNo(29);
 		engineer = engineerDao.select(engineer);
 
 		 //社員番号を部署名に
@@ -39,18 +38,15 @@ public class EngineerService {
 			 employee = employeeDao.employeeSelect(engineer.getEmployeeNo());
 				String employeeDepartment = employee.getDepartment();
 				form.setDepartment(employeeDepartment);
-		 }else{
-				form.setDepartment("-");
-			}
+		 }
 
 		// BPコードを会社名に
 		if (engineer.getClientId() != null) {
+			System.out.println("1");
 			Client client = new Client();
 			client = clientDao.bpSelect(engineer.getClientId());
 			String companyName = client.getCompanyName();
 			form.setCompanyName(companyName);
-		}else{
-			form.setCompanyName("-");
 		}
 
 		// 開始予定日の設定
@@ -111,25 +107,25 @@ public class EngineerService {
 		form.setEndDay(endday);
 		form.setBpCompanyName(bpCompanyName);
 		form.setEmployeeDepartment(employeeDepartment);
+
 		return form;
 	}
 
 	// ～～エンジニア情報の登録～～
-	public void insertEngineer(CaseDispatchEngineerForm form) throws ParseException {
-
+	public void insertEngineer(EngineerForm form) throws ParseException {
 		Engineer engineer = new Engineer();
 		// 開始日String→Date
-		String startyear = form.getEngineerStartYear();
-		String startmonth = form.getEngineerStartMonth();
-		String startday = form.getEngineerStartDay();
+		String startyear = form.getStartYear();
+		String startmonth = form.getStartMonth();
+		String startday = form.getStartDay();
 		String startymd = startyear + startmonth + startday;
 		DateFormat startFormat = new SimpleDateFormat("yyyyMMdd");
 		Date startDate = startFormat.parse(startymd);
 
 		// 終了日String→Date
-		String endyesr = form.getEngineerEndYear();
-		String endmonth = form.getEngineerEndMonth();
-		String endday = form.getEngineerEndDay();
+		String endyesr = form.getEndYear();
+		String endmonth = form.getEndMonth();
+		String endday = form.getEndDay();
 		String endymd = endyesr + endmonth + endday;
 		DateFormat endFormat = new SimpleDateFormat("yyyyMMdd");
 		Date endDate = endFormat.parse(endymd);
@@ -137,21 +133,38 @@ public class EngineerService {
 		// 単価と原価を千円単位→円単位
 		form.setWprice(form.getWprice() * 1000);
 		int price = (int) form.getWprice();
-		form.setWcost(form.getWcost() * 1000);
-		int cost = (int) form.getWcost();
+
 
 		// エンティティに登録
 		engineer.setProjectId(10);//
 		engineer.setCaseId(9);
-		// engineer.setEmployeeNo(form.getEmployeeNo());
-		// engineer.setClientId(form.getClientId());
-		engineer.setEmployeeNo(3);
-		engineer.setClientId(3);
-		engineer.setEngineerName(form.getEngineerName());
-		engineer.setPrice(price);
+if(form.getEmployeeNo()!=null){
+		engineer.setEmployeeNo(form.getEmployeeNo());
+}
+if(form.getClientId()!=null){
+		engineer.setClientId(form.getClientId());
+}
+if(form.getEngineerName()!=null){
+		engineer.setEngineerName(form.getEngineerName());System.out.println("社員"+form.getEngineerName());
+}
+if(form.getBpEngineerName()!=""){
+	engineer.setEngineerName(form.getBpEngineerName());System.out.println("bp"+form.getBpEngineerName());
+}
+		engineer.setPrice(price);System.out.println();
 		engineer.setExcessPrice(form.getExcessPrice());
 		engineer.setDeductionPrice(form.getDeductionPrice());
-		engineer.setCost(cost);
+
+		if(form.getWcost()!=0.0){
+		form.setWcost(form.getWcost() * 1000);// 単価と原価を千円単位→円単位
+		int cost = (int) form.getWcost();
+		engineer.setCost(cost);System.out.println("社員原価"+engineer.getCost());
+		}
+
+		if(form.getBpWcost()!=0.0){
+		form.setBpWcost(form.getBpWcost() * 1000);// 単価と原価を千円単位→円単位
+		int bpCost = (int) form.getBpWcost();
+		engineer.setCost(bpCost);System.out.println("bp原価"+engineer.getCost());
+		}
 		engineer.setExcessCost(form.getExcessCost());
 		engineer.setDeductionCost(form.getDeductionCost());
 		engineer.setStartDate(startDate);
@@ -166,7 +179,7 @@ public class EngineerService {
 		Engineer engineer = new Engineer();
 		engineer.setProjectId(10);
 		engineer.setCaseId(9);
-		engineer.setBranchNo(10);
+		engineer.setBranchNo(29);
 
 		// 開始予定日String→Date
 		String startyear = form.getStartYear();
@@ -194,7 +207,7 @@ public class EngineerService {
 		engineer.setEmployeeNo(form.getEmployeeNo());
 		engineer.setEngineerName(form.getEngineerName());
 		engineer.setPrice(price);
-		engineer.setExcessPrice(form.getExcessPrice());
+		engineer.setExcessPrice(form.getExcessPrice());System.out.println(engineer.getExcessPrice());
 		engineer.setDeductionPrice(form.getDeductionPrice());
 		engineer.setCost(cost);
 		engineer.setExcessCost(form.getExcessCost());
@@ -212,7 +225,7 @@ public class EngineerService {
 		Integer subProjectId[] = new Integer[1];
 		subProjectId[0] = 9;
 		Integer branchNo[] = new Integer[1];
-		branchNo[0] = 9;
+		branchNo[0] = 29;
 
 		engineerDao.deleteByPrimaryKey(projectId[0], subProjectId[0], branchNo[0]);
 	}

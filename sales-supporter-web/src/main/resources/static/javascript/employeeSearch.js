@@ -17,7 +17,7 @@ function RadioValue(name) {
 		}
 	}
 	// value値を表示する
-	 alert("value値は" + result1 + "です");
+	// alert("value値は" + result1 + "です");
 	//document.getElementById("target").value = result;
 
 	// value値を表示する

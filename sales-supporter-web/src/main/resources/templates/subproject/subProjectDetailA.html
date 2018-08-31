@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
+<head>
+<title>案件情報詳細画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
+<link href="/SalesSupporter/css/paging.css" rel="stylesheet" />
+<script type="text/javascript" src="/SalesSupporter/javascript/paging.js"></script>
+</head>
+<body>
+	<div layout:fragment="contents" class="contents">
+		<input type="hidden" id="base_url" value="/SalesSupporter/" />
+		<div class="main_div">
+			<div class="column">
+				<div class="main_contents">
+					<div class="contents">
+						<form method="post" th:action="@{/dispatchEdit}">
+							<div>
+								<h3>案件詳細</h3>
+								<table class="search">
+									<tr>
+										<td>プロジェクト名</td>
+										<td>○○プロジェクト</td>
+									</tr>
+									<tr>
+										<td>案件名</td>
+										<td>××案件</td>
+									</tr>
+									<tr>
+										<td>顧客名</td>
+										<td>ABC株式会社</td>
+									</tr>
+									<tr>
+										<td>顧客担当者</td>
+										<td>佐藤一郎</td>
+									</tr>
+									<tr>
+										<td>契約種別</td>
+										<td><a href="dispatchEdit" type="submit">派遣・SES</a></td>
+									</tr>
+								</table>
+								<input id="confirm" type="button" onClick="location.href='../subproject/subprojectEdit.html'" value="更新" />
+								<h3>案件担当者</h3>
+								<table>
+									<tbody id="list_body">
+										<tr>
+											<th>社員番号</th>
+											<th>名前</th>
+											<th>所属</th>
+											<th>開始日</th>
+											<th>終了日</th>
+											<th></th>
+										</tr>
+										<tr>
+											<td>123</td>
+											<td><a href="engineerEdit">鈴木太郎</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="button" onClick="location.href='EngineerDeleteSearch'" type="button" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td>100</td>
+											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
+											<td>企画開発部</td>
+											<td>2018/07/10</td>
+											<td>2018/08/31</td>
+											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
+										</tr>
+										<tr>
+											<td colspan="6" class="align_center"><input id="confirm" type="button" onClick="location.href='engineerAdd'" value="追加" /></td>
+										</tr>
+									</tbody>
+								</table>
+								<div id="page_ctrl">
+									<ul id="page_before">
+										<li id="page_first">|&lt;</li>
+										<li id="page_prev">&lt;</li>
+									</ul>
+									<ul id="page_number"></ul>
+									<ul id="page_after">
+										<li id="page_next">&gt;</li>
+										<li id="page_last">&gt;|</li>
+									</ul>
+								</div>
+								<br /> <input id="confirm" type="button" value="戻る" />
+							</div>
+						</form>
+						<input id="confirm" type="button" value="削除" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.ccube.ss.entity.Dispatch;
 import jp.co.ccube.ss.form.CaseDispatchEngineerForm;
-import jp.co.ccube.ss.form.ChargeForm;
+import jp.co.ccube.ss.form.EngineerForm;
 import jp.co.ccube.ss.service.DispatchService;
 import jp.co.ccube.ss.service.EngineerService;
 
@@ -37,20 +36,19 @@ public class EngineerRegistController {
 	}
 
 	@RequestMapping(value = "/engineerAdd", method = RequestMethod.GET)
-	public String userList(@ModelAttribute("form") CaseDispatchEngineerForm form) throws ParseException {
-		// 正常系
+	public String userList(@ModelAttribute("form") EngineerForm form) throws ParseException {
 
 		return "engineer/engineerDetailSearch";
 	}
 
 	@RequestMapping(value = "/engineerAddConfirm", method = RequestMethod.POST)
-	public String userList(@ModelAttribute("form")Dispatch dispatch, CaseDispatchEngineerForm form,BindingResult result, HttpSession session) throws ParseException {
+	public String userList(@ModelAttribute("form")EngineerForm form,BindingResult result) throws ParseException {
 
 		engineerService.insertEngineer(form);
 		return "engineer/engineerRegistConfirm";
 	}
 	@RequestMapping(value = "/engineerAddConfirm", params = "back", method = RequestMethod.POST)
-	public String chargeEditBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
+	public String chargeEditBack(@ModelAttribute("form") EngineerForm form, BindingResult result, Model model) {
 		return "/subproject/subProjectDetailA";
 	}
 
