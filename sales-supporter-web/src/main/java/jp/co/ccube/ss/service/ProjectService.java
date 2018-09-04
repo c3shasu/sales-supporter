@@ -66,7 +66,7 @@ public class ProjectService {
 			Client client = new Client();
 			client = clientDao.bpSelect(project.getClientId());
 			String companyName = client.getCompanyName();
-			System.out.println(companyName);
+			//System.out.println(companyName);
 			form.setCompanyName(companyName);
 
 			form.setProject_id(id[0]);

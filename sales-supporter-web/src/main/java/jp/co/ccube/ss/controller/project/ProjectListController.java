@@ -47,7 +47,7 @@ public class ProjectListController extends AbstractController {
 		if (form.getCheck().length != 1) {
 			// model.addAttribute("checkItems",
 			// CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-			return "/client/clientList";
+			return "/project/projectList";
 		}
 		model.addAttribute("form", projectService.projectSearch(form));
 		// model.addAttribute("checkItems",
@@ -63,7 +63,7 @@ public class ProjectListController extends AbstractController {
 		if (form.getCheck().length != 1) {
 			// model.addAttribute("checkItems",
 			// CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-			return "/client/clientList";
+			return "/project/projectList";
 		}
 		model.addAttribute("form", projectService.projectSearch(form));
 		// model.addAttribute("checkItems",
@@ -79,7 +79,7 @@ public class ProjectListController extends AbstractController {
 		if (form.getCheck().length != 1) {
 			// model.addAttribute("checkItems",
 			// CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-			return "/client/clientList";
+			return "/project/projectList";
 		}
 		model.addAttribute("form", projectService.projectDetail(form));
 

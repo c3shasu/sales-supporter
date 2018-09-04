@@ -3,7 +3,7 @@
 <head>
 <title>マスタ登録画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/SalesSupporter/css/base.css" rel="stylesheet" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
@@ -19,11 +19,11 @@
 					</tr>
 					<tr>
 						<td>分類ID</td>
-						<td>分類名</td>
-					</tr>
-					<tr>
 						<td><input type="text" th:field="*{classificationId}" maxlength="10" /></td>
 						<td th:if="${#fields.hasErrors('classificationId')}" th:errors="*{classificationId}" style="color: red"></td>
+					</tr>
+					<tr>
+						<td>分類名</td>
 						<td><input type="text" th:field="*{classificationName}" maxlength="10" /></td>
 						<td th:if="${#fields.hasErrors('classificationName')}" th:errors="*{classificationName}" style="color: red"></td>
 					</tr>

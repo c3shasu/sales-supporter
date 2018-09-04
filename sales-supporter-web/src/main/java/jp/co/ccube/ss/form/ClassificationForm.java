@@ -10,6 +10,8 @@ public class ClassificationForm {
 	@NotEmpty
 	private String classificationName;
 
+	private Integer[] check;
+
 	public String getClassificationCode() {
 		return classificationCode;
 	}
@@ -32,6 +34,14 @@ public class ClassificationForm {
 
 	public void setClassificationName(String classificationName) {
 		this.classificationName = classificationName;
+	}
+
+	public Integer[] getCheck() {
+		return check;
+	}
+
+	public void setCheck(Integer[] check) {
+		this.check = check;
 	}
 
 }

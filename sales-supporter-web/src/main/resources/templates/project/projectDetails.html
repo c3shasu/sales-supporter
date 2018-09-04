@@ -36,8 +36,8 @@
 						<tr>
 							<th>選択</th>
 							<th>案件名</th>
-							<th>顧客コード</th>
-							<th>顧客名</th>
+							<th>開始日</th>
+							<th>終了予定日</th>
 							<th>売上金額</th>
 						</tr>
 					</thead>
@@ -45,12 +45,9 @@
 						<tr th:each="obj : ${serachProjectList}">
 							<td><input type="checkbox" th:value="${obj.projectId}" th:name="Check" th:field="*{Check}" /></td>
 							<td th:text="${obj.projectName}"></td>
-							<td th:text="${obj.clientId}"></td>
+
 						</tr>
-						<tr>
-							<td></td>
-							<td class="align_center"><input id="detail" type="submit" name="detail" value="詳細" /></td>
-						</tr>
+
 					</tbody>
 				</table>
 				<div class="align_center">

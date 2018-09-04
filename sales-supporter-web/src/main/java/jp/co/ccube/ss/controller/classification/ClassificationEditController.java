@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ccube.ss.form.ClassificationForm;
 import jp.co.ccube.ss.service.ClassificationService;
@@ -20,11 +19,11 @@ public class ClassificationEditController {
 	ClassificationService classificationService;
 
 	// 編集画面遷移処理
-	@RequestMapping(value = "/classificationSearch", method = RequestMethod.GET)
-	public String classificationEdit(ModelAndView mav, @ModelAttribute("form") ClassificationForm form, Model model) {
-		model.addAttribute("form", classificationService.classificationSearch(form));
-		return "/classification/classificationEdit";
-	}
+//	@RequestMapping(value = "/classificationSearch", method = RequestMethod.GET)
+//	public String classificationEdit(ModelAndView mav, @ModelAttribute("form") ClassificationForm form, Model model) {
+//		model.addAttribute("form", classificationService.classificationSearch(form));
+//		return "/classification/classificationEdit";
+//	}
 
 	// マスタ更新処理
 	@RequestMapping(value = "/classificationEdit", params = "confirm", method = RequestMethod.POST)

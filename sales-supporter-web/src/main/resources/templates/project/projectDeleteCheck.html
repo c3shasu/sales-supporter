@@ -3,7 +3,7 @@
 <head>
 <title>プロジェクト削除確認画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/SalesSupporter/css/base.css" rel="stylesheet" />
+<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
@@ -14,7 +14,6 @@
 					<tr>
 						<td>プロジェクトID</td>
 						<td th:text="*{project_id}"></td>
-						<td><input type="text" th:field="*{project_id}" /></td>
 					</tr>
 					<tr>
 						<td>プロジェクト名</td>
@@ -25,6 +24,7 @@
 						<td th:text="*{clientId}"></td>
 					</tr>
 				</table>
+				<input type="hidden" th:field="*{project_id}" />
 				<br />
 				<div class="align_center">
 					<input type="submit" name="back" value="戻る" /> <input name="confirm" type="submit" value="削除" />

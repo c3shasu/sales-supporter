@@ -1,5 +1,7 @@
 package jp.co.ccube.ss.form;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,6 +17,11 @@ public class ProjectForm {
 	private Integer[] check;
 
 	private String companyName;
+
+	private Date startDate;
+
+	private Date endDate;
+
 
 	public Integer getProject_id() {
 		return projectId;
@@ -54,6 +61,22 @@ public class ProjectForm {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }
