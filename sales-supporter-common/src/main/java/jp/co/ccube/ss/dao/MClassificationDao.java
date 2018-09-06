@@ -99,5 +99,5 @@ public interface MClassificationDao {
 
 	List<MClassification> selectByMClassification(MClassification recprd);
 
-	void deleteClassification(MClassification record);
+	void deleteClassification(String key, Integer ey);
 }

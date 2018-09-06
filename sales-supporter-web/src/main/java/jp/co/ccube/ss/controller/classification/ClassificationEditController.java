@@ -19,11 +19,20 @@ public class ClassificationEditController {
 	ClassificationService classificationService;
 
 	// 編集画面遷移処理
-//	@RequestMapping(value = "/classificationSearch", method = RequestMethod.GET)
-//	public String classificationEdit(ModelAndView mav, @ModelAttribute("form") ClassificationForm form, Model model) {
-//		model.addAttribute("form", classificationService.classificationSearch(form));
-//		return "/classification/classificationEdit";
-//	}
+	// @RequestMapping(value = "/classificationSearch", method =
+	// RequestMethod.GET)
+	// public String classificationEdit(ModelAndView mav,
+	// @ModelAttribute("form") ClassificationForm form, Model model) {
+	// model.addAttribute("form",
+	// classificationService.classificationSearch(form));
+	// return "/classification/classificationEdit";
+	// }
+
+	// 検索画面へ戻る
+	@RequestMapping(value = "/classificationEdit", params = "back", method = RequestMethod.POST)
+	public String classificationListBack(@ModelAttribute("form") ClassificationForm form, BindingResult result, Model model) {
+		return "/classification/classificationList";
+	}
 
 	// マスタ更新処理
 	@RequestMapping(value = "/classificationEdit", params = "confirm", method = RequestMethod.POST)

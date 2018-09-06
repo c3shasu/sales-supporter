@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.ccube.ss.form.ChargeForm;
 import jp.co.ccube.ss.form.ProjectForm;
 import jp.co.ccube.ss.service.ProjectService;
 
@@ -21,8 +20,8 @@ public class ProjectDeleteController {
 
 	// 検索画面へ戻る
 	@RequestMapping(value = "/projectDeleteConfirm", params = "back", method = RequestMethod.POST)
-	public String chargeRregistBack(@ModelAttribute("form") ChargeForm form, BindingResult result, Model model) {
-		return "subproject/subProjectList";
+	public String chargeRregistBack(@ModelAttribute("form") ProjectForm form, BindingResult result, Model model) {
+		return "project/projectList";
 	}
 
 	// プロジェクト削除処理

@@ -3,17 +3,21 @@
 <head>
 <title>社員一覧画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
 		<form method="post" th:action="@{/classificationList}" th:object="${form}">
 			<div>
-				<table>
+				<table class="search">
 					<tr>
 						<td>種別コード</td>
-						<td><input type="text" th:value="*{classificationCode}" th:name="classificationCode" maxlength="10" /></td>
-						<td colspan="2" class="align_right"><input id="search" name="search" type="submit" value="検索" /></td>
+						<td><input type="text" th:field="*{classificationCode}" th:name="classificationCode" maxlength="10" /></td>
+						<td colspan="2" class="align_center"><input id="search" name="search" type="submit" value="検索" /></td>
+					</tr>
+					<tr>
+						<td class="align_center"><input id="delete" type="submit" name="delete" value="削除" /></td>
+						<td class="align_center"><input id="edit" type="submit" name="edit" value="変更" /></td>
 					</tr>
 				</table>
 			</div>
@@ -28,6 +32,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="obj : ${serachClassificationList}">
+						<td><input type="checkbox" th:value="${obj.classificationCode} + ' ' + ${obj.classificationId}" th:name="check" th:field="*{check}" /></td>
 						<td th:text="${obj.classificationCode}"></td>
 						<td th:text="${obj.classificationId}"></td>
 						<td th:text="${obj.classificationName}"></td>

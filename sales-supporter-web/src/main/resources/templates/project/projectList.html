@@ -3,7 +3,7 @@
 <head>
 <title>社員一覧画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
@@ -11,13 +11,14 @@
 			<div>
 				<table>
 					<tr>
-						<td>プロジェクト名</td>
-						<td><input type="text" th:field="*{projectName}" th:name="projectName" maxlength="10" /></td>
+						<td width="300">プロジェクト名</td>
+						<td width="300"><input type="text" th:field="*{projectName}" th:name="projectName" maxlength="10" /></td>
+						<td width="300" class="align_center"><input id="search" type="submit" name="search" value="検索" /></td>
 					</tr>
 					<tr>
-						<td class="align_left"><input id="delete" type="submit" name="delete" value="削除" /></td>
-						<td class="align_left"><input id="edit" type="submit" name="edit" value="変更" /></td>
-						<td class="align_left"><input id="search" type="submit" name="search" value="検索" /></td>
+						<td  class="align_center"><input id="delete" type="submit" name="delete" value="削除" /></td>
+						<td class="align_center"><input id="edit" type="submit" name="edit" value="変更" /></td>
+						<td class="align_center"><input id="detail" type="submit" name="detail" value="詳細" /></td>
 					</tr>
 				</table>
 			</div>
@@ -34,10 +35,6 @@
 						<td><input type="checkbox" th:value="${obj.projectId}" th:name="Check" th:field="*{Check}" /></td>
 						<td th:text="${obj.projectName}"></td>
 						<td th:text="${obj.clientId}"></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="align_center"><input id="detail" type="submit" name="detail" value="詳細" /></td>
 					</tr>
 				</tbody>
 			</table>

@@ -14,14 +14,17 @@
 					<tr>
 						<td>マスタコード</td>
 						<td th:text="*{classificationCode}"></td>
+						<td><input type="hidden" th:field="*{classificationCode}" /></td>
 					</tr>
 					<tr>
 						<td>マスタID</td>
 						<td th:text="*{classificationId}"></td>
+						<td><input type="hidden" th:field="*{classificationId}" /></td>
 					</tr>
 					<tr>
 						<td>マスタ種別</td>
 						<td th:text="*{classificationName}"></td>
+						<td><input type="hidden" th:field="*{classificationName}" /></td>
 					</tr>
 				</table>
 				<br />

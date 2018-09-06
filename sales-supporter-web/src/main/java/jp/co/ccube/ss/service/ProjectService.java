@@ -22,7 +22,7 @@ public class ProjectService {
 	@Autowired
 	private ClientDao clientDao;
 
-	// ～～案件担当者の登録～～
+	// ～～プロジェクトの登録～～
 	public void registProject(ProjectForm form) throws ParseException {
 
 		Project project = new Project();

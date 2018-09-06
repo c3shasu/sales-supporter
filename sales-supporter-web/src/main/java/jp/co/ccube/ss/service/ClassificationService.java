@@ -15,16 +15,13 @@ public class ClassificationService {
 	@Autowired
 	private MClassificationDao classificationDao;
 
-	// ～～案件担当者の登録～～
+	// ～～マスタの登録～～
 	public void registClassification(ClassificationForm form) {
-
-		int type = 0;
-		type = form.getClassificationId();
 
 		MClassification classification = new MClassification();
 		// DBアクセス
 		classification.setClassificationCode(form.getClassificationCode());
-		classification.setClassificationId(type);
+		classification.setClassificationId(form.getClassificationId());
 		classification.setClassificationName(form.getClassificationName());
 		classificationDao.insertSelective(classification);
 	}
@@ -41,12 +38,10 @@ public class ClassificationService {
 
 	// 対象の検索
 	public ClassificationForm classificationSearch(ClassificationForm form) {
-		String classificationCode = new String();
-		classificationCode = "client";
-		Integer classificationId[] = new Integer[1];
-		classificationId[0] = 0000001;
-		MClassification classification = new MClassification();
-		classification = classificationDao.selectByPrimaryKey(classificationCode, classificationId[0]);
+
+		String code = form.getClassificationCode();
+		Integer id = form.getClassificationId();
+		MClassification classification = classificationDao.selectByPrimaryKey(code, id);
 
 		form.setClassificationCode(classification.getClassificationCode());
 		form.setClassificationId(classification.getClassificationId());
@@ -58,12 +53,9 @@ public class ClassificationService {
 	// ～～マスタ情報の編集～～
 	public void editClassification(ClassificationForm form) throws ParseException {
 
-		String classificationCode = new String();
-		classificationCode = "client";
-		Integer classificationId[] = new Integer[1];
-		classificationId[0] = 0000001;
-		MClassification classification = new MClassification();
-		classification = classificationDao.selectByPrimaryKey(classificationCode, classificationId[0]);
+		String code = form.getClassificationCode();
+		Integer id = form.getClassificationId();
+		MClassification classification = classificationDao.selectByPrimaryKey(code, id);
 
 		// DBアクセス
 		classification.setClassificationCode(form.getClassificationCode());
@@ -72,12 +64,11 @@ public class ClassificationService {
 		classificationDao.updateByPrimaryKeySelective(classification);
 	}
 
-	// ～～顧客情報の削除～～
+	// ～～マスタの削除～～
 	public void deleteClassification(ClassificationForm form) {
-		String classificationCode = new String();
-		classificationCode = "client";
-		Integer classificationId[] = new Integer[1];
-		classificationId[0] = 0000001;
-		classificationDao.deleteByPrimaryKey(classificationCode, classificationId[0]);
+		String code = form.getClassificationCode();
+		String s = String.valueOf(form.getClassificationId());
+		Integer id = Integer.parseInt(s, 2);
+		classificationDao.deleteByPrimaryKey(code, id);
 	}
 }
