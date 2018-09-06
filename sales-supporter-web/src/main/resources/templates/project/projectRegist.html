@@ -25,7 +25,7 @@
 					</tr>
 					<tr>
 						<td>顧客コード</td>
-						<td><input type="text" th:field="*{clientId}" maxlength="10" size="22" id="bpCode" /></td>
+						<td><input type="text" th:field="*{clientId}" maxlength="10" size="22" id="bpCode" readonly="readonly" /></td>
 						<td th:if="${#fields.hasErrors('clientId')}" th:errors="*{clientId}" style="color: red"></td>
 						<td><input type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
 					</tr>
