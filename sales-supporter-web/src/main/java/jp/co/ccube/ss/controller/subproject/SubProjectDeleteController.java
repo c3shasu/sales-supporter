@@ -16,23 +16,24 @@ import jp.co.ccube.ss.form.SubprojectForm;
 import jp.co.ccube.ss.service.SubprojectService;
 
 @Controller
-public class SubProjectDeleteController extends AbstractController{
+public class SubProjectDeleteController extends AbstractController {
 
 	@Autowired
 	SubprojectService subprojectService;
 
-	@RequestMapping(value="/subProjectListDel", params="delete",  method=RequestMethod.POST)
-	public ModelAndView delete(ModelAndView mav, @ModelAttribute("form") SubprojectForm form, Model model, HttpSession session) {
+	@RequestMapping(value = "/subProjectListDel", params = "delete", method = RequestMethod.POST)
+	public ModelAndView delete(ModelAndView mav, @ModelAttribute("form") SubprojectForm form, Model model,
+			HttpSession session) {
 		// 削除対象確認
 		System.out.println("deleteStart");
 		CaseDetail detail = new CaseDetail();
-        detail = (CaseDetail)session.getAttribute("caseDetail");
-        System.out.println(detail.getProjectId());
-        System.out.println(detail.getCaseId());
+		detail = (CaseDetail) session.getAttribute("caseDetail");
+		System.out.println(detail.getProjectId());
+		System.out.println(detail.getCaseId());
 		form.setProjectId(detail.getProjectId());
 		form.setCaseId(detail.getCaseId());
 		System.out.println(detail.getProjectId());
-        System.out.println(detail.getCaseId());
+		System.out.println(detail.getCaseId());
 		subprojectService.deleteSubproject(form);
 		System.out.println("deleteCheck1");
 		mav.setViewName("/subproject/subProjectDeleteConfirm");
@@ -43,6 +44,5 @@ public class SubProjectDeleteController extends AbstractController{
 		System.out.println("deleteEnd");
 		return mav;
 	}
-
 
 }

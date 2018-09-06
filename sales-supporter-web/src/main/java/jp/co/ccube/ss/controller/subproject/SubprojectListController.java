@@ -20,7 +20,7 @@ import jp.co.ccube.ss.form.SubprojectForm;
 import jp.co.ccube.ss.service.SubprojectService;
 
 @Controller
-public class SubprojectListController extends AbstractController{
+public class SubprojectListController extends AbstractController {
 
 	@Autowired
 	SubprojectService subprojectService;
@@ -30,35 +30,26 @@ public class SubprojectListController extends AbstractController{
 	 *
 	 * @return テンプレートパス
 	 */
-	@RequestMapping(value = "/subProjectList",method = RequestMethod.GET)
+	@RequestMapping(value = "/subProjectList", method = RequestMethod.GET)
 	public String subProjectList(@ModelAttribute("form") SubprojectForm form, Model model) {
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "subproject/subProjectListSearch";
 	}
 
-	@RequestMapping(value = "/subProjectList", params="search",method =RequestMethod.POST)
-	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") SubprojectForm form, Model model, HttpSession session){
+	@RequestMapping(value = "/subProjectList", params = "search", method = RequestMethod.POST)
+	public ModelAndView search(ModelAndView mav, @ModelAttribute("form") SubprojectForm form, Model model,
+			HttpSession session) {
 
-//		System.out.println("search testA");
 		mav.setViewName("/subproject/subProjectListSearch");
-//		System.out.println("search testB");
 		List<CaseProject> result = subprojectService.searchCase(form);
-	//	System.out.println(result.get(0).getProjectId());
-		System.out.println("search testC456");
 		model.addAttribute("checkItems", CheckBoxItemConfig.CLIENTTYPE_ITEMS);
-		System.out.println("search testCC123");
 
-		//検索結果の保存
+		// 検索結果の保存
 		session.setAttribute("searchList", result);
 		List<CaseProject> list = new ArrayList<CaseProject>();
 		list = (List<CaseProject>) session.getAttribute("searchList");
-
-		System.out.println(list.get(0).getCaseName());
-		System.out.println(list.get(1).getProjectId());
 		mav.addObject("result", result);
 		return mav;
 	}
-
-
 
 }

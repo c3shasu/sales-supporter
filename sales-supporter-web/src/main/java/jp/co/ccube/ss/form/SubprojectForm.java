@@ -1,11 +1,12 @@
 package jp.co.ccube.ss.form;
+
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class SubprojectForm {
 	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$")
+	@Pattern(regexp = "^[0-9]+$")
 	private Integer projectId;
 	private String projectName;
 	private Integer caseId;
@@ -16,7 +17,6 @@ public class SubprojectForm {
 	private String name;
 	private String companyName;
 	private String classificationName;
-
 
 	public String getClassificationName() {
 		return classificationName;
@@ -97,7 +97,5 @@ public class SubprojectForm {
 	public void setAgreementType(Boolean agreementType) {
 		this.agreementType = agreementType;
 	}
-
-
 
 }

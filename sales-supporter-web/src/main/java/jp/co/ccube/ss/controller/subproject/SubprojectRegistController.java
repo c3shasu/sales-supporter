@@ -12,7 +12,7 @@ import jp.co.ccube.ss.form.ManagementForm;
 import jp.co.ccube.ss.service.ManagementService;
 
 @Controller
-public class SubprojectRegistController extends AbstractController{
+public class SubprojectRegistController extends AbstractController {
 	ManagementService managementService;
 
 	/**
@@ -25,6 +25,5 @@ public class SubprojectRegistController extends AbstractController{
 		model.addAttribute("checkItems", CheckBoxItemConfig.PREMISSION_ITEMS);
 		return "subproject/subProjectRegistInput";
 	}
-
 
 }

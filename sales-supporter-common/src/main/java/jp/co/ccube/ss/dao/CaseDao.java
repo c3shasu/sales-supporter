@@ -10,6 +10,7 @@ import jp.co.ccube.ss.entity.CaseDetail;
 import jp.co.ccube.ss.entity.CaseExample;
 import jp.co.ccube.ss.entity.CaseKey;
 import jp.co.ccube.ss.entity.CaseProject;
+import jp.co.ccube.ss.entity.ChargeClientEmployee;
 import jp.co.ccube.ss.entity.Project;
 
 
@@ -113,6 +114,7 @@ public interface CaseDao {
 	//プロジェクト削除時
 	void projectDeletedAtUpdate(Project project);
 
+	List<ChargeClientEmployee> selectByCharge(ChargeClientEmployee record);
 
 
 }

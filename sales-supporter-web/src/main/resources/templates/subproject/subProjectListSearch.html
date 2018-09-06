@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/baselayout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
 <title>案件情報検索・一覧画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,13 +13,11 @@
 				<table class="none">
 					<tr>
 						<td class="none">プロジェクト名</td>
-						<td class="none"><input type="text" maxlength="30"
-							name="projectName" id="name" value="" /></td>
+						<td class="none"><input type="text" maxlength="30" name="projectName" id="name" value="" /></td>
 					</tr>
 					<tr>
 						<td class="none">案件名</td>
-						<td class="none"><input type="text" maxlength="30"
-							name="caseName" id="department" value="" /></td>
+						<td class="none"><input type="text" maxlength="30" name="caseName" id="department" value="" /></td>
 					</tr>
 				</table>
 				<input id="search" type="submit" name="search" value="検索" />
@@ -37,15 +33,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="obj:${searchSubprojectList}">
-						<td class="right">
-						<input type="checkbox"
-						th:value="${obj.caseId}"
-						th:name="Check"
-						th:field="*{CaseId}" />
-						</td>
+					<tr th:each="obj:${result}">
+						<td class="right"><input type="checkbox" th:value="${obj.caseId} +' '+ ${obj.projectId}" name="Check" th:field="*{CaseId}" /></td>
 						<td th:text="${obj.caseName}"></td>
 						<td th:text="${obj.projectName}"></td>
+						<td style="display: none"></td>
 					</tr>
 				</tbody>
 			</table>

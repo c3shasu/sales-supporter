@@ -99,4 +99,6 @@ public interface ChargeDao {
 	int updateByPrimaryKey(Charge record);
 
 	Charge deletedAtUpdate(Integer project_id, Integer case_id, Integer branch_no);
+
+	// List<ChargeClientEmployee> selectByCharge(ChargeClientEmployee record);
 }

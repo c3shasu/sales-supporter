@@ -9,168 +9,72 @@
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
-		<input type="hidden" id="base_url" value="/SalesSupporter/" />
-		<div class="main_div">
-			<div class="column">
-				<div class="main_contents">
-					<div class="contents">
-						<form action="/SalesSupporter/userConfirm">
-							<div>
-								<h3>案件詳細</h3>
-								<table class="search">
-									<tr>
-										<td>プロジェクト名</td>
-										<td>○○プロジェクト</td>
-									</tr>
-									<tr>
-										<td>案件名</td>
-										<td>××案件</td>
-									</tr>
-									<tr>
-										<td>顧客名</td>
-										<td>ABC株式会社</td>
-									</tr>
-									<tr>
-										<td>顧客担当者</td>
-										<td>佐藤一郎</td>
-									</tr>
-									<tr>
-										<td>契約種別</td>
-										<td><a href="../entrusted/entrustedEdit.html">受託</a></td>
-									</tr>
-								</table>
-								<input id="confirm" type="button" onClick="location.href='../subproject/subprojectEdit.html'" value="更新" />
-								<h3>案件担当者</h3>
-								<table>
-									<tbody id="list_body">
-										<tr>
-											<th>社員番号</th>
-											<th>名前</th>
-											<th>所属</th>
-											<th>開始日</th>
-											<th>終了日</th>
-											<th></th>
-										</tr>
-										<tr>
-											<td>123</td>
-											<td><a href="../charge/chargeEdit.html">鈴木太郎</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="button" onClick="location.href='../charge/chargeDeleteCheck.html'" type="button" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td>100</td>
-											<td><a href="../charge/chargeEdit.html">高橋花子</a></td>
-											<td>企画開発部</td>
-											<td>2018/07/10</td>
-											<td>2018/08/31</td>
-											<td><input id="confirm" type="button" onClick="location.href='../charge/chargeDeleteCheck.html'" value="削除" /></td>
-										</tr>
-										<tr>
-											<td colspan="6" class="align_center"><input id="confirm" type="button" onClick="location.href='../charge/chargeadd.html'" value="追加" /></td>
-										</tr>
-									</tbody>
-								</table>
-								<div id="page_ctrl">
-									<ul id="page_before">
-										<li id="page_first">|&lt;</li>
-										<li id="page_prev">&lt;</li>
-									</ul>
-									<ul id="page_number"></ul>
-									<ul id="page_after">
-										<li id="page_next">&gt;</li>
-										<li id="page_last">&gt;|</li>
-									</ul>
-								</div>
-								<br /> <input id="confirm" type="button" value="戻る" />
-							</div>
-						</form>
-						<input id="confirm" type="button" value="削除" />
-					</div>
+
+		<form method="post" th:action="@{subProjectList}" th:object="${form}">
+			<div>
+				<h3>案件詳細</h3>
+				<table class="search">
+					<tr th:each="obj:${caseDetail}">
+						<td>プロジェクト名</td>
+						<td th:text="${obj.projectName}"></td>
+					</tr>
+					<tr th:each="obj:${caseDetail}">
+						<td>案件名</td>
+						<td th:text="${obj.caseName}"></td>
+					</tr>
+					<tr th:each="obj:${caseDetail}">
+						<td>顧客名</td>
+						<td th:text="${obj.companyName}"></td>
+					</tr>
+					<tr th:each="obj:${caseDetail}">
+						<td>顧客担当者</td>
+						<td th:text="${obj.name}"></td>
+					</tr>
+					<tr th:each="obj:${caseDetail}">
+						<td>契約種別</td>
+						<td><a th:text="${obj.classificationName}" href="../entrusted/entrustedEdit.html"></a></td>
+					</tr>
+				</table>
+				<input id="edit" type="submit" name="edit" value="更新" />
+				<h3>案件担当者</h3>
+				<table>
+					<tbody id="list_body">
+						<tr>
+							<th>社員番号</th>
+							<th>BPコード</th>
+							<th>名前</th>
+							<th>所属</th>
+							<th>会社名</th>
+							<th>開始日</th>
+							<th>終了日</th>
+							<th></th>
+						</tr>
+						<tr th:each="obj:${chargeClientEmployee}">
+							<td th:text="${obj.employeeNo}"></td>
+							<td th:text="${obj.clientId}"></td>
+							<td th:text="${obj.engineerName}"></td>
+							<td th:text="${obj.department}"></td>
+							<td th:text="${obj.companyName}"></td>
+							<td th:text="${obj.startDate}"></td>
+							<td th:text="${obj.endDate}"></td>
+							<td><input id="button" onClick="location.href='../charge/chargeDeleteCheck.html'" type="button" value="削除" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="page_ctrl">
+					<ul id="page_before">
+						<li id="page_first">|&lt;</li>
+						<li id="page_prev">&lt;</li>
+					</ul>
+					<ul id="page_number"></ul>
+					<ul id="page_after">
+						<li id="page_next">&gt;</li>
+						<li id="page_last">&gt;|</li>
+					</ul>
 				</div>
+				<br /> <input id="confirm" type="button" value="戻る" /> <br /> <input id="delete" name="delete" type="submit" value="削除" />
 			</div>
-		</div>
+		</form>
 	</div>
 </body>
 </html>

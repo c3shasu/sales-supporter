@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/baselayout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
-<meta charset="UTF-8"/>
 <title>案件情報登録入力画面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
+<script type="text/javascript">
+	// 子ウィンドウを開く<input href="" type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" />
+	function openWindow() {
+		window.open('./chargeBpSearch', 'child', 'width=1000,height=500')
+		//window.open('http://localhost:8080/SalesSupporter/chargeBpSearch', 'child', 'width=1000,height=500')
+	}
+</script>
 </head>
 <body>
-<div layout:fragment="contents" class="contents">
-     <input type="hidden" id="base_url" value="/SalesSupporter/" />
-	<div class="main_div">
-
-		<div class="column">
-			<div class="main_contents">
-				<div class="contents">
-		<form  action="/SalesSupporter/userSearch">
-			<div><h3>案件情報登録画面</h3>
+	<div layout:fragment="contents" class="contents">
+		<form action="/SalesSupporter/userSearch">
+			<div>
+				<h3>案件情報登録画面</h3>
 				<table class="search">
 					<tr>
 						<td>プロジェクト名</td>
-						<td><input type="text" size="30" maxlength="10" name="accountId" id="accountId" value="SampleSystem"   disabled="disabled"/></td>
+						<td><input type="text" size="30" maxlength="10" name="accountId" id="accountId" value="SampleSystem" /> <!-- <input type="button" onClick="windowOpen()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /> --></td>
 					</tr>
 					<tr>
 						<td>案件名</td>
@@ -28,37 +28,30 @@
 					</tr>
 					<tr>
 						<td>顧客コード(顧客名)</td>
-						<td><input type="text" size="30" maxlength="30" name="name" id="name" value=""  /></td>
+						<td><input type="text" size="30" maxlength="30" name="name" id="name" value="" /> <!-- <input type ="button" id="child" name="child" onclick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" />  --></td>
 					</tr>
 					<tr>
 						<td>顧客担当者</td>
-						<td>
-						<input type="text" size="30" maxlength="30" name="name" id="name" value="" />
-						<input type="button" onclick="#" value="検索" />
-						</td>
+						<td><input type="text" size="30" maxlength="30" name="name" id="name" value="" /> <!-- <input type ="button" id="child" name="child" onclick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /> --></td>
 					</tr>
 					<tr>
 						<td>契約種別</td>
-						<td>
-						    <select name="Contract type" style="width:50px">
-						         <option value="1">受託</option>
-						         <option value="2">派遣</option>
-						         <option value="3">SES</option>
-						    </select>
-                        </td>
+						<td><select name="Contract type" style="width: 50px">
+								<option value="1">受託</option>
+								<option value="2">派遣</option>
+								<option value="3">SES</option>
+						</select></td>
 					</tr>
 					<tr>
-					<td><input id="edit" type="button" onClick="location.href='subProjectRegistProjectSearch.html'"  name="edit" value="戻る" /></td>
+						<td><input id="edit" type="button" onClick="location.href='subProjectRegistProjectSearch.html'" name="edit" value="戻る" /></td>
 						<td><input id="edit" type="button" onClick="location.href='../charge/chargeRegist.html'" name="edit" value="登録" /></td>
 					</tr>
 				</table>
 			</div>
 
-		<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /></form>
+			<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" />
+		</form>
 	</div>
-	</div>
-			</div>
-		</div>
-	</div>
+
 </body>
 </html>

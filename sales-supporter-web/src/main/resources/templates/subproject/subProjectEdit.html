@@ -1,50 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/baselayout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/baselayout">
 <head>
 <title>案件情報変更画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
 <link href="/SalesSupporter/css/paging.css" rel="stylesheet" />
+
+<script type="text/javascript">
+	// 子ウィンドウを開く<input href="" type="button" onClick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" />
+	function openWindow() {
+		window.open('./clientResponsible', 'child', 'width=1000,height=500')
+		//window.open('http://localhost:8080/SalesSupporter/engineerBpSearch', 'child', 'width=1000,height=500')
+	}
+</script>
 </head>
 <body>
-<div layout:fragment="contents" class="contents">
-		<form  method="post" th:action="@{subProjectList}" th:object="${form}">
-			<div><h3>案件情報変更画面</h3>
+	<div layout:fragment="contents" class="contents">
+		<form method="post" th:action="@{subProjectList}" th:object="${form}">
+			<div>
+				<h3>案件情報変更画面</h3>
 				<table class="search">
 					<tr>
 						<td>プロジェクト名</td>
-						<td><input type="text" size="30" maxlength="10" th:field="*{projectName}"    disabled="disabled"/></td>
+						<td><input type="text" size="30" maxlength="10" th:field="*{projectName}" disabled="disabled" /></td>
 					</tr>
 					<tr>
 						<td>案件名</td>
-						<td><input type="text" size="30" maxlength="30" th:field="*{caseName}" /></td>
+						<td><input type="text" size="30" maxlength="30" th:field="*{caseName}" id="caseName" /></td>
 					</tr>
 					<tr>
 						<td>顧客コード(顧客名)</td>
-						<td><input type="text" size="30" maxlength="30" th:field="*{companyName}" disabled="disabled"/></td>
+						<td><input type="text" size="30" maxlength="30" th:field="*{companyName}" id="companyName" disabled="disabled" /></td>
 					</tr>
 					<tr>
 						<td>顧客担当者</td>
-						<td><input type="text" size="30" maxlength="30" th:field="*{name}" /></td>
+						<td><input type="text" size="30" maxlength="30" th:field="*{name}" id="name" /> <input type="button" id="child" name="child" onclick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
+					</tr>
+					<tr>
+						<td>顧客担当者コード</td>
+						<td><input type="text" size="30" maxlength="30" th:field="*{branchNo}" id="branchNo" /> <input type="button" id="child" name="child" onclick="openWindow()" class="glyphicon glyphicon-new-window" aria-hidden="true" value="検索" /></td>
 					</tr>
 					<tr>
 						<td>契約種別</td>
-						<td th:each="obj:${searchSubprojectList}">
-						    <select id="ClassificationName" name="ClassificationName" style="width:50px" disabled="disabled">
-						         <option th:text="${obj.classificationName}" th:inline="text"></option>
-						    </select>
-                        </td>
+						<td th:each="obj:${searchSubprojectList}"><select id="ClassificationName" name="ClassificationName" style="width: 50px" disabled="disabled">
+								<option th:text="${obj.classificationName}" th:inline="text"></option>
+						</select></td>
 					</tr>
 					<tr>
-					<td><input id="edit" type="button" onClick="location.href='subProjectDetail.html'"  name="edit" value="戻る" /></td>
-						<td><input id="edit" type="button" onClick="location.href='subProjectEditConfirm.html'" name="edit" value="更新" /></td>
+						<td><input id="edit" type="button" name="edit" value="戻る" /></td>
+						<td><input id="edit" type="submit" name="edit" value="更新" /></td>
 					</tr>
 				</table>
 			</div>
 
-		<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" /></form>
-</div>
+			<input type="hidden" name="_csrf" value="88439084-c569-4eea-9f08-99733912f845" />
+		</form>
+	</div>
 </body>
 </html>
