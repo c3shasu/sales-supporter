@@ -34,7 +34,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="obj:${result}">
-						<td class="right"><input type="checkbox" th:value="${obj.caseId} +' '+ ${obj.projectId}" name="Check" th:field="*{CaseId}" /></td>
+						<td class="right"><input type="checkbox" th:value="${obj.caseId} +''+ ${obj.projectId}" name="Check" th:field="*{CaseId}" /></td>
 						<td th:text="${obj.caseName}"></td>
 						<td th:text="${obj.projectName}"></td>
 						<td style="display: none"></td>

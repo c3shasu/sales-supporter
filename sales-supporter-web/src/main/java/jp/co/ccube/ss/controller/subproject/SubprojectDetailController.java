@@ -33,7 +33,7 @@ public class SubprojectDetailController extends AbstractController {
 		mav.setViewName("/subproject/subProjectDetail");
 		Integer c = form.getCaseId();
 		String ic = String.valueOf(c);
-		String[] id = ic.split(" ", 0);
+		String[] id = ic.split("", 0);
 		int[] ia = new int[id.length];
 		for (int i = 0; i < id.length; i++) {
 			ia[i] = Integer.parseInt(id[i]); // throws NumberFormatException
