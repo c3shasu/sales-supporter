@@ -27,14 +27,14 @@
 					<tr>
 						<th>選択</th>
 						<th>プロジェクト名</th>
-						<th>顧客コード</th>
+						<th>顧客名</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="obj : ${serachProjectList}">
 						<td><input type="checkbox" th:value="${obj.projectId}" th:name="Check" th:field="*{Check}" /></td>
 						<td th:text="${obj.projectName}"></td>
-						<td th:text="${obj.clientId}"></td>
+						<td th:text="${obj.companyName}"></td>
 					</tr>
 				</tbody>
 			</table>

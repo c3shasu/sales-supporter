@@ -3,7 +3,7 @@
 <head>
 <title>プロジェクト詳細画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/css/login/login.css" th:href="@{/css/login/login.css}" rel="stylesheet" />
+<link href="/css/list.css" th:href="@{/css/list.css}" rel="stylesheet" />
 </head>
 <body>
 	<div layout:fragment="contents" class="contents">
@@ -12,8 +12,8 @@
 				<h3>プロジェクト詳細</h3>
 				<table>
 					<tr>
-						<td>プロジェクトID</td>
-						<td th:text="*{project_id}"></td>
+						<td width="300">プロジェクトID</td>
+						<td width="300" th:text="*{project_id}"></td>
 					</tr>
 					<tr>
 						<td>プロジェクト名</td>

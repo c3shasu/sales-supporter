@@ -36,6 +36,7 @@ public class ProjectListController extends AbstractController {
 		List<Project> result = projectService.search(form);
 		// model.addAttribute("checkItems",
 		// CheckBoxItemConfig.PREMISSION_ITEMS);
+		System.out.println(result.get(0).getCompanyName());
 		mav.addObject("serachProjectList", result);
 		return mav;
 	}
